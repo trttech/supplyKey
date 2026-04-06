@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { ChevronDown, LogOut } from "@lucide/vue"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Badge } from "@/components/ui/badge"
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -8,17 +10,18 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Badge } from "@/components/ui/badge"
-import { ChevronDown, LogOut } from "lucide-vue-next"
 import type { UserRole } from "~~/server/db/types"
 
 const { user, clear } = useUserSession()
 const isLoading = ref(false)
-const sessionUser = computed(() => user.value as {
-	email: string
-	name: string | null
-	role: UserRole
-} | null)
+const sessionUser = computed(
+	() =>
+		user.value as {
+			email: string
+			name: string | null
+			role: UserRole
+		} | null,
+)
 
 const displayName = computed(() => {
 	return sessionUser.value?.name || sessionUser.value?.email || "User"

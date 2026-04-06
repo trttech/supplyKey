@@ -1,4 +1,12 @@
 <script setup lang="ts" generic="TData">
+import {
+	ChevronLeft,
+	ChevronRight,
+	ChevronsLeft,
+	ChevronsRight,
+} from "@lucide/vue"
+import type { Table } from "@tanstack/vue-table"
+import { computed } from "vue"
 import { Button } from "@/components/ui/button"
 import {
 	Select,
@@ -7,9 +15,6 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select"
-import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-vue-next"
-import type { Table } from "@tanstack/vue-table"
-import { computed } from "vue"
 
 type ServerPagination = {
 	currentPage: number
@@ -43,28 +48,43 @@ const emit = defineEmits<{
 }>()
 
 const isServerMode = computed(() => Boolean(props.serverPagination))
-const isCursorMode = computed(() => isServerMode.value && props.serverPagination?.mode === "cursor")
-const currentPage = computed(() => isServerMode.value
-	? (props.serverPagination?.currentPage || 1)
-	: (props.table.getState().pagination.pageIndex + 1))
-const pageCount = computed(() => isServerMode.value
-	? Math.max(1, props.serverPagination?.lastPage || 1)
-	: props.table.getPageCount())
-const pageSize = computed(() => isServerMode.value
-	? (props.serverPagination?.perPage || 50)
-	: props.table.getState().pagination.pageSize)
-const canPrevious = computed(() => isServerMode.value
-	? (props.serverPagination?.canPrevious ?? (currentPage.value > 1))
-	: props.table.getCanPreviousPage())
-const canNext = computed(() => isServerMode.value
-	? (props.serverPagination?.canNext ?? (currentPage.value < pageCount.value))
-	: props.table.getCanNextPage())
-const totalRows = computed(() => isServerMode.value
-	? (props.serverPagination?.total ?? props.table.getFilteredRowModel().rows.length)
-	: props.table.getFilteredRowModel().rows.length)
+const isCursorMode = computed(
+	() => isServerMode.value && props.serverPagination?.mode === "cursor",
+)
+const currentPage = computed(() =>
+	isServerMode.value
+		? props.serverPagination?.currentPage || 1
+		: props.table.getState().pagination.pageIndex + 1,
+)
+const pageCount = computed(() =>
+	isServerMode.value
+		? Math.max(1, props.serverPagination?.lastPage || 1)
+		: props.table.getPageCount(),
+)
+const pageSize = computed(() =>
+	isServerMode.value
+		? props.serverPagination?.perPage || 50
+		: props.table.getState().pagination.pageSize,
+)
+const canPrevious = computed(() =>
+	isServerMode.value
+		? (props.serverPagination?.canPrevious ?? currentPage.value > 1)
+		: props.table.getCanPreviousPage(),
+)
+const canNext = computed(() =>
+	isServerMode.value
+		? (props.serverPagination?.canNext ?? currentPage.value < pageCount.value)
+		: props.table.getCanNextPage(),
+)
+const totalRows = computed(() =>
+	isServerMode.value
+		? (props.serverPagination?.total
+			?? props.table.getFilteredRowModel().rows.length)
+		: props.table.getFilteredRowModel().rows.length,
+)
 const rangeStart = computed(() => {
 	if (totalRows.value === 0) return 0
-	return ((currentPage.value - 1) * pageSize.value) + 1
+	return (currentPage.value - 1) * pageSize.value + 1
 })
 const rangeEnd = computed(() => {
 	if (totalRows.value === 0) return 0

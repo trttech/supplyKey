@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="TData, TValue">
-import { LoaderCircle, SearchX } from "lucide-vue-next"
+import { LoaderCircle, SearchX } from "@lucide/vue"
 import type {
 	ColumnDef,
 	ColumnFiltersState,
@@ -16,8 +16,6 @@ import {
 	useVueTable,
 } from "@tanstack/vue-table"
 import { computed } from "vue"
-import { valueUpdater } from "~/utils"
-
 import { Skeleton } from "@/components/ui/skeleton"
 import {
 	Table,
@@ -27,6 +25,7 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table"
+import { valueUpdater } from "~/utils"
 
 const props = defineProps<{
 	columns: ColumnDef<TData, TValue>[]
@@ -42,8 +41,12 @@ const columnVisibility = ref<VisibilityState>({})
 const rowSelection = ref<RowSelectionState>({})
 
 const table = useVueTable({
-	get data() { return props.data },
-	get columns() { return props.columns },
+	get data() {
+		return props.data
+	},
+	get columns() {
+		return props.columns
+	},
 	getCoreRowModel: getCoreRowModel(),
 	getPaginationRowModel: getPaginationRowModel(),
 	getSortedRowModel: getSortedRowModel(),
@@ -55,14 +58,25 @@ const table = useVueTable({
 		},
 	},
 	onSortingChange: updaterOrValue => valueUpdater(updaterOrValue, sorting),
-	onColumnFiltersChange: updaterOrValue => valueUpdater(updaterOrValue, columnFilters),
-	onColumnVisibilityChange: updaterOrValue => valueUpdater(updaterOrValue, columnVisibility),
-	onRowSelectionChange: updaterOrValue => valueUpdater(updaterOrValue, rowSelection),
+	onColumnFiltersChange: updaterOrValue =>
+		valueUpdater(updaterOrValue, columnFilters),
+	onColumnVisibilityChange: updaterOrValue =>
+		valueUpdater(updaterOrValue, columnVisibility),
+	onRowSelectionChange: updaterOrValue =>
+		valueUpdater(updaterOrValue, rowSelection),
 	state: {
-		get sorting() { return sorting.value },
-		get columnFilters() { return columnFilters.value },
-		get columnVisibility() { return columnVisibility.value },
-		get rowSelection() { return rowSelection.value },
+		get sorting() {
+			return sorting.value
+		},
+		get columnFilters() {
+			return columnFilters.value
+		},
+		get columnVisibility() {
+			return columnVisibility.value
+		},
+		get rowSelection() {
+			return rowSelection.value
+		},
 	},
 })
 

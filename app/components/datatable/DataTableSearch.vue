@@ -1,22 +1,25 @@
 <script setup lang="ts">
+import { Search, X } from "@lucide/vue"
+import { onBeforeUnmount, ref, watch } from "vue"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Search, X } from "lucide-vue-next"
-import { onBeforeUnmount, ref, watch } from "vue"
 
-const props = withDefaults(defineProps<{
-	modelValue?: string
-	placeholder?: string
-	debounceMs?: number
-	minChars?: number
-	inputClass?: string
-}>(), {
-	modelValue: "",
-	placeholder: "Search...",
-	debounceMs: 350,
-	minChars: 3,
-	inputClass: "h-10 w-full min-w-64 md:w-80 xl:w-96",
-})
+const props = withDefaults(
+	defineProps<{
+		modelValue?: string
+		placeholder?: string
+		debounceMs?: number
+		minChars?: number
+		inputClass?: string
+	}>(),
+	{
+		modelValue: "",
+		placeholder: "Search...",
+		debounceMs: 350,
+		minChars: 3,
+		inputClass: "h-10 w-full min-w-64 md:w-80 xl:w-96",
+	},
+)
 
 const emit = defineEmits<{
 	"update:modelValue": [value: string]

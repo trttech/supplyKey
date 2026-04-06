@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Mail, Shield, UserRoundCheck, Users } from "lucide-vue-next"
+import { Mail, Shield, UserRoundCheck, Users } from "@lucide/vue"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { formatDateTime } from "@/utils"
@@ -124,7 +124,7 @@ const cards = computed(() => {
 					<div
 						v-for="user in data?.recentUsers || []"
 						:key="user.id"
-						class="flex items-center justify-between gap-4 rounded-[1.2rem] border border-border/70 bg-card/60 px-4 py-3"
+						class="border-border/70 bg-card/60 flex items-center justify-between gap-4 rounded-[1.2rem] border px-4 py-3"
 					>
 						<div class="space-y-1">
 							<p class="font-medium">
@@ -156,9 +156,11 @@ const cards = computed(() => {
 					</CardTitle>
 				</CardHeader>
 
-				<CardContent class="space-y-4 text-sm leading-7 text-muted-foreground">
+				<CardContent class="text-muted-foreground space-y-4 text-sm leading-7">
 					<p>Swap the `users` schema for your own domain tables.</p>
+
 					<p>Replace the auth email template with branded copy or your provider integration.</p>
+
 					<p>Keep the shell and datatable layer, then add domain routes behind the same middleware.</p>
 				</CardContent>
 			</Card>

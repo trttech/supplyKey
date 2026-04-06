@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { cn } from "@/utils"
-import { Check } from "lucide-vue-next"
+import { Check } from "@lucide/vue"
 import { reactiveOmit } from "@vueuse/core"
 import type { CheckboxRootEmits, CheckboxRootProps } from "reka-ui"
 import { CheckboxIndicator, CheckboxRoot, useForwardPropsEmits } from "reka-ui"

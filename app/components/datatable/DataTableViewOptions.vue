@@ -1,4 +1,7 @@
 <script setup lang="ts" generic="TData">
+import { SlidersHorizontal } from "@lucide/vue"
+import type { Table } from "@tanstack/vue-table"
+import { computed } from "vue"
 import { Button } from "@/components/ui/button"
 import {
 	DropdownMenu,
@@ -8,9 +11,6 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { SlidersHorizontal } from "lucide-vue-next"
-import type { Table } from "@tanstack/vue-table"
-import { computed } from "vue"
 
 interface DataTableViewOptionsProps {
 	table: Table<TData>
@@ -22,7 +22,10 @@ const props = defineProps<DataTableViewOptionsProps>()
 const columns = computed(() =>
 	props.table
 		.getAllColumns()
-		.filter(column => typeof column.accessorFn !== "undefined" && column.getCanHide()),
+		.filter(
+			column =>
+				typeof column.accessorFn !== "undefined" && column.getCanHide(),
+		),
 )
 
 // Get user-friendly column label

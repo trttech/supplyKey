@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CheckCircle2, LoaderCircle, XCircle } from "lucide-vue-next"
+import { CheckCircle2, LoaderCircle, XCircle } from "@lucide/vue"
 import type { FetchError } from "ofetch"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -36,7 +36,7 @@ const pending = ref(true)
 const success = ref(false)
 const errorMessage = ref("The magic link is invalid or has expired.")
 
-onMounted(async () => {
+const verifyMagicLink = async (): Promise<void> => {
 	if (!token.value) {
 		errorMessage.value = "Missing token."
 		pending.value = false
@@ -61,6 +61,10 @@ onMounted(async () => {
 	finally {
 		pending.value = false
 	}
+}
+
+onMounted(() => {
+	void verifyMagicLink()
 })
 </script>
 

@@ -1,11 +1,17 @@
 <script setup lang="ts">
+import { RefreshCw } from "@lucide/vue"
+import type { ColumnDef } from "@tanstack/vue-table"
+import { h } from "vue"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import type { ColumnDef } from "@tanstack/vue-table"
-import { RefreshCw } from "lucide-vue-next"
-import { h } from "vue"
-import { DataTable, DataTableColumnHeader, DataTableFacetedFilter, DataTablePagination, DataTableToolbar } from "~/components/datatable"
 import { formatDateTime } from "@/utils"
+import {
+	DataTable,
+	DataTableColumnHeader,
+	DataTableFacetedFilter,
+	DataTablePagination,
+	DataTableToolbar,
+} from "~/components/datatable"
 
 definePageMeta({
 	layout: "dashboard",
@@ -36,14 +42,17 @@ const verificationOptions = [
 	{ label: "Pending", value: "false" },
 ]
 
-const { data, pending, refresh } = await useFetch<{ users: UserRow[] }>("/api/users")
+const { data, pending, refresh } = await useFetch<{ users: UserRow[] }>(
+	"/api/users",
+)
 
 const rows = computed(() => data.value?.users || [])
 
 const columns: ColumnDef<UserRow>[] = [
 	{
 		accessorKey: "email",
-		header: ({ column }) => h(DataTableColumnHeader, { column: column as never, title: "User" }),
+		header: ({ column }) =>
+			h(DataTableColumnHeader, { column: column as never, title: "User" }),
 		cell: ({ row }) => {
 			const user = row.original
 			return h("div", { class: "space-y-1" }, [
@@ -55,10 +64,18 @@ const columns: ColumnDef<UserRow>[] = [
 	},
 	{
 		accessorKey: "role",
-		header: ({ column }) => h(DataTableColumnHeader, { column: column as never, title: "Role" }),
+		header: ({ column }) =>
+			h(DataTableColumnHeader, { column: column as never, title: "Role" }),
 		cell: ({ row }) => {
 			const value = row.original.role
-			return h(Badge, { class: "rounded-full capitalize", variant: value === "admin" ? "default" : "secondary" }, () => value)
+			return h(
+				Badge,
+				{
+					class: "rounded-full capitalize",
+					variant: value === "admin" ? "default" : "secondary",
+				},
+				() => value,
+			)
 		},
 		filterFn: (row, columnId, filterValue) => {
 			const values = filterValue as string[] | undefined
@@ -68,7 +85,8 @@ const columns: ColumnDef<UserRow>[] = [
 	},
 	{
 		accessorKey: "email_verified",
-		header: ({ column }) => h(DataTableColumnHeader, { column: column as never, title: "Status" }),
+		header: ({ column }) =>
+			h(DataTableColumnHeader, { column: column as never, title: "Status" }),
 		cell: ({ row }) => {
 			const verified = row.original.email_verified
 			return h(
@@ -77,7 +95,7 @@ const columns: ColumnDef<UserRow>[] = [
 					class: "rounded-full",
 					variant: verified ? "default" : "secondary",
 				},
-				() => verified ? "Verified" : "Pending",
+				() => (verified ? "Verified" : "Pending"),
 			)
 		},
 		filterFn: (row, columnId, filterValue) => {
@@ -88,13 +106,28 @@ const columns: ColumnDef<UserRow>[] = [
 	},
 	{
 		accessorKey: "last_active_at",
-		header: ({ column }) => h(DataTableColumnHeader, { column: column as never, title: "Last active" }),
-		cell: ({ row }) => h("span", { class: "text-sm text-muted-foreground" }, formatDateTime(row.original.last_active_at)),
+		header: ({ column }) =>
+			h(DataTableColumnHeader, {
+				column: column as never,
+				title: "Last active",
+			}),
+		cell: ({ row }) =>
+			h(
+				"span",
+				{ class: "text-sm text-muted-foreground" },
+				formatDateTime(row.original.last_active_at),
+			),
 	},
 	{
 		accessorKey: "created_at",
-		header: ({ column }) => h(DataTableColumnHeader, { column: column as never, title: "Created" }),
-		cell: ({ row }) => h("span", { class: "text-sm text-muted-foreground" }, formatDateTime(row.original.created_at)),
+		header: ({ column }) =>
+			h(DataTableColumnHeader, { column: column as never, title: "Created" }),
+		cell: ({ row }) =>
+			h(
+				"span",
+				{ class: "text-sm text-muted-foreground" },
+				formatDateTime(row.original.created_at),
+			),
 	},
 ]
 </script>

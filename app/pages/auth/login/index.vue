@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LoaderCircle, Mail } from "lucide-vue-next"
+import { LoaderCircle, Mail } from "@lucide/vue"
 import type { FetchError } from "ofetch"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -71,7 +71,7 @@ function resetState() {
 	<div class="mx-auto grid min-h-screen w-full max-w-6xl items-center gap-10 px-6 py-10 md:px-10 lg:grid-cols-[0.9fr_1.1fr]">
 		<div class="hidden min-h-[34rem] rounded-[2rem] border border-white/20 bg-[linear-gradient(145deg,rgba(24,20,14,0.92),rgba(38,27,10,0.82)),radial-gradient(circle_at_top,rgba(201,141,52,0.32),transparent_55%)] p-10 text-white shadow-[0_40px_120px_-56px_rgba(0,0,0,0.7)] lg:flex lg:flex-col lg:justify-between">
 			<div class="space-y-4">
-				<p class="text-sm font-semibold tracking-[0.18em] uppercase text-white/70">
+				<p class="text-sm font-semibold tracking-[0.18em] text-white/70 uppercase">
 					Auth Baseline
 				</p>
 
@@ -82,7 +82,9 @@ function resetState() {
 
 			<div class="space-y-4 text-sm leading-7 text-white/72">
 				<p>The first user created becomes `admin` automatically.</p>
+
 				<p>In development with `MAIL_MODE=console`, the sign-in link is returned here and logged server-side.</p>
+
 				<p>Switch to SMTP or Mailpit without changing the app flow.</p>
 			</div>
 		</div>
@@ -122,7 +124,7 @@ function resetState() {
 								Development shortcut
 							</p>
 
-							<p class="mt-2 break-all text-sm">
+							<p class="mt-2 text-sm break-all">
 								{{ debugMagicLink }}
 							</p>
 

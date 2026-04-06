@@ -1071,6 +1071,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@lucide/vue@npm:^1.7.0":
+  version: 1.7.0
+  resolution: "@lucide/vue@npm:1.7.0"
+  peerDependencies:
+    vue: ">=3.0.1"
+  checksum: 10c0/1ed394e9397453115ff64c11a0d613d9ddc2fb6f3abba1eedfc3ad0f4b0e4758f12c9f414f9a6292da1234e39a7b96a4f1c16c70c312621619046192ecf38506
+  languageName: node
+  linkType: hard
+
 "@mapbox/geojson-rewind@npm:^0.5.2":
   version: 0.5.2
   resolution: "@mapbox/geojson-rewind@npm:0.5.2"
@@ -6996,6 +7005,7 @@ __metadata:
   resolution: "fullstack-nuxt-starter@workspace:."
   dependencies:
     "@internationalized/date": "npm:^3.12.0"
+    "@lucide/vue": "npm:^1.7.0"
     "@nuxt/eslint": "npm:^1.15.2"
     "@nuxtjs/color-mode": "npm:^4.0.0"
     "@nuxtjs/device": "npm:4.0.0"
@@ -7018,7 +7028,6 @@ __metadata:
     kysely: "npm:^0.28.11"
     kysely-codegen: "npm:^0.20.0"
     lefthook: "npm:^2.1.4"
-    lucide-vue-next: "npm:^0.575.0"
     nodemailer: "npm:^8.0.1"
     nuxt: "npm:^4.4.2"
     nuxt-auth-utils: "npm:0.5.29"
@@ -8369,15 +8378,6 @@ __metadata:
   dependencies:
     yallist: "npm:^3.0.2"
   checksum: 10c0/89b2ef2ef45f543011e38737b8a8622a2f8998cddf0e5437174ef8f1f70a8b9d14a918ab3e232cb3ba343b7abddffa667f0b59075b2b80e6b4d63c3de6127482
-  languageName: node
-  linkType: hard
-
-"lucide-vue-next@npm:^0.575.0":
-  version: 0.575.0
-  resolution: "lucide-vue-next@npm:0.575.0"
-  peerDependencies:
-    vue: ">=3.0.1"
-  checksum: 10c0/6862ae20d1449e99ab8a1de27caa1460edeaabe1dc26f2ccdcdaec20bdd594e9ccb523942a198d5bac199c98f0a9faee16ab7260d9bcf68a750b52768b190c3c
   languageName: node
   linkType: hard
 

@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="TData">
-import { Button } from "@/components/ui/button"
-import { RotateCcw } from "lucide-vue-next"
+import { RotateCcw } from "@lucide/vue"
 import type { Table } from "@tanstack/vue-table"
 import { computed } from "vue"
+import { Button } from "@/components/ui/button"
 import DataTableSearch from "./DataTableSearch.vue"
 import DataTableViewOptions from "./DataTableViewOptions.vue"
 
@@ -18,7 +18,9 @@ interface DataTableToolbarProps {
 const props = defineProps<DataTableToolbarProps>()
 
 const isFiltered = computed(() => {
-	return props.table.getState().columnFilters.length > 0 || props.customIsFiltered
+	return (
+		props.table.getState().columnFilters.length > 0 || props.customIsFiltered
+	)
 })
 const searchColumn = computed(() => {
 	if (!props.searchKey) {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowRight, Database, LayoutDashboard, Mail, Workflow } from "lucide-vue-next"
+import { ArrowRight, Database, LayoutDashboard, Mail, Workflow } from "@lucide/vue"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -123,4 +123,3 @@ const capabilities = [
 		</div>
 	</div>
 </template>
-

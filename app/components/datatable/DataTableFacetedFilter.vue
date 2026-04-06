@@ -1,4 +1,8 @@
 <script setup lang="ts" generic="TData">
+import { Check, ListFilter } from "@lucide/vue"
+import type { Column } from "@tanstack/vue-table"
+import type { Component } from "vue"
+import { computed } from "vue"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
@@ -16,10 +20,6 @@ import {
 	PopoverTrigger,
 } from "@/components/ui/popover"
 import { Separator } from "@/components/ui/separator"
-import { Check, ListFilter } from "lucide-vue-next"
-import type { Column } from "@tanstack/vue-table"
-import type { Component } from "vue"
-import { computed } from "vue"
 import { cn } from "~/utils"
 
 interface DataTableFacetedFilterProps {
@@ -41,7 +41,13 @@ const emit = defineEmits<{
 
 const facets = computed(() => props.column?.getFacetedUniqueValues())
 const isControlled = computed(() => props.modelValue !== undefined)
-const selectedValues = computed(() => new Set(props.modelValue ?? (props.column?.getFilterValue() as string[] | undefined)))
+const selectedValues = computed(
+	() =>
+		new Set(
+			props.modelValue
+			?? (props.column?.getFilterValue() as string[] | undefined),
+		),
+)
 
 function applyFilter(values: string[]) {
 	if (!isControlled.value) {

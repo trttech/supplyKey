@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { parseDate as parseCalendarDate } from "@internationalized/date"
+import { CalendarIcon } from "@lucide/vue"
+import type { DateRange } from "reka-ui"
 import { Button } from "@/components/ui/button"
 import {
 	Popover,
@@ -6,10 +9,10 @@ import {
 	PopoverTrigger,
 } from "@/components/ui/popover"
 import { RangeCalendar } from "@/components/ui/range-calendar"
-import { parseDate as parseCalendarDate } from "@internationalized/date"
-import { CalendarIcon } from "lucide-vue-next"
-import type { DateRange } from "reka-ui"
-import type { DateRangeValue, FilterConfig } from "~/components/datatable/types"
+import type {
+	DateRangeValue,
+	FilterConfig,
+} from "~/components/datatable/types"
 import { cn, formatDate } from "~/utils"
 
 interface DateRangeFilterProps {
@@ -47,22 +50,25 @@ watch(open, (isOpen) => {
 })
 
 // Also refresh the local date range if the external props change while popover is open
-watch(() => [props.startDate, props.endDate], ([start, end]) => {
-	if (open.value) {
-		if (start || end) {
-			dateRange.value = {
-				start: start ? parseDate(start) : undefined,
-				end: end ? parseDate(end) : undefined,
+watch(
+	() => [props.startDate, props.endDate],
+	([start, end]) => {
+		if (open.value) {
+			if (start || end) {
+				dateRange.value = {
+					start: start ? parseDate(start) : undefined,
+					end: end ? parseDate(end) : undefined,
+				}
+			}
+			else {
+				dateRange.value = {
+					start: undefined,
+					end: undefined,
+				}
 			}
 		}
-		else {
-			dateRange.value = {
-				start: undefined,
-				end: undefined,
-			}
-		}
-	}
-})
+	},
+)
 
 function parseDate(dateString: string): unknown {
 	try {
@@ -78,7 +84,11 @@ function formatDateValue(dateValue: unknown): string | undefined {
 		return undefined
 	}
 
-	if (typeof dateValue === "object" && "toString" in dateValue && typeof dateValue.toString === "function") {
+	if (
+		typeof dateValue === "object"
+		&& "toString" in dateValue
+		&& typeof dateValue.toString === "function"
+	) {
 		return dateValue.toString()
 	}
 

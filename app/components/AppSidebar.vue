@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { BookOpenText, LayoutDashboard, Users } from "@lucide/vue"
 import {
 	Sidebar,
 	SidebarContent,
@@ -11,7 +12,6 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { BookOpenText, LayoutDashboard, Users } from "lucide-vue-next"
 import type { AppNavItem } from "~/components/app-shell"
 
 const route = useRoute()
@@ -67,6 +67,7 @@ const isActive = (path: string) => route.path === path
 
 							<div class="grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
 								<span class="truncate text-[0.95rem] font-semibold tracking-[-0.03em]">Fullstack Starter</span>
+
 								<span class="text-sidebar-foreground/58 truncate text-[0.72rem]">Nuxt, Kysely, queue, auth</span>
 							</div>
 						</NuxtLink>
@@ -97,6 +98,7 @@ const isActive = (path: string) => route.path === path
 							>
 								<NuxtLink :to="item.href">
 									<component :is="item.icon" />
+
 									<span>{{ item.label }}</span>
 								</NuxtLink>
 							</SidebarMenuButton>
@@ -111,4 +113,3 @@ const isActive = (path: string) => route.path === path
 		</SidebarFooter>
 	</Sidebar>
 </template>
-
