@@ -1,0 +1,41 @@
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+# Node dependencies
+node_modules
+
+# Logs
+logs
+*.log
+
+# Archives and temp files
+*.gz
+*.br
+*.zip
+*.tar
+*.rar
+*.7z
+*.bak
+*.swp
+*.tmp
+*.old
+*.orig
+*.rej
+*.swo
+
+# Misc
+.DS_Store
+.fleet
+.idea
+.yarn/*.gz
+
+# Local env files
+.env
+.env.*
+!.env.example
+

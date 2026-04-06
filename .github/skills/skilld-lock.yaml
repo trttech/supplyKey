@@ -1,0 +1,8 @@
+skills:
+  vue-skilld:
+    packageName: vue
+    version: 3.5.29
+    repo: vuejs/core
+    source: "https://github.com/vuejs/core/tree/main/docs"
+    syncedAt: 2026-03-23
+    generator: skilld

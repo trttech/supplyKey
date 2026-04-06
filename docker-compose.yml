@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: postgres:18.1-trixie
+    container_name: starter-postgres
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - starter_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-d", "${DB_NAME}", "-U", "${DB_USER}"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: starter-mailpit
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+volumes:
+  starter_pg_data:
+

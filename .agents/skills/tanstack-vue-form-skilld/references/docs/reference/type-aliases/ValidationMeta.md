@@ -1,0 +1,26 @@
+---
+id: ValidationMeta
+title: ValidationMeta
+---
+
+# Type Alias: ValidationMeta
+
+```ts
+type ValidationMeta = object;
+```
+
+Defined in: packages/form-core/src/FormApi.ts:480
+
+An object representing the validation metadata for a field. Not intended for public usage.
+
+## Properties
+
+### lastAbortController
+
+```ts
+lastAbortController: AbortController;
+```
+
+Defined in: packages/form-core/src/FormApi.ts:484
+
+An abort controller stored in memory to cancel previous async validation attempts.
