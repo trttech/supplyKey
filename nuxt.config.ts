@@ -110,14 +110,14 @@ export default defineNuxtConfig({
 		shared: "shared",
 	},
 
+	compatibilityDate: "2026-01-31",
+
 	nitro: {
 		compressPublicAssets: {
 			gzip: true,
 			brotli: true,
 		},
 	},
-
-	compatibilityDate: "2026-01-31",
 
 	vite: {
 		plugins: [tailwindcss() as never],

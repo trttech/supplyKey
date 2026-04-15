@@ -35,6 +35,7 @@ const defaultOpen = useCookie<boolean>("sidebar_state", { default: () => true })
 
 		<main class="app-shell-grid relative flex min-h-screen flex-1 flex-col overflow-hidden transition-all duration-300 ease-in-out">
 			<div class="pointer-events-none absolute inset-x-0 top-0 h-56 bg-[radial-gradient(circle_at_top,var(--page-glow-1),transparent_72%)] opacity-75 dark:opacity-35" />
+
 			<div class="pointer-events-none absolute inset-y-0 right-0 w-80 bg-[radial-gradient(circle_at_center,var(--page-glow-2),transparent_70%)] opacity-55 dark:opacity-20" />
 
 			<AppHeader
@@ -49,11 +50,12 @@ const defaultOpen = useCookie<boolean>("sidebar_state", { default: () => true })
 				<slot />
 			</div>
 
-			<footer class="relative z-10 border-t border-border/40 bg-background/60 py-4 backdrop-blur-sm">
+			<footer class="border-border/40 bg-background/60 relative z-10 border-t py-4 backdrop-blur-sm">
 				<div class="flex items-center justify-center gap-2 leading-none">
-					<span class="text-[0.6rem] font-semibold tracking-[0.2em] text-muted-foreground uppercase leading-none">
+					<span class="text-muted-foreground text-[0.6rem] leading-none font-semibold tracking-[0.2em] uppercase">
 						Powered by
 					</span>
+
 					<img
 						:src="supplykeyLogo"
 						alt="SupplyKey"
@@ -64,4 +66,3 @@ const defaultOpen = useCookie<boolean>("sidebar_state", { default: () => true })
 		</main>
 	</SidebarProvider>
 </template>
-

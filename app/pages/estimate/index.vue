@@ -85,35 +85,38 @@ function handleValidate() {
 <template>
 	<div class="space-y-8">
 		<section class="space-y-2">
-			<p class="text-[0.68rem] font-bold tracking-[0.24em] text-muted-foreground uppercase">
+			<p class="text-muted-foreground text-[0.68rem] font-bold tracking-[0.24em] uppercase">
 				Quotation Workflow
 			</p>
+
 			<h1
-				class="text-5xl font-extrabold tracking-[-0.045em] text-foreground"
+				class="text-foreground text-5xl font-extrabold tracking-[-0.045em]"
 				style="font-family: var(--font-display);"
 			>
 				Request Estimate
 			</h1>
-			<p class="max-w-2xl text-sm leading-7 text-muted-foreground">
+
+			<p class="text-muted-foreground max-w-2xl text-sm leading-7">
 				Initiate a custom quotation against the SupplyKey supplier network. Select asset classes and define project parameters — estimates return within 24 operational hours.
 			</p>
 		</section>
 
 		<section class="grid gap-6 xl:grid-cols-[1.6fr_1fr]">
 			<div class="space-y-6">
-				<div class="rounded-md border border-border/60 bg-card p-6">
+				<div class="border-border/60 bg-card rounded-md border p-6">
 					<h2
-						class="mb-5 text-lg font-extrabold tracking-[-0.015em] text-foreground"
+						class="text-foreground mb-5 text-lg font-extrabold tracking-[-0.015em]"
 						style="font-family: var(--font-display);"
 					>
 						Asset Selection
 					</h2>
+
 					<div class="grid gap-3 md:grid-cols-3">
 						<button
 							v-for="asset in assets"
 							:key="asset.id"
 							type="button"
-							class="flex flex-col items-start gap-3 rounded-md border-2 bg-muted p-5 text-left transition-all"
+							class="bg-muted flex flex-col items-start gap-3 rounded-md border-2 p-5 text-left transition-all"
 							:class="selected.includes(asset.id) ? 'border-primary bg-primary/5' : 'border-transparent hover:border-border'"
 							@click="toggle(asset.id)"
 						>
@@ -123,31 +126,35 @@ function handleValidate() {
 									class="size-6"
 									:class="selected.includes(asset.id) ? 'text-primary' : 'text-muted-foreground'"
 								/>
-								<span class="rounded-sm bg-background px-2 py-0.5 text-[0.58rem] font-bold tracking-[0.14em] text-muted-foreground uppercase">
+
+								<span class="bg-background text-muted-foreground rounded-sm px-2 py-0.5 text-[0.58rem] font-bold tracking-[0.14em] uppercase">
 									{{ asset.badge }}
 								</span>
 							</div>
+
 							<div>
 								<p
-									class="text-base font-bold tracking-[-0.01em] text-foreground"
+									class="text-foreground text-base font-bold tracking-[-0.01em]"
 									style="font-family: var(--font-display);"
 								>
 									{{ asset.name }}
 								</p>
-								<p class="mt-0.5 text-xs text-muted-foreground">
+
+								<p class="text-muted-foreground mt-0.5 text-xs">
 									{{ asset.category }}
 								</p>
 							</div>
-							<p class="text-[0.68rem] font-bold tracking-[0.12em] text-primary uppercase">
+
+							<p class="text-primary text-[0.68rem] font-bold tracking-[0.12em] uppercase">
 								{{ asset.priceLabel }}
 							</p>
 						</button>
 					</div>
 				</div>
 
-				<div class="rounded-md border border-border/60 bg-card p-6">
+				<div class="border-border/60 bg-card rounded-md border p-6">
 					<h2
-						class="mb-5 text-lg font-extrabold tracking-[-0.015em] text-foreground"
+						class="text-foreground mb-5 text-lg font-extrabold tracking-[-0.015em]"
 						style="font-family: var(--font-display);"
 					>
 						Project Parameters
@@ -155,72 +162,85 @@ function handleValidate() {
 
 					<div class="grid gap-5 md:grid-cols-2">
 						<div>
-							<label class="text-[0.62rem] font-bold tracking-[0.2em] text-muted-foreground uppercase">
+							<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 								Project Identifier
 							</label>
+
 							<input
 								v-model="projectId"
 								type="text"
-								class="mt-2 w-full rounded-md bg-muted px-3 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+								class="bg-muted text-foreground focus:ring-primary/40 mt-2 w-full rounded-md px-3 py-2.5 text-sm focus:ring-2 focus:outline-none"
 							>
 						</div>
+
 						<div>
-							<label class="text-[0.62rem] font-bold tracking-[0.2em] text-muted-foreground uppercase">
+							<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 								Target Timeline
 							</label>
+
 							<select
 								v-model="timeline"
-								class="mt-2 w-full rounded-md bg-muted px-3 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+								class="bg-muted text-foreground focus:ring-primary/40 mt-2 w-full rounded-md px-3 py-2.5 text-sm focus:ring-2 focus:outline-none"
 							>
 								<option value="asap">
 									ASAP · Priority dispatch
 								</option>
+
 								<option value="15-30">
 									15–30 days
 								</option>
+
 								<option value="quarterly">
 									Quarterly planning horizon
 								</option>
 							</select>
 						</div>
+
 						<div>
-							<label class="text-[0.62rem] font-bold tracking-[0.2em] text-muted-foreground uppercase">
+							<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 								Budget Range (Min)
 							</label>
+
 							<input
 								v-model="budgetMin"
 								type="text"
 								placeholder="USD"
-								class="mt-2 w-full rounded-md bg-muted px-3 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+								class="bg-muted text-foreground focus:ring-primary/40 mt-2 w-full rounded-md px-3 py-2.5 text-sm focus:ring-2 focus:outline-none"
 							>
 						</div>
+
 						<div>
-							<label class="text-[0.62rem] font-bold tracking-[0.2em] text-muted-foreground uppercase">
+							<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 								Budget Range (Max)
 							</label>
+
 							<input
 								v-model="budgetMax"
 								type="text"
 								placeholder="USD"
-								class="mt-2 w-full rounded-md bg-muted px-3 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+								class="bg-muted text-foreground focus:ring-primary/40 mt-2 w-full rounded-md px-3 py-2.5 text-sm focus:ring-2 focus:outline-none"
 							>
 						</div>
+
 						<div class="md:col-span-2">
-							<label class="text-[0.62rem] font-bold tracking-[0.2em] text-muted-foreground uppercase">
+							<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 								Technical Specifications
 							</label>
+
 							<textarea
 								v-model="technicalSpecs"
 								rows="4"
-								class="mt-2 w-full resize-none rounded-md bg-muted px-3 py-2.5 text-sm leading-6 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+								class="bg-muted text-foreground focus:ring-primary/40 mt-2 w-full resize-none rounded-md px-3 py-2.5 text-sm leading-6 focus:ring-2 focus:outline-none"
 							/>
 						</div>
-						<label class="md:col-span-2 flex items-start gap-3 text-sm text-muted-foreground">
+
+						<label class="text-muted-foreground flex items-start gap-3 text-sm md:col-span-2">
 							<input
 								v-model="acceptCompliance"
 								type="checkbox"
-								class="mt-1 size-4 rounded border-border text-primary"
+								class="border-border text-primary mt-1 size-4 rounded"
 							>
+
 							<span>I confirm the project meets SupplyKey compliance baselines and vendor-side safety disclosures are attached.</span>
 						</label>
 					</div>
@@ -230,19 +250,21 @@ function handleValidate() {
 					<div
 						v-for="card in infoCards"
 						:key="card.title"
-						class="rounded-md border border-border/60 bg-card p-5"
+						class="border-border/60 bg-card rounded-md border p-5"
 					>
 						<component
 							:is="card.icon"
-							class="size-5 text-primary"
+							class="text-primary size-5"
 						/>
+
 						<p
-							class="mt-3 text-sm font-bold tracking-[-0.01em] text-foreground"
+							class="text-foreground mt-3 text-sm font-bold tracking-[-0.01em]"
 							style="font-family: var(--font-display);"
 						>
 							{{ card.title }}
 						</p>
-						<p class="mt-1 text-xs leading-5 text-muted-foreground">
+
+						<p class="text-muted-foreground mt-1 text-xs leading-5">
 							{{ card.description }}
 						</p>
 					</div>
@@ -250,18 +272,20 @@ function handleValidate() {
 			</div>
 
 			<aside class="space-y-4 xl:sticky xl:top-24 xl:self-start">
-				<div class="rounded-md border border-primary/20 bg-primary p-6 text-primary-foreground">
+				<div class="border-primary/20 bg-primary text-primary-foreground rounded-md border p-6">
 					<p
-						class="text-[0.62rem] font-bold tracking-[0.2em] text-primary-foreground/70 uppercase"
+						class="text-primary-foreground/70 text-[0.62rem] font-bold tracking-[0.2em] uppercase"
 						style="font-family: var(--font-display);"
 					>
 						Draft Estimate
 					</p>
+
 					<div class="mt-5 space-y-3">
-						<div class="rounded-md bg-primary-foreground/10 p-3">
-							<p class="text-[0.62rem] font-bold tracking-[0.18em] text-primary-foreground/60 uppercase">
+						<div class="bg-primary-foreground/10 rounded-md p-3">
+							<p class="text-primary-foreground/60 text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 								Assets Selected
 							</p>
+
 							<p
 								class="metric-value mt-1 text-3xl font-extrabold"
 								style="font-family: var(--font-display);"
@@ -269,18 +293,23 @@ function handleValidate() {
 								{{ selected.length }}
 							</p>
 						</div>
+
 						<div class="flex items-center justify-between text-xs">
 							<span class="text-primary-foreground/70">Logistics Estimate</span>
+
 							<span class="font-semibold tabular-nums">TBD</span>
 						</div>
+
 						<div class="flex items-center justify-between text-xs">
 							<span class="text-primary-foreground/70">Response SLA</span>
+
 							<span class="font-semibold">24h operational</span>
 						</div>
 					</div>
+
 					<button
 						type="button"
-						class="mt-5 flex w-full items-center justify-center gap-2 rounded-md bg-primary-foreground px-4 py-3 text-[0.68rem] font-extrabold tracking-[0.16em] text-primary uppercase transition-all hover:brightness-95"
+						class="bg-primary-foreground text-primary mt-5 flex w-full items-center justify-center gap-2 rounded-md px-4 py-3 text-[0.68rem] font-extrabold tracking-[0.16em] uppercase transition-all hover:brightness-95"
 						style="font-family: var(--font-display);"
 						@click="handleValidate"
 					>
@@ -289,38 +318,44 @@ function handleValidate() {
 					</button>
 				</div>
 
-				<div class="rounded-md border border-border/60 bg-card p-5">
-					<div class="flex items-center gap-2 text-muted-foreground">
+				<div class="border-border/60 bg-card rounded-md border p-5">
+					<div class="text-muted-foreground flex items-center gap-2">
 						<Clock class="size-4" />
+
 						<p class="text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 							Active Quotations
 						</p>
 					</div>
+
 					<p
-						class="metric-value mt-3 text-3xl font-extrabold text-foreground"
+						class="metric-value text-foreground mt-3 text-3xl font-extrabold"
 						style="font-family: var(--font-display);"
 					>
 						24.8k
 					</p>
-					<p class="mt-1 text-xs text-muted-foreground">
+
+					<p class="text-muted-foreground mt-1 text-xs">
 						Processed across the SupplyKey vendor network this quarter.
 					</p>
 				</div>
 
-				<div class="rounded-md border border-border/60 bg-card p-5">
-					<div class="flex items-center gap-2 text-muted-foreground">
+				<div class="border-border/60 bg-card rounded-md border p-5">
+					<div class="text-muted-foreground flex items-center gap-2">
 						<FileBarChart2 class="size-4" />
+
 						<p class="text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 							Efficiency Rating
 						</p>
 					</div>
+
 					<p
-						class="metric-value mt-3 text-3xl font-extrabold text-foreground"
+						class="metric-value text-foreground mt-3 text-3xl font-extrabold"
 						style="font-family: var(--font-display);"
 					>
 						98.2%
 					</p>
-					<p class="mt-1 text-xs text-muted-foreground">
+
+					<p class="text-muted-foreground mt-1 text-xs">
 						Estimate-to-delivery accuracy across the last 12 months.
 					</p>
 				</div>

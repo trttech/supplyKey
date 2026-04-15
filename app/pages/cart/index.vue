@@ -126,54 +126,64 @@ async function placeOrder() {
 <template>
 	<div class="space-y-8">
 		<section class="space-y-2">
-			<p class="text-[0.68rem] font-bold tracking-[0.24em] text-muted-foreground uppercase">
+			<p class="text-muted-foreground text-[0.68rem] font-bold tracking-[0.24em] uppercase">
 				Checkout Pipeline
 			</p>
+
 			<h1
-				class="text-5xl font-extrabold tracking-[-0.045em] text-foreground"
+				class="text-foreground text-5xl font-extrabold tracking-[-0.045em]"
 				style="font-family: var(--font-display);"
 			>
 				Cart
 			</h1>
-			<p class="max-w-2xl text-sm leading-7 text-muted-foreground">
+
+			<p class="text-muted-foreground max-w-2xl text-sm leading-7">
 				Review line items, select logistics, and authorize payment terms. Submitting the manifest creates a new order under the active operator.
 			</p>
 		</section>
 
 		<section class="grid gap-6 xl:grid-cols-[1.6fr_1fr]">
 			<div class="space-y-6">
-				<div class="rounded-md border border-border/60 bg-card p-6">
+				<div class="border-border/60 bg-card rounded-md border p-6">
 					<div class="mb-5 flex items-center justify-between">
 						<h2
-							class="text-lg font-extrabold tracking-[-0.015em] text-foreground"
+							class="text-foreground text-lg font-extrabold tracking-[-0.015em]"
 							style="font-family: var(--font-display);"
 						>
 							Cart Items
 						</h2>
-						<span class="text-[0.62rem] font-bold tracking-[0.2em] text-muted-foreground uppercase">
+
+						<span class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 							{{ cart.summary.value.itemCount }} Units
 						</span>
 					</div>
 
-					<div v-if="!cart.summary.value.lines.length" class="rounded-md bg-muted p-8 text-center">
-						<p class="text-sm text-muted-foreground">
+					<div
+						v-if="!cart.summary.value.lines.length"
+						class="bg-muted rounded-md p-8 text-center"
+					>
+						<p class="text-muted-foreground text-sm">
 							Cart is empty.
 						</p>
+
 						<NuxtLink
 							to="/shop"
-							class="mt-4 inline-flex rounded-md bg-primary px-4 py-2 text-[0.68rem] font-bold tracking-[0.15em] text-primary-foreground uppercase transition-all hover:brightness-110"
+							class="bg-primary text-primary-foreground mt-4 inline-flex rounded-md px-4 py-2 text-[0.68rem] font-bold tracking-[0.15em] uppercase transition-all hover:brightness-110"
 						>
 							Browse Catalog
 						</NuxtLink>
 					</div>
 
-					<ul v-else class="space-y-3">
+					<ul
+						v-else
+						class="space-y-3"
+					>
 						<li
 							v-for="line in cart.summary.value.lines"
 							:key="line.id"
-							class="flex items-center gap-4 rounded-md bg-muted p-4"
+							class="bg-muted flex items-center gap-4 rounded-md p-4"
 						>
-							<div class="size-20 shrink-0 overflow-hidden rounded-md bg-background">
+							<div class="bg-background size-20 shrink-0 overflow-hidden rounded-md">
 								<img
 									v-if="line.imageUrl"
 									:src="line.imageUrl"
@@ -182,14 +192,16 @@ async function placeOrder() {
 								>
 							</div>
 
-							<div class="flex-1 min-w-0">
-								<p class="text-[0.62rem] font-bold tracking-[0.14em] text-muted-foreground uppercase">
+							<div class="min-w-0 flex-1">
+								<p class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.14em] uppercase">
 									{{ line.manufacturer }} · {{ line.sku }}
 								</p>
-								<p class="mt-1 truncate text-sm font-semibold text-foreground">
+
+								<p class="text-foreground mt-1 truncate text-sm font-semibold">
 									{{ line.name }}
 								</p>
-								<p class="mt-1 text-xs text-muted-foreground">
+
+								<p class="text-muted-foreground mt-1 text-xs">
 									{{ formatPrice(line.unitPriceCents) }} / unit
 								</p>
 							</div>
@@ -197,18 +209,20 @@ async function placeOrder() {
 							<div class="flex items-center gap-2">
 								<button
 									type="button"
-									class="flex size-8 items-center justify-center rounded-md border border-border/70 text-muted-foreground transition-all hover:border-primary hover:text-primary disabled:opacity-60"
+									class="border-border/70 text-muted-foreground hover:border-primary hover:text-primary flex size-8 items-center justify-center rounded-md border transition-all disabled:opacity-60"
 									:disabled="updatingId === line.id"
 									@click="adjustQuantity(line.id, -1)"
 								>
 									<Minus class="size-3.5" />
 								</button>
+
 								<span class="min-w-[2rem] text-center text-sm font-bold tabular-nums">
 									{{ updatingId === line.id ? "…" : line.quantity }}
 								</span>
+
 								<button
 									type="button"
-									class="flex size-8 items-center justify-center rounded-md border border-border/70 text-muted-foreground transition-all hover:border-primary hover:text-primary disabled:opacity-60"
+									class="border-border/70 text-muted-foreground hover:border-primary hover:text-primary flex size-8 items-center justify-center rounded-md border transition-all disabled:opacity-60"
 									:disabled="updatingId === line.id"
 									@click="adjustQuantity(line.id, 1)"
 								>
@@ -218,7 +232,7 @@ async function placeOrder() {
 
 							<div class="w-24 text-right">
 								<p
-									class="metric-value text-lg font-extrabold text-foreground"
+									class="metric-value text-foreground text-lg font-extrabold"
 									style="font-family: var(--font-display);"
 								>
 									{{ formatPrice(line.lineTotalCents) }}
@@ -227,7 +241,7 @@ async function placeOrder() {
 
 							<button
 								type="button"
-								class="flex size-8 items-center justify-center rounded-md text-muted-foreground transition-all hover:bg-destructive/10 hover:text-destructive disabled:opacity-60"
+								class="text-muted-foreground hover:bg-destructive/10 hover:text-destructive flex size-8 items-center justify-center rounded-md transition-all disabled:opacity-60"
 								:disabled="updatingId === line.id"
 								@click="removeLine(line.id)"
 							>
@@ -237,9 +251,9 @@ async function placeOrder() {
 					</ul>
 				</div>
 
-				<div class="rounded-md border border-border/60 bg-card p-6">
+				<div class="border-border/60 bg-card rounded-md border p-6">
 					<h2
-						class="mb-5 text-lg font-extrabold tracking-[-0.015em] text-foreground"
+						class="text-foreground mb-5 text-lg font-extrabold tracking-[-0.015em]"
 						style="font-family: var(--font-display);"
 					>
 						Logistics Routing
@@ -247,47 +261,57 @@ async function placeOrder() {
 
 					<div class="space-y-5">
 						<div>
-							<label class="text-[0.62rem] font-bold tracking-[0.2em] text-muted-foreground uppercase">
+							<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 								Delivery Site
 							</label>
+
 							<select
 								v-model="deliverySite"
-								class="mt-2 w-full rounded-md bg-muted px-3 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+								class="bg-muted text-foreground focus:ring-primary/50 mt-2 w-full rounded-md px-3 py-2.5 text-sm focus:ring-2 focus:outline-none"
 							>
-								<option v-for="site in deliverySites" :key="site" :value="site">
+								<option
+									v-for="site in deliverySites"
+									:key="site"
+									:value="site"
+								>
 									{{ site }}
 								</option>
 							</select>
 						</div>
 
 						<div>
-							<p class="text-[0.62rem] font-bold tracking-[0.2em] text-muted-foreground uppercase">
+							<p class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 								Carrier Service
 							</p>
+
 							<div class="mt-3 space-y-2">
 								<label
 									v-for="option in carriers"
 									:key="option.value"
-									class="flex items-center gap-4 rounded-md bg-muted p-4 cursor-pointer transition-all"
-									:class="{ 'ring-2 ring-primary': carrier === option.value }"
+									class="bg-muted flex cursor-pointer items-center gap-4 rounded-md p-4 transition-all"
+									:class="{ 'ring-primary ring-2': carrier === option.value }"
 								>
 									<input
 										v-model="carrier"
 										type="radio"
 										:value="option.value"
-										class="size-4 text-primary"
+										class="text-primary size-4"
 									>
-									<Truck class="size-5 text-muted-foreground" />
+
+									<Truck class="text-muted-foreground size-5" />
+
 									<div class="flex-1">
-										<p class="text-sm font-semibold text-foreground">
+										<p class="text-foreground text-sm font-semibold">
 											{{ option.label }}
 										</p>
-										<p class="text-xs text-muted-foreground">
+
+										<p class="text-muted-foreground text-xs">
 											{{ option.detail }}
 										</p>
 									</div>
+
 									<span
-										class="metric-value text-sm font-extrabold text-foreground"
+										class="metric-value text-foreground text-sm font-extrabold"
 										style="font-family: var(--font-display);"
 									>
 										{{ formatPrice(option.priceCents) }}
@@ -298,9 +322,9 @@ async function placeOrder() {
 					</div>
 				</div>
 
-				<div class="rounded-md border border-border/60 bg-card p-6">
+				<div class="border-border/60 bg-card rounded-md border p-6">
 					<h2
-						class="mb-5 text-lg font-extrabold tracking-[-0.015em] text-foreground"
+						class="text-foreground mb-5 text-lg font-extrabold tracking-[-0.015em]"
 						style="font-family: var(--font-display);"
 					>
 						Payment Protocol
@@ -310,44 +334,50 @@ async function placeOrder() {
 						<label
 							v-for="option in paymentOptions"
 							:key="option.value"
-							class="flex items-center gap-4 rounded-md bg-muted p-4 cursor-pointer transition-all"
-							:class="{ 'ring-2 ring-primary': paymentMethod === option.value }"
+							class="bg-muted flex cursor-pointer items-center gap-4 rounded-md p-4 transition-all"
+							:class="{ 'ring-primary ring-2': paymentMethod === option.value }"
 						>
 							<input
 								v-model="paymentMethod"
 								type="radio"
 								:value="option.value"
-								class="size-4 text-primary"
+								class="text-primary size-4"
 							>
+
 							<div class="flex-1">
-								<p class="text-sm font-semibold text-foreground">
+								<p class="text-foreground text-sm font-semibold">
 									{{ option.label }}
 								</p>
-								<p class="text-xs text-muted-foreground">
+
+								<p class="text-muted-foreground text-xs">
 									{{ option.detail }}
 								</p>
 							</div>
 						</label>
 					</div>
 
-					<div v-if="paymentMethod === 'purchase_order'" class="mt-5">
-						<label class="text-[0.62rem] font-bold tracking-[0.2em] text-muted-foreground uppercase">
+					<div
+						v-if="paymentMethod === 'purchase_order'"
+						class="mt-5"
+					>
+						<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 							PO Number
 						</label>
+
 						<input
 							v-model="poNumber"
 							type="text"
 							placeholder="PO-2026-00042"
-							class="mt-2 w-full rounded-md bg-muted px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/50"
+							class="bg-muted text-foreground placeholder:text-muted-foreground/60 focus:ring-primary/50 mt-2 w-full rounded-md px-3 py-2.5 text-sm focus:ring-2 focus:outline-none"
 						>
 					</div>
 				</div>
 			</div>
 
 			<aside class="space-y-4 xl:sticky xl:top-24 xl:self-start">
-				<div class="rounded-md border border-primary/20 bg-primary text-primary-foreground p-6">
+				<div class="border-primary/20 bg-primary text-primary-foreground rounded-md border p-6">
 					<p
-						class="text-[0.62rem] font-bold tracking-[0.2em] text-primary-foreground/70 uppercase"
+						class="text-primary-foreground/70 text-[0.62rem] font-bold tracking-[0.2em] uppercase"
 						style="font-family: var(--font-display);"
 					>
 						Order Summary
@@ -358,32 +388,38 @@ async function placeOrder() {
 							<dt class="text-primary-foreground/70">
 								Subtotal
 							</dt>
+
 							<dd class="font-semibold tabular-nums">
 								{{ formatPrice(displayedSubtotalCents) }}
 							</dd>
 						</div>
+
 						<div class="flex items-center justify-between">
 							<dt class="text-primary-foreground/70">
 								Logistics
 							</dt>
+
 							<dd class="font-semibold tabular-nums">
 								{{ formatPrice(displayedShippingCents) }}
 							</dd>
 						</div>
+
 						<div class="flex items-center justify-between">
 							<dt class="text-primary-foreground/70">
 								Environmental Tax
 							</dt>
+
 							<dd class="font-semibold tabular-nums">
 								{{ formatPrice(displayedTaxCents) }}
 							</dd>
 						</div>
 					</dl>
 
-					<div class="mt-5 border-t border-primary-foreground/20 pt-5">
-						<p class="text-[0.62rem] font-bold tracking-[0.2em] text-primary-foreground/70 uppercase">
+					<div class="border-primary-foreground/20 mt-5 border-t pt-5">
+						<p class="text-primary-foreground/70 text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 							Grand Total
 						</p>
+
 						<p
 							class="metric-value mt-2 text-4xl font-extrabold"
 							style="font-family: var(--font-display);"
@@ -394,28 +430,37 @@ async function placeOrder() {
 
 					<button
 						type="button"
-						class="mt-6 flex w-full items-center justify-center gap-2 rounded-md bg-primary-foreground px-4 py-3.5 text-[0.72rem] font-extrabold tracking-[0.18em] text-primary uppercase transition-all hover:brightness-95 disabled:opacity-60"
+						class="bg-primary-foreground text-primary mt-6 flex w-full items-center justify-center gap-2 rounded-md px-4 py-3.5 text-[0.72rem] font-extrabold tracking-[0.18em] uppercase transition-all hover:brightness-95 disabled:opacity-60"
 						:disabled="isSubmitting || !cart.summary.value.lines.length"
 						style="font-family: var(--font-display);"
 						@click="placeOrder"
 					>
-						<LoaderCircle v-if="isSubmitting" class="size-4 animate-spin" />
-						<CheckCircle2 v-else class="size-4" />
+						<LoaderCircle
+							v-if="isSubmitting"
+							class="size-4 animate-spin"
+						/>
+
+						<CheckCircle2
+							v-else
+							class="size-4"
+						/>
 						{{ isSubmitting ? "Submitting…" : "Place Order" }}
 					</button>
 				</div>
 
-				<div class="rounded-md border border-border/60 bg-card p-5">
+				<div class="border-border/60 bg-card rounded-md border p-5">
 					<div class="flex items-start gap-3">
-						<ShieldCheck class="size-5 shrink-0 text-primary" />
+						<ShieldCheck class="text-primary size-5 shrink-0" />
+
 						<div>
 							<p
-								class="text-xs font-bold tracking-[0.08em] text-foreground"
+								class="text-foreground text-xs font-bold tracking-[0.08em]"
 								style="font-family: var(--font-display);"
 							>
 								ISO 9001 · Priority Support
 							</p>
-							<p class="mt-1 text-xs text-muted-foreground">
+
+							<p class="text-muted-foreground mt-1 text-xs">
 								All SupplyKey line items ship with compliance documentation. Priority dispatch for critical-path operations.
 							</p>
 						</div>

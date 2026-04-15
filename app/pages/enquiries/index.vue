@@ -116,33 +116,37 @@ async function submitEnquiry() {
 	<div class="space-y-8">
 		<section class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
 			<div class="space-y-2">
-				<p class="text-[0.68rem] font-bold tracking-[0.24em] text-muted-foreground uppercase">
+				<p class="text-muted-foreground text-[0.68rem] font-bold tracking-[0.24em] uppercase">
 					Supplier Correspondence
 				</p>
+
 				<h1
-					class="text-5xl font-extrabold tracking-[-0.045em] text-foreground"
+					class="text-foreground text-5xl font-extrabold tracking-[-0.045em]"
 					style="font-family: var(--font-display);"
 				>
 					Enquiries &amp; Follow-ups
 				</h1>
-				<p class="max-w-2xl text-sm leading-7 text-muted-foreground">
+
+				<p class="text-muted-foreground max-w-2xl text-sm leading-7">
 					Ticket tracker for all active supplier communications. Priority-weighted and bound to the active operator.
 				</p>
 			</div>
 
 			<div class="flex items-center gap-3">
 				<div class="relative">
-					<Search class="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+					<Search class="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
+
 					<input
 						v-model="searchQuery"
 						type="text"
 						placeholder="Search enquiries…"
-						class="w-64 rounded-md border border-border/60 bg-card py-2.5 pl-9 pr-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/40"
+						class="border-border/60 bg-card text-foreground placeholder:text-muted-foreground/60 focus:ring-primary/40 w-64 rounded-md border py-2.5 pr-3 pl-9 text-sm focus:ring-2 focus:outline-none"
 					>
 				</div>
+
 				<button
 					type="button"
-					class="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-[0.68rem] font-bold tracking-[0.14em] text-primary-foreground uppercase transition-all hover:brightness-110"
+					class="bg-primary text-primary-foreground inline-flex items-center gap-2 rounded-md px-4 py-2.5 text-[0.68rem] font-bold tracking-[0.14em] uppercase transition-all hover:brightness-110"
 					style="font-family: var(--font-display);"
 					@click="openModal"
 				>
@@ -153,17 +157,28 @@ async function submitEnquiry() {
 		</section>
 
 		<section>
-			<div v-if="pending" class="space-y-3">
-				<div v-for="i in 3" :key="i" class="h-28 rounded-md bg-muted animate-pulse" />
+			<div
+				v-if="pending"
+				class="space-y-3"
+			>
+				<div
+					v-for="i in 3"
+					:key="i"
+					class="bg-muted h-28 animate-pulse rounded-md"
+				/>
 			</div>
 
-			<div v-else-if="!filtered.length" class="rounded-md border border-border/60 bg-card p-12 text-center">
-				<p class="text-sm text-muted-foreground">
+			<div
+				v-else-if="!filtered.length"
+				class="border-border/60 bg-card rounded-md border p-12 text-center"
+			>
+				<p class="text-muted-foreground text-sm">
 					No enquiries match this search.
 				</p>
+
 				<button
 					type="button"
-					class="mt-4 inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-[0.62rem] font-bold tracking-[0.14em] text-primary-foreground uppercase transition-all hover:brightness-110"
+					class="bg-primary text-primary-foreground mt-4 inline-flex items-center gap-2 rounded-md px-4 py-2 text-[0.62rem] font-bold tracking-[0.14em] uppercase transition-all hover:brightness-110"
 					@click="openModal"
 				>
 					<Plus class="size-3.5" />
@@ -171,16 +186,19 @@ async function submitEnquiry() {
 				</button>
 			</div>
 
-			<ul v-else class="space-y-3">
+			<ul
+				v-else
+				class="space-y-3"
+			>
 				<li
 					v-for="enquiry in filtered"
 					:key="enquiry.id"
 				>
 					<NuxtLink
 						:to="`/enquiries/${enquiry.enquiryNumber}`"
-						class="group flex items-start gap-5 rounded-md border border-border/60 bg-card p-6 transition-all hover:border-primary/40"
+						class="group border-border/60 bg-card hover:border-primary/40 flex items-start gap-5 rounded-md border p-6 transition-all"
 					>
-						<div class="flex-1 min-w-0 space-y-2">
+						<div class="min-w-0 flex-1 space-y-2">
 							<div class="flex items-center gap-2">
 								<span
 									class="rounded-sm px-2 py-0.5 text-[0.58rem] font-bold tracking-[0.14em] uppercase"
@@ -188,35 +206,41 @@ async function submitEnquiry() {
 								>
 									{{ enquiry.priority }}
 								</span>
+
 								<span
 									class="rounded-sm px-2 py-0.5 text-[0.58rem] font-bold tracking-[0.14em] uppercase"
 									:class="statusStyles[enquiry.status]"
 								>
 									{{ enquiry.status }}
 								</span>
-								<span class="text-[0.62rem] font-bold tracking-[0.16em] text-muted-foreground uppercase">
+
+								<span class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.16em] uppercase">
 									{{ enquiry.enquiryNumber }}
 								</span>
 							</div>
+
 							<h3
-								class="text-lg font-extrabold tracking-[-0.015em] text-foreground"
+								class="text-foreground text-lg font-extrabold tracking-[-0.015em]"
 								style="font-family: var(--font-display);"
 							>
 								{{ enquiry.subject }}
 							</h3>
-							<p class="text-xs font-semibold text-primary">
+
+							<p class="text-primary text-xs font-semibold">
 								{{ enquiry.supplierName }}
 							</p>
-							<p class="line-clamp-2 text-sm text-muted-foreground">
+
+							<p class="text-muted-foreground line-clamp-2 text-sm">
 								{{ enquiry.lastMessagePreview }}
 							</p>
 						</div>
 
 						<div class="flex flex-col items-end gap-3">
-							<span class="text-[0.62rem] font-semibold tracking-wide text-muted-foreground whitespace-nowrap">
+							<span class="text-muted-foreground text-[0.62rem] font-semibold tracking-wide whitespace-nowrap">
 								{{ formatDate(enquiry.updatedAt) }}
 							</span>
-							<div class="flex size-9 items-center justify-center rounded-md border border-border/70 text-muted-foreground transition-all group-hover:border-primary group-hover:text-primary">
+
+							<div class="border-border/70 text-muted-foreground group-hover:border-primary group-hover:text-primary flex size-9 items-center justify-center rounded-md border transition-all">
 								<ArrowUpRight class="size-4" />
 							</div>
 						</div>
@@ -231,84 +255,99 @@ async function submitEnquiry() {
 				class="fixed inset-0 z-50 flex items-center justify-center p-4"
 			>
 				<div
-					class="absolute inset-0 bg-foreground/40 backdrop-blur-sm"
+					class="bg-foreground/40 absolute inset-0 backdrop-blur-sm"
 					@click="closeModal"
 				/>
-				<div class="relative w-full max-w-xl rounded-md border border-border/60 bg-card shadow-2xl">
-					<header class="flex items-start justify-between border-b border-border/40 p-6">
+
+				<div class="border-border/60 bg-card relative w-full max-w-xl rounded-md border shadow-2xl">
+					<header class="border-border/40 flex items-start justify-between border-b p-6">
 						<div>
 							<p
-								class="text-[0.62rem] font-bold tracking-[0.2em] text-muted-foreground uppercase"
+								class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase"
 								style="font-family: var(--font-display);"
 							>
 								New Enquiry
 							</p>
+
 							<h2
-								class="mt-1 text-2xl font-extrabold tracking-[-0.02em] text-foreground"
+								class="text-foreground mt-1 text-2xl font-extrabold tracking-[-0.02em]"
 								style="font-family: var(--font-display);"
 							>
 								Dispatch to supplier network
 							</h2>
 						</div>
+
 						<button
 							type="button"
-							class="flex size-9 items-center justify-center rounded-md text-muted-foreground transition-all hover:bg-muted hover:text-foreground"
+							class="text-muted-foreground hover:bg-muted hover:text-foreground flex size-9 items-center justify-center rounded-md transition-all"
 							@click="closeModal"
 						>
 							<X class="size-4" />
 						</button>
 					</header>
 
-					<form class="space-y-5 p-6" @submit.prevent="submitEnquiry">
+					<form
+						class="space-y-5 p-6"
+						@submit.prevent="submitEnquiry"
+					>
 						<div>
-							<label class="text-[0.62rem] font-bold tracking-[0.18em] text-muted-foreground uppercase">
+							<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 								Subject
 							</label>
+
 							<input
 								v-model="form.subject"
 								type="text"
 								placeholder="e.g. Hydraulic valve specs — Pit C"
-								class="mt-2 w-full rounded-md bg-muted px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/40"
+								class="bg-muted text-foreground placeholder:text-muted-foreground/60 focus:ring-primary/40 mt-2 w-full rounded-md px-3 py-2.5 text-sm focus:ring-2 focus:outline-none"
 								:disabled="isSubmitting"
 							>
 						</div>
 
 						<div class="grid gap-5 sm:grid-cols-2">
 							<div>
-								<label class="text-[0.62rem] font-bold tracking-[0.18em] text-muted-foreground uppercase">
+								<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 									Supplier
 								</label>
+
 								<input
 									v-model="form.supplierName"
 									type="text"
 									placeholder="Supplier name"
 									list="supplier-options"
-									class="mt-2 w-full rounded-md bg-muted px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/40"
+									class="bg-muted text-foreground placeholder:text-muted-foreground/60 focus:ring-primary/40 mt-2 w-full rounded-md px-3 py-2.5 text-sm focus:ring-2 focus:outline-none"
 									:disabled="isSubmitting"
 								>
+
 								<datalist id="supplier-options">
-									<option v-for="s in supplierSuggestions" :key="s" :value="s" />
+									<option
+										v-for="s in supplierSuggestions"
+										:key="s"
+										:value="s"
+									/>
 								</datalist>
 							</div>
 
 							<div>
-								<label class="text-[0.62rem] font-bold tracking-[0.18em] text-muted-foreground uppercase">
+								<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 									Product SKU (optional)
 								</label>
+
 								<input
 									v-model="form.productSku"
 									type="text"
 									placeholder="SKI-VLV-XP900"
-									class="mt-2 w-full rounded-md bg-muted px-3 py-2.5 text-sm font-mono text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/40"
+									class="bg-muted text-foreground placeholder:text-muted-foreground/60 focus:ring-primary/40 mt-2 w-full rounded-md px-3 py-2.5 font-mono text-sm focus:ring-2 focus:outline-none"
 									:disabled="isSubmitting"
 								>
 							</div>
 						</div>
 
 						<div>
-							<label class="text-[0.62rem] font-bold tracking-[0.18em] text-muted-foreground uppercase">
+							<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 								Priority
 							</label>
+
 							<div class="mt-2 grid grid-cols-4 gap-2">
 								<button
 									v-for="option in priorityOptions"
@@ -325,14 +364,15 @@ async function submitEnquiry() {
 						</div>
 
 						<div>
-							<label class="text-[0.62rem] font-bold tracking-[0.18em] text-muted-foreground uppercase">
+							<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 								Initial Message
 							</label>
+
 							<textarea
 								v-model="form.initialMessage"
 								rows="4"
 								placeholder="Describe your requirement, quantity, and timeline…"
-								class="mt-2 w-full resize-none rounded-md bg-muted px-3 py-2.5 text-sm leading-6 text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/40"
+								class="bg-muted text-foreground placeholder:text-muted-foreground/60 focus:ring-primary/40 mt-2 w-full resize-none rounded-md px-3 py-2.5 text-sm leading-6 focus:ring-2 focus:outline-none"
 								:disabled="isSubmitting"
 							/>
 						</div>
@@ -340,18 +380,22 @@ async function submitEnquiry() {
 						<div class="flex items-center justify-end gap-3 pt-2">
 							<button
 								type="button"
-								class="rounded-md border border-border/70 px-4 py-2 text-[0.62rem] font-bold tracking-[0.14em] text-muted-foreground uppercase transition-all hover:border-foreground hover:text-foreground"
+								class="border-border/70 text-muted-foreground hover:border-foreground hover:text-foreground rounded-md border px-4 py-2 text-[0.62rem] font-bold tracking-[0.14em] uppercase transition-all"
 								:disabled="isSubmitting"
 								@click="closeModal"
 							>
 								Cancel
 							</button>
+
 							<button
 								type="submit"
-								class="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2 text-[0.62rem] font-bold tracking-[0.14em] text-primary-foreground uppercase transition-all hover:brightness-110 disabled:opacity-60"
+								class="bg-primary text-primary-foreground inline-flex items-center gap-2 rounded-md px-5 py-2 text-[0.62rem] font-bold tracking-[0.14em] uppercase transition-all hover:brightness-110 disabled:opacity-60"
 								:disabled="isSubmitting"
 							>
-								<LoaderCircle v-if="isSubmitting" class="size-3.5 animate-spin" />
+								<LoaderCircle
+									v-if="isSubmitting"
+									class="size-3.5 animate-spin"
+								/>
 								{{ isSubmitting ? "Dispatching…" : "Dispatch Enquiry" }}
 							</button>
 						</div>

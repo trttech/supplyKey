@@ -130,39 +130,53 @@ async function updateStatus(value: EnquiryStatus) {
 	<div class="space-y-6">
 		<NuxtLink
 			to="/enquiries"
-			class="inline-flex items-center gap-2 text-[0.68rem] font-bold tracking-[0.16em] text-muted-foreground uppercase transition-colors hover:text-primary"
+			class="text-muted-foreground hover:text-primary inline-flex items-center gap-2 text-[0.68rem] font-bold tracking-[0.16em] uppercase transition-colors"
 		>
 			<ArrowLeft class="size-3.5" />
 			Back to Enquiries
 		</NuxtLink>
 
-		<div v-if="pending" class="rounded-md border border-border/60 bg-card p-12 text-center">
-			<p class="text-sm text-muted-foreground">
+		<div
+			v-if="pending"
+			class="border-border/60 bg-card rounded-md border p-12 text-center"
+		>
+			<p class="text-muted-foreground text-sm">
 				Loading communication hub…
 			</p>
 		</div>
 
-		<div v-else-if="error || !thread" class="rounded-md border border-destructive/30 bg-destructive/5 p-8 text-center">
-			<p class="text-sm text-destructive">
+		<div
+			v-else-if="error || !thread"
+			class="border-destructive/30 bg-destructive/5 rounded-md border p-8 text-center"
+		>
+			<p class="text-destructive text-sm">
 				Unable to load enquiry thread.
 			</p>
 		</div>
 
-		<section v-else class="grid gap-5 xl:grid-cols-[18rem_1fr_16rem]">
-			<aside class="rounded-md border border-border/60 bg-card">
-				<header class="border-b border-border/40 p-4">
+		<section
+			v-else
+			class="grid gap-5 xl:grid-cols-[18rem_1fr_16rem]"
+		>
+			<aside class="border-border/60 bg-card rounded-md border">
+				<header class="border-border/40 border-b p-4">
 					<p
-						class="text-[0.62rem] font-bold tracking-[0.2em] text-muted-foreground uppercase"
+						class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase"
 						style="font-family: var(--font-display);"
 					>
 						Enquiry History
 					</p>
-					<p class="mt-1 text-xs text-muted-foreground">
+
+					<p class="text-muted-foreground mt-1 text-xs">
 						{{ enquiries?.length ?? 0 }} active threads
 					</p>
 				</header>
+
 				<ul class="max-h-[32rem] space-y-0.5 overflow-y-auto p-2">
-					<li v-for="row in enquiries ?? []" :key="row.id">
+					<li
+						v-for="row in enquiries ?? []"
+						:key="row.id"
+					>
 						<NuxtLink
 							:to="`/enquiries/${row.enquiryNumber}`"
 							class="block rounded-md p-3 transition-all"
@@ -177,6 +191,7 @@ async function updateStatus(value: EnquiryStatus) {
 								>
 									{{ row.enquiryNumber }}
 								</span>
+
 								<span
 									class="rounded-sm px-1.5 py-0.5 text-[0.56rem] font-bold tracking-[0.12em] uppercase"
 									:class="row.enquiryNumber === thread.enquiryNumber
@@ -186,12 +201,14 @@ async function updateStatus(value: EnquiryStatus) {
 									{{ row.status }}
 								</span>
 							</div>
+
 							<p
 								class="mt-1.5 line-clamp-2 text-sm font-semibold"
 								style="font-family: var(--font-display);"
 							>
 								{{ row.subject }}
 							</p>
+
 							<p
 								class="mt-0.5 truncate text-[0.65rem]"
 								:class="row.enquiryNumber === thread.enquiryNumber ? 'text-primary-foreground/70' : 'text-muted-foreground'"
@@ -203,8 +220,8 @@ async function updateStatus(value: EnquiryStatus) {
 				</ul>
 			</aside>
 
-			<div class="flex flex-col rounded-md border border-border/60 bg-card">
-				<header class="flex flex-col gap-3 border-b border-border/40 p-6">
+			<div class="border-border/60 bg-card flex flex-col rounded-md border">
+				<header class="border-border/40 flex flex-col gap-3 border-b p-6">
 					<div class="flex items-center gap-2">
 						<span
 							class="rounded-sm px-2 py-0.5 text-[0.58rem] font-bold tracking-[0.14em] uppercase"
@@ -212,23 +229,27 @@ async function updateStatus(value: EnquiryStatus) {
 						>
 							{{ thread.priority }}
 						</span>
+
 						<span
 							class="rounded-sm px-2 py-0.5 text-[0.58rem] font-bold tracking-[0.14em] uppercase"
 							:class="statusStyles[thread.status]"
 						>
 							{{ thread.status }}
 						</span>
-						<span class="text-[0.62rem] font-bold tracking-[0.16em] text-muted-foreground uppercase">
+
+						<span class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.16em] uppercase">
 							{{ thread.enquiryNumber }}
 						</span>
 					</div>
+
 					<h1
-						class="text-2xl font-extrabold tracking-[-0.02em] text-foreground"
+						class="text-foreground text-2xl font-extrabold tracking-[-0.02em]"
 						style="font-family: var(--font-display);"
 					>
 						{{ thread.subject }}
 					</h1>
-					<p class="text-sm font-semibold text-primary">
+
+					<p class="text-primary text-sm font-semibold">
 						{{ thread.supplierName }}
 					</p>
 				</header>
@@ -247,30 +268,37 @@ async function updateStatus(value: EnquiryStatus) {
 						>
 							{{ message.authorName.slice(0, 2).toUpperCase() }}
 						</div>
+
 						<div class="max-w-[78%] space-y-1.5">
 							<div
-								class="flex items-center gap-2 text-[0.62rem] font-bold tracking-[0.12em] text-muted-foreground uppercase"
+								class="text-muted-foreground flex items-center gap-2 text-[0.62rem] font-bold tracking-[0.12em] uppercase"
 								:class="isBuyer(message.authorRole) ? 'justify-end' : ''"
 							>
 								<span>{{ message.authorName }}</span>
+
 								<span>·</span>
+
 								<span>{{ message.authorRole }}</span>
 							</div>
+
 							<div
 								class="rounded-md p-4 text-sm leading-6"
 								:class="isBuyer(message.authorRole) ? 'bg-primary text-primary-foreground' : 'bg-muted text-foreground'"
 							>
 								<p>{{ message.body }}</p>
+
 								<div
 									v-if="message.attachmentName"
-									class="mt-3 flex items-center gap-2 rounded-md bg-background/60 px-3 py-2 text-xs text-foreground"
+									class="bg-background/60 text-foreground mt-3 flex items-center gap-2 rounded-md px-3 py-2 text-xs"
 								>
 									<FileText class="size-3.5 shrink-0" />
+
 									<span class="truncate font-semibold">{{ message.attachmentName }}</span>
 								</div>
 							</div>
+
 							<p
-								class="text-[0.6rem] text-muted-foreground"
+								class="text-muted-foreground text-[0.6rem]"
 								:class="isBuyer(message.authorRole) ? 'text-right' : ''"
 							>
 								{{ formatDateTime(message.createdAt) }}
@@ -279,52 +307,88 @@ async function updateStatus(value: EnquiryStatus) {
 					</article>
 				</div>
 
-				<footer class="border-t border-border/40 p-4">
-					<div class="rounded-md bg-muted p-3">
+				<footer class="border-border/40 border-t p-4">
+					<div class="bg-muted rounded-md p-3">
 						<textarea
 							v-model="replyBody"
 							rows="2"
 							placeholder="Type your reply…"
-							class="w-full resize-none bg-transparent text-sm leading-6 text-foreground placeholder:text-muted-foreground/60 focus:outline-none"
+							class="text-foreground placeholder:text-muted-foreground/60 w-full resize-none bg-transparent text-sm leading-6 focus:outline-none"
 							:disabled="sendingRole !== null"
 							@keydown.enter.meta.prevent="sendMessage(false)"
 							@keydown.enter.ctrl.prevent="sendMessage(false)"
 						/>
+
 						<div class="mt-2 flex items-center justify-between">
-							<div class="flex gap-1 text-muted-foreground">
-								<button type="button" class="flex size-8 items-center justify-center rounded-md hover:bg-background" disabled>
+							<div class="text-muted-foreground flex gap-1">
+								<button
+									type="button"
+									class="hover:bg-background flex size-8 items-center justify-center rounded-md"
+									disabled
+								>
 									<Bold class="size-4" />
 								</button>
-								<button type="button" class="flex size-8 items-center justify-center rounded-md hover:bg-background" disabled>
+
+								<button
+									type="button"
+									class="hover:bg-background flex size-8 items-center justify-center rounded-md"
+									disabled
+								>
 									<Italic class="size-4" />
 								</button>
-								<button type="button" class="flex size-8 items-center justify-center rounded-md hover:bg-background" disabled>
+
+								<button
+									type="button"
+									class="hover:bg-background flex size-8 items-center justify-center rounded-md"
+									disabled
+								>
 									<Paperclip class="size-4" />
 								</button>
-								<button type="button" class="flex size-8 items-center justify-center rounded-md hover:bg-background" disabled>
+
+								<button
+									type="button"
+									class="hover:bg-background flex size-8 items-center justify-center rounded-md"
+									disabled
+								>
 									<Smile class="size-4" />
 								</button>
 							</div>
+
 							<div class="flex items-center gap-2">
 								<button
 									type="button"
-									class="inline-flex items-center gap-1.5 rounded-md border border-border/70 bg-background px-3 py-1.5 text-[0.6rem] font-bold tracking-[0.14em] text-muted-foreground uppercase transition-all hover:border-primary hover:text-primary disabled:opacity-60"
+									class="border-border/70 bg-background text-muted-foreground hover:border-primary hover:text-primary inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-[0.6rem] font-bold tracking-[0.14em] uppercase transition-all disabled:opacity-60"
 									:disabled="sendingRole !== null || !replyBody.trim()"
 									title="Insert as supplier reply (demo)"
 									@click="sendMessage(true)"
 								>
-									<LoaderCircle v-if="sendingRole === 'supplier'" class="size-3.5 animate-spin" />
-									<Sparkles v-else class="size-3.5" />
+									<LoaderCircle
+										v-if="sendingRole === 'supplier'"
+										class="size-3.5 animate-spin"
+									/>
+
+									<Sparkles
+										v-else
+										class="size-3.5"
+									/>
 									As Supplier
 								</button>
+
 								<button
 									type="button"
-									class="inline-flex items-center gap-1.5 rounded-md bg-primary px-4 py-1.5 text-[0.62rem] font-bold tracking-[0.14em] text-primary-foreground uppercase transition-all hover:brightness-110 disabled:opacity-60"
+									class="bg-primary text-primary-foreground inline-flex items-center gap-1.5 rounded-md px-4 py-1.5 text-[0.62rem] font-bold tracking-[0.14em] uppercase transition-all hover:brightness-110 disabled:opacity-60"
 									:disabled="sendingRole !== null || !replyBody.trim()"
 									@click="sendMessage(false)"
 								>
-									<LoaderCircle v-if="sendingRole === 'buyer'" class="size-3.5 animate-spin" />
-									<Send v-else class="size-3.5" />
+									<LoaderCircle
+										v-if="sendingRole === 'buyer'"
+										class="size-3.5 animate-spin"
+									/>
+
+									<Send
+										v-else
+										class="size-3.5"
+									/>
 									Send
 								</button>
 							</div>
@@ -334,26 +398,36 @@ async function updateStatus(value: EnquiryStatus) {
 			</div>
 
 			<aside class="space-y-3">
-				<div class="rounded-md border border-border/60 bg-card p-5">
-					<div class="mb-3 flex items-center gap-2 text-muted-foreground">
+				<div class="border-border/60 bg-card rounded-md border p-5">
+					<div class="text-muted-foreground mb-3 flex items-center gap-2">
 						<Factory class="size-4" />
+
 						<p class="text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 							Supplier
 						</p>
 					</div>
-					<p class="text-sm font-semibold text-foreground">
+
+					<p class="text-foreground text-sm font-semibold">
 						{{ thread.supplierName }}
 					</p>
-					<p v-if="thread.productSku" class="mt-2 text-xs text-muted-foreground">
-						SKU: <span class="font-mono text-foreground">{{ thread.productSku }}</span>
+
+					<p
+						v-if="thread.productSku"
+						class="text-muted-foreground mt-2 text-xs"
+					>
+						SKU: <span class="text-foreground font-mono">{{ thread.productSku }}</span>
 					</p>
 				</div>
 
-				<div class="rounded-md border border-border/60 bg-card p-5">
-					<p class="text-[0.62rem] font-bold tracking-[0.18em] text-muted-foreground uppercase">
+				<div class="border-border/60 bg-card rounded-md border p-5">
+					<p class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 						Priority
 					</p>
-					<div v-if="editingField === 'priority'" class="mt-3 space-y-1">
+
+					<div
+						v-if="editingField === 'priority'"
+						class="mt-3 space-y-1"
+					>
 						<button
 							v-for="option in priorityOptions"
 							:key="option"
@@ -363,16 +437,19 @@ async function updateStatus(value: EnquiryStatus) {
 							@click="updatePriority(option)"
 						>
 							<span>{{ option }}</span>
+
 							<span v-if="thread.priority === option">●</span>
 						</button>
+
 						<button
 							type="button"
-							class="w-full rounded-md px-2.5 py-1 text-[0.58rem] font-semibold tracking-[0.14em] text-muted-foreground uppercase hover:text-foreground"
+							class="text-muted-foreground hover:text-foreground w-full rounded-md px-2.5 py-1 text-[0.58rem] font-semibold tracking-[0.14em] uppercase"
 							@click="editingField = null"
 						>
 							Cancel
 						</button>
 					</div>
+
 					<button
 						v-else
 						type="button"
@@ -384,11 +461,15 @@ async function updateStatus(value: EnquiryStatus) {
 					</button>
 				</div>
 
-				<div class="rounded-md border border-border/60 bg-card p-5">
-					<p class="text-[0.62rem] font-bold tracking-[0.18em] text-muted-foreground uppercase">
+				<div class="border-border/60 bg-card rounded-md border p-5">
+					<p class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 						Status
 					</p>
-					<div v-if="editingField === 'status'" class="mt-3 space-y-1">
+
+					<div
+						v-if="editingField === 'status'"
+						class="mt-3 space-y-1"
+					>
 						<button
 							v-for="option in statusOptions"
 							:key="option"
@@ -398,16 +479,19 @@ async function updateStatus(value: EnquiryStatus) {
 							@click="updateStatus(option)"
 						>
 							<span>{{ option }}</span>
+
 							<span v-if="thread.status === option">●</span>
 						</button>
+
 						<button
 							type="button"
-							class="w-full rounded-md px-2.5 py-1 text-[0.58rem] font-semibold tracking-[0.14em] text-muted-foreground uppercase hover:text-foreground"
+							class="text-muted-foreground hover:text-foreground w-full rounded-md px-2.5 py-1 text-[0.58rem] font-semibold tracking-[0.14em] uppercase"
 							@click="editingField = null"
 						>
 							Cancel
 						</button>
 					</div>
+
 					<button
 						v-else
 						type="button"
@@ -419,26 +503,30 @@ async function updateStatus(value: EnquiryStatus) {
 					</button>
 				</div>
 
-				<div class="rounded-md border border-border/60 bg-card p-5">
-					<div class="flex items-center gap-2 text-muted-foreground">
+				<div class="border-border/60 bg-card rounded-md border p-5">
+					<div class="text-muted-foreground flex items-center gap-2">
 						<MapPin class="size-4" />
+
 						<p class="text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 							Routing
 						</p>
 					</div>
-					<p class="mt-2 text-sm text-foreground">
+
+					<p class="text-foreground mt-2 text-sm">
 						Fremantle Terminal
 					</p>
-					<p class="mt-1 text-xs text-muted-foreground">
+
+					<p class="text-muted-foreground mt-1 text-xs">
 						Response SLA: ~4 operational hours
 					</p>
 				</div>
 
-				<div class="rounded-md border border-border/60 bg-card p-5">
-					<p class="text-[0.62rem] font-bold tracking-[0.18em] text-muted-foreground uppercase">
+				<div class="border-border/60 bg-card rounded-md border p-5">
+					<p class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 						Thread Opened
 					</p>
-					<p class="mt-2 text-sm font-semibold text-foreground">
+
+					<p class="text-foreground mt-2 text-sm font-semibold">
 						{{ formatDateTime(thread.createdAt) }}
 					</p>
 				</div>

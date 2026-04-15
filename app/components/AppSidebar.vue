@@ -121,6 +121,7 @@ function isActive(path: string) {
 									alt=""
 									class="size-7 object-contain"
 								>
+
 								<span v-else>{{ initials }}</span>
 							</div>
 

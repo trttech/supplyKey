@@ -14,9 +14,9 @@ function generateOrderNumber() {
 }
 
 const SHIPPING_BY_CARRIER: Record<string, number> = {
-	"heavy_freight": 18500,
-	"express_courier": 45000,
-	"standard_logistics": 9500,
+	heavy_freight: 18500,
+	express_courier: 45000,
+	standard_logistics: 9500,
 }
 
 function computeShipping(carrier: string) {

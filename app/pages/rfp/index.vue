@@ -88,37 +88,43 @@ function formatPrice(cents: number) {
 	<div class="space-y-8">
 		<section class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
 			<div class="space-y-2">
-				<p class="text-[0.68rem] font-bold tracking-[0.24em] text-muted-foreground uppercase">
+				<p class="text-muted-foreground text-[0.68rem] font-bold tracking-[0.24em] uppercase">
 					Contract Pricing
 				</p>
+
 				<h1
-					class="text-5xl font-extrabold tracking-[-0.045em] text-foreground"
+					class="text-foreground text-5xl font-extrabold tracking-[-0.045em]"
 					style="font-family: var(--font-display);"
 				>
 					Contract Pricing
 				</h1>
-				<p class="max-w-2xl text-sm leading-7 text-muted-foreground">
+
+				<p class="text-muted-foreground max-w-2xl text-sm leading-7">
 					Pre-negotiated pricing from approved vendor partners. Contracts below are active for the current operator.
 				</p>
 			</div>
+
 			<div class="flex gap-3">
-				<div class="rounded-md border border-border/60 bg-card px-5 py-3">
-					<p class="text-[0.62rem] font-bold tracking-[0.18em] text-muted-foreground uppercase">
+				<div class="border-border/60 bg-card rounded-md border px-5 py-3">
+					<p class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 						Active Contracts
 					</p>
+
 					<p
-						class="metric-value mt-1 text-2xl font-extrabold text-foreground"
+						class="metric-value text-foreground mt-1 text-2xl font-extrabold"
 						style="font-family: var(--font-display);"
 					>
 						142
 					</p>
 				</div>
-				<div class="rounded-md border border-border/60 bg-card px-5 py-3">
-					<p class="text-[0.62rem] font-bold tracking-[0.18em] text-muted-foreground uppercase">
+
+				<div class="border-border/60 bg-card rounded-md border px-5 py-3">
+					<p class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 						Renewals (30d)
 					</p>
+
 					<p
-						class="metric-value mt-1 text-2xl font-extrabold text-foreground"
+						class="metric-value text-foreground mt-1 text-2xl font-extrabold"
 						style="font-family: var(--font-display);"
 					>
 						08
@@ -127,41 +133,53 @@ function formatPrice(cents: number) {
 			</div>
 		</section>
 
-		<section class="rounded-md border border-border/60 bg-card">
-			<div v-if="pending" class="p-8 text-center text-sm text-muted-foreground">
+		<section class="border-border/60 bg-card rounded-md border">
+			<div
+				v-if="pending"
+				class="text-muted-foreground p-8 text-center text-sm"
+			>
 				Loading contract catalog…
 			</div>
 
-			<table v-else class="w-full text-sm">
+			<table
+				v-else
+				class="w-full text-sm"
+			>
 				<thead>
-					<tr class="border-b border-border/60 text-left">
-						<th class="px-6 py-4 text-[0.62rem] font-bold tracking-[0.14em] text-muted-foreground uppercase">
+					<tr class="border-border/60 border-b text-left">
+						<th class="text-muted-foreground px-6 py-4 text-[0.62rem] font-bold tracking-[0.14em] uppercase">
 							Product
 						</th>
-						<th class="px-4 py-4 text-[0.62rem] font-bold tracking-[0.14em] text-muted-foreground uppercase">
+
+						<th class="text-muted-foreground px-4 py-4 text-[0.62rem] font-bold tracking-[0.14em] uppercase">
 							Approved Price
 						</th>
-						<th class="px-4 py-4 text-[0.62rem] font-bold tracking-[0.14em] text-muted-foreground uppercase">
+
+						<th class="text-muted-foreground px-4 py-4 text-[0.62rem] font-bold tracking-[0.14em] uppercase">
 							Vendor / RFP
 						</th>
-						<th class="px-4 py-4 text-[0.62rem] font-bold tracking-[0.14em] text-muted-foreground uppercase">
+
+						<th class="text-muted-foreground px-4 py-4 text-[0.62rem] font-bold tracking-[0.14em] uppercase">
 							Expiry
 						</th>
-						<th class="px-4 py-4 text-center text-[0.62rem] font-bold tracking-[0.14em] text-muted-foreground uppercase">
+
+						<th class="text-muted-foreground px-4 py-4 text-center text-[0.62rem] font-bold tracking-[0.14em] uppercase">
 							Quantity
 						</th>
+
 						<th class="px-6 py-4" />
 					</tr>
 				</thead>
+
 				<tbody>
 					<tr
 						v-for="row in rows"
 						:key="row.product.id"
-						class="border-b border-border/40 last:border-b-0"
+						class="border-border/40 border-b last:border-b-0"
 					>
 						<td class="px-6 py-5">
 							<div class="flex items-center gap-3">
-								<div class="size-14 shrink-0 overflow-hidden rounded-md bg-muted">
+								<div class="bg-muted size-14 shrink-0 overflow-hidden rounded-md">
 									<img
 										v-if="row.product.imageUrl"
 										:src="row.product.imageUrl"
@@ -169,87 +187,108 @@ function formatPrice(cents: number) {
 										class="size-full object-cover"
 									>
 								</div>
+
 								<div>
-									<p class="text-sm font-semibold text-foreground">
+									<p class="text-foreground text-sm font-semibold">
 										{{ row.product.name }}
 									</p>
-									<p class="text-[0.62rem] font-semibold tracking-wide text-muted-foreground uppercase">
+
+									<p class="text-muted-foreground text-[0.62rem] font-semibold tracking-wide uppercase">
 										{{ row.product.sku }}
 									</p>
 								</div>
 							</div>
 						</td>
+
 						<td class="px-4 py-5">
 							<p
-								class="metric-value text-lg font-extrabold text-foreground"
+								class="metric-value text-foreground text-lg font-extrabold"
 								style="font-family: var(--font-display);"
 							>
 								{{ formatPrice(row.product.priceCents) }}
 							</p>
-							<p class="mt-0.5 text-[0.62rem] font-semibold text-muted-foreground uppercase tracking-wide">
+
+							<p class="text-muted-foreground mt-0.5 text-[0.62rem] font-semibold tracking-wide uppercase">
 								{{ row.meta.terms }}
 							</p>
 						</td>
+
 						<td class="px-4 py-5">
-							<p class="text-sm font-semibold text-primary">
+							<p class="text-primary text-sm font-semibold">
 								{{ row.meta.vendor }}
 							</p>
-							<p class="text-[0.62rem] font-semibold text-muted-foreground uppercase tracking-wide">
+
+							<p class="text-muted-foreground text-[0.62rem] font-semibold tracking-wide uppercase">
 								{{ row.meta.rfp }}
 							</p>
 						</td>
+
 						<td class="px-4 py-5">
-							<p class="text-sm font-semibold text-foreground tabular-nums">
+							<p class="text-foreground text-sm font-semibold tabular-nums">
 								{{ row.meta.expiryDays }} days
 							</p>
-							<p class="text-[0.62rem] font-semibold text-muted-foreground uppercase tracking-wide">
+
+							<p class="text-muted-foreground text-[0.62rem] font-semibold tracking-wide uppercase">
 								remaining
 							</p>
 						</td>
+
 						<td class="px-4 py-5">
 							<div class="flex items-center justify-center gap-2">
 								<button
 									type="button"
-									class="flex size-8 items-center justify-center rounded-md border border-border/70 text-muted-foreground transition-all hover:border-primary hover:text-primary disabled:opacity-50"
+									class="border-border/70 text-muted-foreground hover:border-primary hover:text-primary flex size-8 items-center justify-center rounded-md border transition-all disabled:opacity-50"
 									:disabled="qtyFor(row.product.id) <= 1"
 									@click="decrement(row.product.id)"
 								>
 									<Minus class="size-3.5" />
 								</button>
+
 								<input
 									type="number"
 									min="1"
 									:value="qtyFor(row.product.id)"
-									class="metric-value w-14 rounded-md border border-border/60 bg-background px-2 py-1 text-center text-base font-extrabold text-foreground tabular-nums focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+									class="metric-value border-border/60 bg-background text-foreground focus:border-primary focus:ring-primary/30 w-14 [appearance:textfield] rounded-md border px-2 py-1 text-center text-base font-extrabold tabular-nums focus:ring-2 focus:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
 									style="font-family: var(--font-display);"
 									@input="setQtyFromEvent(row.product.id, $event)"
 									@blur="setQtyFromEvent(row.product.id, $event)"
 								>
+
 								<button
 									type="button"
-									class="flex size-8 items-center justify-center rounded-md border border-border/70 text-muted-foreground transition-all hover:border-primary hover:text-primary"
+									class="border-border/70 text-muted-foreground hover:border-primary hover:text-primary flex size-8 items-center justify-center rounded-md border transition-all"
 									@click="increment(row.product.id)"
 								>
 									<Plus class="size-3.5" />
 								</button>
 							</div>
 						</td>
+
 						<td class="px-6 py-5">
 							<div class="flex items-center justify-end gap-2">
 								<button
 									type="button"
-									class="flex size-9 items-center justify-center rounded-md border border-border/70 text-muted-foreground transition-all hover:border-primary hover:text-primary"
+									class="border-border/70 text-muted-foreground hover:border-primary hover:text-primary flex size-9 items-center justify-center rounded-md border transition-all"
 								>
 									<Info class="size-4" />
 								</button>
+
 								<button
 									type="button"
-									class="inline-flex items-center gap-1.5 rounded-md bg-primary px-4 py-2 text-[0.62rem] font-bold tracking-[0.14em] text-primary-foreground uppercase transition-all hover:brightness-110 disabled:opacity-60"
+									class="bg-primary text-primary-foreground inline-flex items-center gap-1.5 rounded-md px-4 py-2 text-[0.62rem] font-bold tracking-[0.14em] uppercase transition-all hover:brightness-110 disabled:opacity-60"
 									:disabled="addingId === row.product.id"
 									@click="buyNow(row.product.id)"
 								>
-									<LoaderCircle v-if="addingId === row.product.id" class="size-3.5 animate-spin" />
-									<Check v-else-if="cart.summary.value.lines.some(l => l.productId === row.product.id)" class="size-3.5" />
+									<LoaderCircle
+										v-if="addingId === row.product.id"
+										class="size-3.5 animate-spin"
+									/>
+
+									<Check
+										v-else-if="cart.summary.value.lines.some(l => l.productId === row.product.id)"
+										class="size-3.5"
+									/>
+
 									<span v-else>$</span>
 									Buy Now
 								</button>
@@ -260,7 +299,7 @@ function formatPrice(cents: number) {
 			</table>
 		</section>
 
-		<p class="text-center text-[0.62rem] font-semibold tracking-[0.18em] text-muted-foreground uppercase">
+		<p class="text-muted-foreground text-center text-[0.62rem] font-semibold tracking-[0.18em] uppercase">
 			Showing 1–{{ rows.length }} of {{ rows.length }} active contracts
 		</p>
 	</div>

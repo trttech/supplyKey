@@ -40,7 +40,7 @@ function updateQuery(next: Record<string, string | undefined>) {
 			delete merged[key]
 		}
 	}
-	router.push({ path: route.path, query: merged })
+	navigateTo({ path: route.path, query: merged })
 }
 
 function setCategory(value: string) {
@@ -57,7 +57,7 @@ function submitSearch() {
 
 function clearFilters() {
 	q.value = ""
-	router.push({ path: route.path, query: {} })
+	navigateTo({ path: route.path, query: {} })
 }
 
 const addingId = ref<number | null>(null)
@@ -87,16 +87,18 @@ const hasFilters = computed(() => category.value || manufacturer.value || q.valu
 	<div class="space-y-8">
 		<section class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
 			<div class="space-y-2">
-				<p class="text-[0.68rem] font-bold tracking-[0.24em] text-muted-foreground uppercase">
+				<p class="text-muted-foreground text-[0.68rem] font-bold tracking-[0.24em] uppercase">
 					Catalog
 				</p>
+
 				<h1
-					class="text-5xl font-extrabold tracking-[-0.045em] text-foreground"
+					class="text-foreground text-5xl font-extrabold tracking-[-0.045em]"
 					style="font-family: var(--font-display);"
 				>
 					Shop Products
 				</h1>
-				<p class="max-w-2xl text-sm leading-7 text-muted-foreground">
+
+				<p class="text-muted-foreground max-w-2xl text-sm leading-7">
 					Industrial equipment, safety gear, precision tools, and consumables. Add items to your cart to build an order.
 				</p>
 			</div>
@@ -104,7 +106,7 @@ const hasFilters = computed(() => category.value || manufacturer.value || q.valu
 			<div class="flex items-center gap-3">
 				<NuxtLink
 					to="/cart"
-					class="inline-flex items-center gap-2 rounded-md border border-border/70 bg-card px-4 py-2.5 text-[0.72rem] font-bold tracking-[0.15em] text-foreground uppercase transition-all hover:border-primary hover:text-primary"
+					class="border-border/70 bg-card text-foreground hover:border-primary hover:text-primary inline-flex items-center gap-2 rounded-md border px-4 py-2.5 text-[0.72rem] font-bold tracking-[0.15em] uppercase transition-all"
 				>
 					Cart ({{ cart.summary.value.itemCount }})
 				</NuxtLink>
@@ -113,24 +115,27 @@ const hasFilters = computed(() => category.value || manufacturer.value || q.valu
 
 		<section class="grid gap-6 lg:grid-cols-[18rem_1fr]">
 			<aside class="space-y-6">
-				<div class="rounded-md border border-border/60 bg-card p-5">
-					<label class="text-[0.62rem] font-bold tracking-[0.2em] text-muted-foreground uppercase">
+				<div class="border-border/60 bg-card rounded-md border p-5">
+					<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 						Search
 					</label>
+
 					<div class="mt-3 flex gap-2">
 						<div class="relative flex-1">
-							<Search class="absolute left-2.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+							<Search class="text-muted-foreground absolute top-1/2 left-2.5 size-4 -translate-y-1/2" />
+
 							<input
 								v-model="q"
 								type="text"
 								placeholder="SKU, name, description"
-								class="w-full rounded-md bg-muted px-3 py-2 pl-8 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/50"
+								class="bg-muted text-foreground placeholder:text-muted-foreground/60 focus:ring-primary/50 w-full rounded-md px-3 py-2 pl-8 text-sm focus:ring-2 focus:outline-none"
 								@keyup.enter="submitSearch"
 							>
 						</div>
+
 						<button
 							type="button"
-							class="rounded-md bg-primary px-3 text-[0.68rem] font-bold tracking-[0.14em] text-primary-foreground uppercase transition-all hover:brightness-110"
+							class="bg-primary text-primary-foreground rounded-md px-3 text-[0.68rem] font-bold tracking-[0.14em] uppercase transition-all hover:brightness-110"
 							@click="submitSearch"
 						>
 							Go
@@ -138,12 +143,16 @@ const hasFilters = computed(() => category.value || manufacturer.value || q.valu
 					</div>
 				</div>
 
-				<div class="rounded-md border border-border/60 bg-card p-5">
-					<p class="text-[0.62rem] font-bold tracking-[0.2em] text-muted-foreground uppercase">
+				<div class="border-border/60 bg-card rounded-md border p-5">
+					<p class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 						Categories
 					</p>
+
 					<ul class="mt-3 space-y-1">
-						<li v-for="facet in data?.facets.categories ?? []" :key="facet.value">
+						<li
+							v-for="facet in data?.facets.categories ?? []"
+							:key="facet.value"
+						>
 							<button
 								type="button"
 								class="group flex w-full items-center justify-between rounded-md px-2 py-1.5 text-left text-sm transition-all"
@@ -151,6 +160,7 @@ const hasFilters = computed(() => category.value || manufacturer.value || q.valu
 								@click="setCategory(facet.value)"
 							>
 								<span>{{ facet.value }}</span>
+
 								<span
 									class="text-[0.62rem] font-bold tracking-wide"
 									:class="category === facet.value ? 'text-primary-foreground/70' : 'text-muted-foreground'"
@@ -162,12 +172,16 @@ const hasFilters = computed(() => category.value || manufacturer.value || q.valu
 					</ul>
 				</div>
 
-				<div class="rounded-md border border-border/60 bg-card p-5">
-					<p class="text-[0.62rem] font-bold tracking-[0.2em] text-muted-foreground uppercase">
+				<div class="border-border/60 bg-card rounded-md border p-5">
+					<p class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 						Manufacturers
 					</p>
+
 					<ul class="mt-3 space-y-1">
-						<li v-for="facet in data?.facets.manufacturers ?? []" :key="facet.value">
+						<li
+							v-for="facet in data?.facets.manufacturers ?? []"
+							:key="facet.value"
+						>
 							<button
 								type="button"
 								class="flex w-full items-center justify-between rounded-md px-2 py-1.5 text-left text-sm transition-all"
@@ -175,6 +189,7 @@ const hasFilters = computed(() => category.value || manufacturer.value || q.valu
 								@click="setManufacturer(facet.value)"
 							>
 								<span>{{ facet.value }}</span>
+
 								<span
 									class="text-[0.62rem] font-bold tracking-wide"
 									:class="manufacturer === facet.value ? 'text-primary-foreground/70' : 'text-muted-foreground'"
@@ -189,7 +204,7 @@ const hasFilters = computed(() => category.value || manufacturer.value || q.valu
 				<button
 					v-if="hasFilters"
 					type="button"
-					class="w-full rounded-md border border-border/70 bg-card px-4 py-2 text-[0.68rem] font-bold tracking-[0.15em] text-muted-foreground uppercase transition-all hover:border-primary hover:text-primary"
+					class="border-border/70 bg-card text-muted-foreground hover:border-primary hover:text-primary w-full rounded-md border px-4 py-2 text-[0.68rem] font-bold tracking-[0.15em] uppercase transition-all"
 					@click="clearFilters"
 				>
 					Clear Filters
@@ -198,91 +213,124 @@ const hasFilters = computed(() => category.value || manufacturer.value || q.valu
 
 			<div class="space-y-4">
 				<div class="flex items-center justify-between">
-					<p class="text-[0.68rem] font-bold tracking-[0.16em] text-muted-foreground uppercase">
+					<p class="text-muted-foreground text-[0.68rem] font-bold tracking-[0.16em] uppercase">
 						{{ pending ? "Loading…" : `${data?.total ?? 0} products` }}
 					</p>
+
 					<button
 						type="button"
-						class="text-[0.68rem] font-bold tracking-[0.15em] text-muted-foreground uppercase transition-colors hover:text-primary"
+						class="text-muted-foreground hover:text-primary text-[0.68rem] font-bold tracking-[0.15em] uppercase transition-colors"
 						@click="refresh()"
 					>
 						Refresh
 					</button>
 				</div>
 
-				<div v-if="pending" class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-					<div v-for="i in 6" :key="i" class="h-80 rounded-md bg-muted animate-pulse" />
+				<div
+					v-if="pending"
+					class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3"
+				>
+					<div
+						v-for="i in 6"
+						:key="i"
+						class="bg-muted h-80 animate-pulse rounded-md"
+					/>
 				</div>
 
-				<div v-else-if="!data?.items.length" class="rounded-md border border-border/60 bg-card p-12 text-center">
-					<p class="text-sm text-muted-foreground">
+				<div
+					v-else-if="!data?.items.length"
+					class="border-border/60 bg-card rounded-md border p-12 text-center"
+				>
+					<p class="text-muted-foreground text-sm">
 						No products match these filters.
 					</p>
+
 					<button
 						type="button"
-						class="mt-4 rounded-md bg-primary px-4 py-2 text-[0.68rem] font-bold tracking-[0.15em] text-primary-foreground uppercase transition-all hover:brightness-110"
+						class="bg-primary text-primary-foreground mt-4 rounded-md px-4 py-2 text-[0.68rem] font-bold tracking-[0.15em] uppercase transition-all hover:brightness-110"
 						@click="clearFilters"
 					>
 						Clear filters
 					</button>
 				</div>
 
-				<div v-else class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+				<div
+					v-else
+					class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3"
+				>
 					<article
 						v-for="product in data.items"
 						:key="product.id"
-						class="group flex flex-col rounded-md border border-border/60 bg-card overflow-hidden transition-all hover:border-primary/40"
+						class="group border-border/60 bg-card hover:border-primary/40 flex flex-col overflow-hidden rounded-md border transition-all"
 					>
-						<div class="aspect-[4/3] overflow-hidden bg-muted">
+						<div class="bg-muted aspect-[4/3] overflow-hidden">
 							<img
 								v-if="product.imageUrl"
 								:src="product.imageUrl"
 								:alt="product.name"
 								class="size-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
 							>
-							<div v-else class="flex size-full items-center justify-center text-muted-foreground">
+
+							<div
+								v-else
+								class="text-muted-foreground flex size-full items-center justify-center"
+							>
 								No image
 							</div>
 						</div>
 
 						<div class="flex flex-1 flex-col gap-3 p-5">
-							<div class="flex items-center justify-between text-[0.62rem] font-bold tracking-[0.14em] text-muted-foreground uppercase">
+							<div class="text-muted-foreground flex items-center justify-between text-[0.62rem] font-bold tracking-[0.14em] uppercase">
 								<span>{{ product.manufacturer }}</span>
+
 								<span>{{ product.sku }}</span>
 							</div>
 
 							<h3
-								class="text-lg font-bold tracking-[-0.015em] text-foreground"
+								class="text-foreground text-lg font-bold tracking-[-0.015em]"
 								style="font-family: var(--font-display);"
 							>
 								{{ product.name }}
 							</h3>
 
-							<p class="line-clamp-2 text-xs text-muted-foreground">
+							<p class="text-muted-foreground line-clamp-2 text-xs">
 								{{ product.description }}
 							</p>
 
 							<div class="mt-auto flex items-end justify-between pt-3">
 								<div>
-									<p class="text-[0.62rem] font-bold tracking-[0.14em] text-muted-foreground uppercase">
+									<p class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.14em] uppercase">
 										MSRP
 									</p>
+
 									<p
-										class="metric-value text-2xl font-extrabold text-foreground"
+										class="metric-value text-foreground text-2xl font-extrabold"
 										style="font-family: var(--font-display);"
 									>
 										{{ formatPrice(product.priceCents) }}
 									</p>
 								</div>
+
 								<button
 									type="button"
-									class="flex items-center gap-1.5 rounded-md bg-primary px-3 py-2 text-[0.68rem] font-bold tracking-[0.14em] text-primary-foreground uppercase transition-all hover:brightness-110 disabled:opacity-60"
+									class="bg-primary text-primary-foreground flex items-center gap-1.5 rounded-md px-3 py-2 text-[0.68rem] font-bold tracking-[0.14em] uppercase transition-all hover:brightness-110 disabled:opacity-60"
 									:disabled="addingId === product.id"
 									@click="handleAdd(product.id)"
 								>
-									<LoaderCircle v-if="addingId === product.id" class="size-4 animate-spin" />
-									<Check v-else-if="cart.summary.value.lines.some(l => l.productId === product.id)" class="size-4" />
-									<Plus v-else class="size-4" />
+									<LoaderCircle
+										v-if="addingId === product.id"
+										class="size-4 animate-spin"
+									/>
+
+									<Check
+										v-else-if="cart.summary.value.lines.some(l => l.productId === product.id)"
+										class="size-4"
+									/>
+
+									<Plus
+										v-else
+										class="size-4"
+									/>
 									Add
 								</button>
 							</div>

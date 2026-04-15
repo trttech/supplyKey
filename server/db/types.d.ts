@@ -3,277 +3,277 @@
  * Please do not edit it manually.
  */
 
-import type { ColumnType } from "kysely";
+import type { ColumnType } from "kysely"
 
 export enum EnquiryPriority {
-  HIGH = "high",
-  LOW = "low",
-  MEDIUM = "medium",
-  URGENT = "urgent",
+	HIGH = "high",
+	LOW = "low",
+	MEDIUM = "medium",
+	URGENT = "urgent",
 }
 
 export enum EnquiryStatus {
-  RECEIVED = "received",
-  RESOLVED = "resolved",
-  RESPONDED = "responded",
-  REVIEWING = "reviewing",
-  SENT = "sent",
+	RECEIVED = "received",
+	RESOLVED = "resolved",
+	RESPONDED = "responded",
+	REVIEWING = "reviewing",
+	SENT = "sent",
 }
 
 export enum OrderStatus {
-  DELIVERED = "delivered",
-  PLACED = "placed",
-  PROCESSING = "processing",
-  SHIPPED = "shipped",
+	DELIVERED = "delivered",
+	PLACED = "placed",
+	PROCESSING = "processing",
+	SHIPPED = "shipped",
 }
 
 export enum QueueJobState {
-  ACTIVE = "active",
-  CANCELLED = "cancelled",
-  COMPLETED = "completed",
-  CREATED = "created",
-  FAILED = "failed",
-  RETRY = "retry",
+	ACTIVE = "active",
+	CANCELLED = "cancelled",
+	COMPLETED = "completed",
+	CREATED = "created",
+	FAILED = "failed",
+	RETRY = "retry",
 }
 
 export enum RoleType {
-  ADMIN = "admin",
-  MEMBER = "member",
+	ADMIN = "admin",
+	MEMBER = "member",
 }
 
 export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
-  ? ColumnType<S, I | undefined, U>
-  : ColumnType<T, T | undefined, T>;
+	? ColumnType<S, I | undefined, U>
+	: ColumnType<T, T | undefined, T>
 
-export type Json = JsonValue;
+export type Json = JsonValue
 
-export type JsonArray = JsonValue[];
+export type JsonArray = JsonValue[]
 
 export type JsonObject = {
-  [x: string]: JsonValue | undefined;
-};
+	[x: string]: JsonValue | undefined
+}
 
-export type JsonPrimitive = boolean | number | string | null;
+export type JsonPrimitive = boolean | number | string | null
 
-export type JsonValue = JsonArray | JsonObject | JsonPrimitive;
+export type JsonValue = JsonArray | JsonObject | JsonPrimitive
 
-export type Timestamp = ColumnType<Date, Date | string, Date | string>;
+export type Timestamp = ColumnType<Date, Date | string, Date | string>
 
 export interface CartItems {
-  created_at: Generated<Timestamp>;
-  id: Generated<number>;
-  product_id: number;
-  quantity: Generated<number>;
-  updated_at: Timestamp | null;
-  user_id: number;
+	created_at: Generated<Timestamp>
+	id: Generated<number>
+	product_id: number
+	quantity: Generated<number>
+	updated_at: Timestamp | null
+	user_id: number
 }
 
 export interface EmailAuthTokens {
-  created_at: Generated<Timestamp>;
-  expires_at: Timestamp;
-  id: Generated<number>;
-  ip_address: string | null;
-  revoked_at: Timestamp | null;
-  token_hash: string;
-  used_at: Timestamp | null;
-  user_agent: string | null;
-  user_id: number;
+	created_at: Generated<Timestamp>
+	expires_at: Timestamp
+	id: Generated<number>
+	ip_address: string | null
+	revoked_at: Timestamp | null
+	token_hash: string
+	used_at: Timestamp | null
+	user_agent: string | null
+	user_id: number
 }
 
 export interface Enquiries {
-  created_at: Generated<Timestamp>;
-  enquiry_number: string;
-  id: Generated<number>;
-  priority: Generated<EnquiryPriority>;
-  product_sku: string | null;
-  status: Generated<EnquiryStatus>;
-  subject: string;
-  supplier_name: string;
-  updated_at: Timestamp | null;
-  user_id: number;
+	created_at: Generated<Timestamp>
+	enquiry_number: string
+	id: Generated<number>
+	priority: Generated<EnquiryPriority>
+	product_sku: string | null
+	status: Generated<EnquiryStatus>
+	subject: string
+	supplier_name: string
+	updated_at: Timestamp | null
+	user_id: number
 }
 
 export interface EnquiryMessages {
-  attachment_name: string | null;
-  author_name: string;
-  author_role: string;
-  body: string;
-  created_at: Generated<Timestamp>;
-  enquiry_id: number;
-  id: Generated<number>;
+	attachment_name: string | null
+	author_name: string
+	author_role: string
+	body: string
+	created_at: Generated<Timestamp>
+	enquiry_id: number
+	id: Generated<number>
 }
 
 export interface OrderItems {
-  created_at: Generated<Timestamp>;
-  id: Generated<number>;
-  name: string;
-  order_id: number;
-  product_id: number;
-  quantity: number;
-  sku: string;
-  unit_price_cents: number;
+	created_at: Generated<Timestamp>
+	id: Generated<number>
+	name: string
+	order_id: number
+	product_id: number
+	quantity: number
+	sku: string
+	unit_price_cents: number
 }
 
 export interface Orders {
-  carrier: string;
-  created_at: Generated<Timestamp>;
-  delivery_site: string;
-  id: Generated<number>;
-  order_number: string;
-  payment_method: string;
-  placed_at: Generated<Timestamp>;
-  po_number: string | null;
-  shipping_cents: Generated<number>;
-  status: Generated<OrderStatus>;
-  subtotal_cents: number;
-  tax_cents: Generated<number>;
-  total_cents: number;
-  updated_at: Timestamp | null;
-  user_id: number;
+	carrier: string
+	created_at: Generated<Timestamp>
+	delivery_site: string
+	id: Generated<number>
+	order_number: string
+	payment_method: string
+	placed_at: Generated<Timestamp>
+	po_number: string | null
+	shipping_cents: Generated<number>
+	status: Generated<OrderStatus>
+	subtotal_cents: number
+	tax_cents: Generated<number>
+	total_cents: number
+	updated_at: Timestamp | null
+	user_id: number
 }
 
 export interface Products {
-  category: string;
-  created_at: Generated<Timestamp>;
-  description: string;
-  id: Generated<number>;
-  image_url: string | null;
-  manufacturer: string;
-  name: string;
-  price_cents: number;
-  sku: string;
-  stock_status: Generated<string>;
-  tags: Generated<string[]>;
-  updated_at: Timestamp | null;
+	category: string
+	created_at: Generated<Timestamp>
+	description: string
+	id: Generated<number>
+	image_url: string | null
+	manufacturer: string
+	name: string
+	price_cents: number
+	sku: string
+	stock_status: Generated<string>
+	tags: Generated<string[]>
+	updated_at: Timestamp | null
 }
 
 export interface QueueBam {
-  command: string;
-  completed_on: Timestamp | null;
-  created_on: Generated<Timestamp>;
-  error: string | null;
-  id: Generated<string>;
-  name: string;
-  queue: string | null;
-  started_on: Timestamp | null;
-  status: Generated<string>;
-  table_name: string;
-  version: number;
+	command: string
+	completed_on: Timestamp | null
+	created_on: Generated<Timestamp>
+	error: string | null
+	id: Generated<string>
+	name: string
+	queue: string | null
+	started_on: Timestamp | null
+	status: Generated<string>
+	table_name: string
+	version: number
 }
 
 export interface QueueJob {
-  completed_on: Timestamp | null;
-  created_on: Generated<Timestamp>;
-  data: Json | null;
-  dead_letter: string | null;
-  deletion_seconds: Generated<number>;
-  expire_seconds: Generated<number>;
-  group_id: string | null;
-  group_tier: string | null;
-  heartbeat_on: Timestamp | null;
-  heartbeat_seconds: number | null;
-  id: Generated<string>;
-  keep_until: Generated<Timestamp>;
-  name: string;
-  output: Json | null;
-  policy: string | null;
-  priority: Generated<number>;
-  retry_backoff: Generated<boolean>;
-  retry_count: Generated<number>;
-  retry_delay: Generated<number>;
-  retry_delay_max: number | null;
-  retry_limit: Generated<number>;
-  singleton_key: string | null;
-  singleton_on: Timestamp | null;
-  start_after: Generated<Timestamp>;
-  started_on: Timestamp | null;
-  state: Generated<QueueJobState>;
+	completed_on: Timestamp | null
+	created_on: Generated<Timestamp>
+	data: Json | null
+	dead_letter: string | null
+	deletion_seconds: Generated<number>
+	expire_seconds: Generated<number>
+	group_id: string | null
+	group_tier: string | null
+	heartbeat_on: Timestamp | null
+	heartbeat_seconds: number | null
+	id: Generated<string>
+	keep_until: Generated<Timestamp>
+	name: string
+	output: Json | null
+	policy: string | null
+	priority: Generated<number>
+	retry_backoff: Generated<boolean>
+	retry_count: Generated<number>
+	retry_delay: Generated<number>
+	retry_delay_max: number | null
+	retry_limit: Generated<number>
+	singleton_key: string | null
+	singleton_on: Timestamp | null
+	start_after: Generated<Timestamp>
+	started_on: Timestamp | null
+	state: Generated<QueueJobState>
 }
 
 export interface QueueQueue {
-  active_count: Generated<number>;
-  created_on: Generated<Timestamp>;
-  dead_letter: string | null;
-  deferred_count: Generated<number>;
-  deletion_seconds: number;
-  expire_seconds: number;
-  heartbeat_seconds: number | null;
-  maintain_on: Timestamp | null;
-  monitor_on: Timestamp | null;
-  name: string;
-  partition: boolean;
-  policy: string;
-  queued_count: Generated<number>;
-  retention_seconds: number;
-  retry_backoff: boolean;
-  retry_delay: number;
-  retry_delay_max: number | null;
-  retry_limit: number;
-  singletons_active: string[] | null;
-  table_name: string;
-  total_count: Generated<number>;
-  updated_on: Generated<Timestamp>;
-  warning_queued: Generated<number>;
+	active_count: Generated<number>
+	created_on: Generated<Timestamp>
+	dead_letter: string | null
+	deferred_count: Generated<number>
+	deletion_seconds: number
+	expire_seconds: number
+	heartbeat_seconds: number | null
+	maintain_on: Timestamp | null
+	monitor_on: Timestamp | null
+	name: string
+	partition: boolean
+	policy: string
+	queued_count: Generated<number>
+	retention_seconds: number
+	retry_backoff: boolean
+	retry_delay: number
+	retry_delay_max: number | null
+	retry_limit: number
+	singletons_active: string[] | null
+	table_name: string
+	total_count: Generated<number>
+	updated_on: Generated<Timestamp>
+	warning_queued: Generated<number>
 }
 
 export interface QueueSchedule {
-  created_on: Generated<Timestamp>;
-  cron: string;
-  data: Json | null;
-  key: Generated<string>;
-  name: string;
-  options: Json | null;
-  timezone: string | null;
-  updated_on: Generated<Timestamp>;
+	created_on: Generated<Timestamp>
+	cron: string
+	data: Json | null
+	key: Generated<string>
+	name: string
+	options: Json | null
+	timezone: string | null
+	updated_on: Generated<Timestamp>
 }
 
 export interface QueueSubscription {
-  created_on: Generated<Timestamp>;
-  event: string;
-  name: string;
-  updated_on: Generated<Timestamp>;
+	created_on: Generated<Timestamp>
+	event: string
+	name: string
+	updated_on: Generated<Timestamp>
 }
 
 export interface QueueVersion {
-  bam_on: Timestamp | null;
-  cron_on: Timestamp | null;
-  version: number;
+	bam_on: Timestamp | null
+	cron_on: Timestamp | null
+	version: number
 }
 
 export interface QueueWarning {
-  created_on: Generated<Timestamp>;
-  data: Json | null;
-  id: Generated<string>;
-  message: string;
-  type: string;
+	created_on: Generated<Timestamp>
+	data: Json | null
+	id: Generated<string>
+	message: string
+	type: string
 }
 
 export interface Users {
-  created_at: Generated<Timestamp>;
-  deactivated: Generated<boolean>;
-  email: string;
-  email_verified: Generated<boolean>;
-  id: Generated<number>;
-  last_active_at: Timestamp | null;
-  name: string | null;
-  role: Generated<RoleType>;
-  updated_at: Timestamp | null;
+	created_at: Generated<Timestamp>
+	deactivated: Generated<boolean>
+	email: string
+	email_verified: Generated<boolean>
+	id: Generated<number>
+	last_active_at: Timestamp | null
+	name: string | null
+	role: Generated<RoleType>
+	updated_at: Timestamp | null
 }
 
 export interface DB {
-  cart_items: CartItems;
-  email_auth_tokens: EmailAuthTokens;
-  enquiries: Enquiries;
-  enquiry_messages: EnquiryMessages;
-  order_items: OrderItems;
-  orders: Orders;
-  products: Products;
-  "queue.bam": QueueBam;
-  "queue.job": QueueJob;
-  "queue.queue": QueueQueue;
-  "queue.schedule": QueueSchedule;
-  "queue.subscription": QueueSubscription;
-  "queue.version": QueueVersion;
-  "queue.warning": QueueWarning;
-  users: Users;
+	"cart_items": CartItems
+	"email_auth_tokens": EmailAuthTokens
+	"enquiries": Enquiries
+	"enquiry_messages": EnquiryMessages
+	"order_items": OrderItems
+	"orders": Orders
+	"products": Products
+	"queue.bam": QueueBam
+	"queue.job": QueueJob
+	"queue.queue": QueueQueue
+	"queue.schedule": QueueSchedule
+	"queue.subscription": QueueSubscription
+	"queue.version": QueueVersion
+	"queue.warning": QueueWarning
+	"users": Users
 }

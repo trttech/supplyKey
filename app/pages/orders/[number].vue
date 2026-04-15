@@ -54,25 +54,32 @@ const carrierLabels: Record<string, string> = {
 	<div class="space-y-8">
 		<NuxtLink
 			to="/dashboard"
-			class="inline-flex items-center gap-2 text-[0.68rem] font-bold tracking-[0.16em] text-muted-foreground uppercase transition-colors hover:text-primary"
+			class="text-muted-foreground hover:text-primary inline-flex items-center gap-2 text-[0.68rem] font-bold tracking-[0.16em] uppercase transition-colors"
 		>
 			<ArrowLeft class="size-3.5" />
 			Back to Dashboard
 		</NuxtLink>
 
-		<div v-if="pending" class="rounded-md border border-border/60 bg-card p-12 text-center">
-			<p class="text-sm text-muted-foreground">
+		<div
+			v-if="pending"
+			class="border-border/60 bg-card rounded-md border p-12 text-center"
+		>
+			<p class="text-muted-foreground text-sm">
 				Loading order…
 			</p>
 		</div>
 
-		<div v-else-if="error || !order" class="rounded-md border border-destructive/30 bg-destructive/5 p-8 text-center">
-			<p class="text-sm text-destructive">
+		<div
+			v-else-if="error || !order"
+			class="border-destructive/30 bg-destructive/5 rounded-md border p-8 text-center"
+		>
+			<p class="text-destructive text-sm">
 				Unable to load order. It may have been removed or you may not have access.
 			</p>
+
 			<NuxtLink
 				to="/dashboard"
-				class="mt-4 inline-flex rounded-md bg-primary px-4 py-2 text-[0.68rem] font-bold tracking-[0.15em] text-primary-foreground uppercase transition-all hover:brightness-110"
+				class="bg-primary text-primary-foreground mt-4 inline-flex rounded-md px-4 py-2 text-[0.68rem] font-bold tracking-[0.15em] uppercase transition-all hover:brightness-110"
 			>
 				Return
 			</NuxtLink>
@@ -82,22 +89,25 @@ const carrierLabels: Record<string, string> = {
 			<section class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
 				<div class="space-y-3">
 					<div class="flex items-center gap-3">
-						<div class="flex size-14 items-center justify-center rounded-md bg-success/10 text-success">
+						<div class="bg-success/10 text-success flex size-14 items-center justify-center rounded-md">
 							<CheckCircle2 class="size-8" />
 						</div>
+
 						<div>
-							<p class="text-[0.68rem] font-bold tracking-[0.24em] text-muted-foreground uppercase">
+							<p class="text-muted-foreground text-[0.68rem] font-bold tracking-[0.24em] uppercase">
 								Order Confirmed
 							</p>
+
 							<h1
-								class="text-4xl font-extrabold tracking-[-0.035em] text-foreground"
+								class="text-foreground text-4xl font-extrabold tracking-[-0.035em]"
 								style="font-family: var(--font-display);"
 							>
 								{{ order.orderNumber }}
 							</h1>
 						</div>
 					</div>
-					<p class="text-sm leading-7 text-muted-foreground max-w-xl">
+
+					<p class="text-muted-foreground max-w-xl text-sm leading-7">
 						Manifest has been dispatched to logistics routing. Vendors will confirm acknowledgment within 4 operational hours.
 					</p>
 				</div>
@@ -111,54 +121,67 @@ const carrierLabels: Record<string, string> = {
 			</section>
 
 			<section class="grid gap-4 md:grid-cols-3">
-				<div class="rounded-md border border-border/60 bg-card p-5">
-					<div class="flex items-center gap-2 text-muted-foreground">
+				<div class="border-border/60 bg-card rounded-md border p-5">
+					<div class="text-muted-foreground flex items-center gap-2">
 						<MapPin class="size-4" />
+
 						<p class="text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 							Delivery Site
 						</p>
 					</div>
-					<p class="mt-3 text-sm font-semibold text-foreground">
+
+					<p class="text-foreground mt-3 text-sm font-semibold">
 						{{ order.deliverySite }}
 					</p>
 				</div>
-				<div class="rounded-md border border-border/60 bg-card p-5">
-					<div class="flex items-center gap-2 text-muted-foreground">
+
+				<div class="border-border/60 bg-card rounded-md border p-5">
+					<div class="text-muted-foreground flex items-center gap-2">
 						<Truck class="size-4" />
+
 						<p class="text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 							Carrier
 						</p>
 					</div>
-					<p class="mt-3 text-sm font-semibold text-foreground">
+
+					<p class="text-foreground mt-3 text-sm font-semibold">
 						{{ carrierLabels[order.carrier] ?? order.carrier }}
 					</p>
 				</div>
-				<div class="rounded-md border border-border/60 bg-card p-5">
-					<div class="flex items-center gap-2 text-muted-foreground">
+
+				<div class="border-border/60 bg-card rounded-md border p-5">
+					<div class="text-muted-foreground flex items-center gap-2">
 						<Receipt class="size-4" />
+
 						<p class="text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 							Payment
 						</p>
 					</div>
-					<p class="mt-3 text-sm font-semibold text-foreground">
+
+					<p class="text-foreground mt-3 text-sm font-semibold">
 						{{ paymentLabels[order.paymentMethod] ?? order.paymentMethod }}
 					</p>
-					<p v-if="order.poNumber" class="mt-1 text-xs text-muted-foreground">
+
+					<p
+						v-if="order.poNumber"
+						class="text-muted-foreground mt-1 text-xs"
+					>
 						PO: {{ order.poNumber }}
 					</p>
 				</div>
 			</section>
 
 			<section class="grid gap-6 xl:grid-cols-[1.6fr_1fr]">
-				<div class="rounded-md border border-border/60 bg-card p-6">
+				<div class="border-border/60 bg-card rounded-md border p-6">
 					<div class="mb-5 flex items-center justify-between">
 						<h2
-							class="text-lg font-extrabold tracking-[-0.015em] text-foreground"
+							class="text-foreground text-lg font-extrabold tracking-[-0.015em]"
 							style="font-family: var(--font-display);"
 						>
 							Line Items
 						</h2>
-						<span class="text-[0.62rem] font-bold tracking-[0.2em] text-muted-foreground uppercase">
+
+						<span class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 							{{ order.lines.length }} SKU{{ order.lines.length === 1 ? "" : "s" }}
 						</span>
 					</div>
@@ -167,21 +190,24 @@ const carrierLabels: Record<string, string> = {
 						<li
 							v-for="line in order.lines"
 							:key="line.id"
-							class="flex items-center gap-4 rounded-md bg-muted p-4"
+							class="bg-muted flex items-center gap-4 rounded-md p-4"
 						>
-							<div class="flex-1 min-w-0">
-								<p class="text-[0.62rem] font-bold tracking-[0.14em] text-muted-foreground uppercase">
+							<div class="min-w-0 flex-1">
+								<p class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.14em] uppercase">
 									{{ line.sku }}
 								</p>
-								<p class="mt-1 truncate text-sm font-semibold text-foreground">
+
+								<p class="text-foreground mt-1 truncate text-sm font-semibold">
 									{{ line.name }}
 								</p>
-								<p class="mt-1 text-xs text-muted-foreground">
+
+								<p class="text-muted-foreground mt-1 text-xs">
 									{{ line.quantity }} × {{ formatPrice(line.unitPriceCents) }}
 								</p>
 							</div>
+
 							<p
-								class="metric-value w-28 text-right text-lg font-extrabold text-foreground"
+								class="metric-value text-foreground w-28 text-right text-lg font-extrabold"
 								style="font-family: var(--font-display);"
 							>
 								{{ formatPrice(line.lineTotalCents) }}
@@ -191,45 +217,53 @@ const carrierLabels: Record<string, string> = {
 				</div>
 
 				<aside class="space-y-4">
-					<div class="rounded-md border border-border/60 bg-card p-6">
+					<div class="border-border/60 bg-card rounded-md border p-6">
 						<p
-							class="text-[0.62rem] font-bold tracking-[0.2em] text-muted-foreground uppercase"
+							class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase"
 							style="font-family: var(--font-display);"
 						>
 							Totals
 						</p>
+
 						<dl class="mt-5 space-y-3 text-sm">
 							<div class="flex items-center justify-between">
 								<dt class="text-muted-foreground">
 									Subtotal
 								</dt>
-								<dd class="font-semibold tabular-nums text-foreground">
+
+								<dd class="text-foreground font-semibold tabular-nums">
 									{{ formatPrice(order.subtotalCents) }}
 								</dd>
 							</div>
+
 							<div class="flex items-center justify-between">
 								<dt class="text-muted-foreground">
 									Logistics
 								</dt>
-								<dd class="font-semibold tabular-nums text-foreground">
+
+								<dd class="text-foreground font-semibold tabular-nums">
 									{{ formatPrice(order.shippingCents) }}
 								</dd>
 							</div>
+
 							<div class="flex items-center justify-between">
 								<dt class="text-muted-foreground">
 									Environmental Tax
 								</dt>
-								<dd class="font-semibold tabular-nums text-foreground">
+
+								<dd class="text-foreground font-semibold tabular-nums">
 									{{ formatPrice(order.taxCents) }}
 								</dd>
 							</div>
 						</dl>
-						<div class="mt-5 border-t border-border/60 pt-5">
-							<p class="text-[0.62rem] font-bold tracking-[0.2em] text-muted-foreground uppercase">
+
+						<div class="border-border/60 mt-5 border-t pt-5">
+							<p class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 								Grand Total
 							</p>
+
 							<p
-								class="metric-value mt-2 text-4xl font-extrabold text-foreground"
+								class="metric-value text-foreground mt-2 text-4xl font-extrabold"
 								style="font-family: var(--font-display);"
 							>
 								{{ formatPrice(order.totalCents) }}
@@ -237,14 +271,16 @@ const carrierLabels: Record<string, string> = {
 						</div>
 					</div>
 
-					<div class="rounded-md border border-border/60 bg-card p-5">
-						<p class="text-[0.62rem] font-bold tracking-[0.2em] text-muted-foreground uppercase">
+					<div class="border-border/60 bg-card rounded-md border p-5">
+						<p class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 							Placed
 						</p>
-						<p class="mt-2 text-sm font-semibold text-foreground">
+
+						<p class="text-foreground mt-2 text-sm font-semibold">
 							{{ formatDate(order.placedAt) }}
 						</p>
-						<p class="text-xs text-muted-foreground">
+
+						<p class="text-muted-foreground text-xs">
 							{{ formatTime(order.placedAt) }}
 						</p>
 					</div>

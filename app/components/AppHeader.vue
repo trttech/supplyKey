@@ -107,19 +107,21 @@ const breadcrumbItems = computed(() => breadcrumbs ?? generatedBreadcrumbItems.v
 		<div class="ml-auto flex items-center gap-2">
 			<NuxtLink
 				to="/cart"
-				class="relative inline-flex items-center gap-2 rounded-md border border-border/70 bg-card px-3 py-2 text-[0.62rem] font-bold tracking-[0.16em] text-foreground uppercase transition-all hover:border-primary hover:text-primary"
+				class="border-border/70 bg-card text-foreground hover:border-primary hover:text-primary relative inline-flex items-center gap-2 rounded-md border px-3 py-2 text-[0.62rem] font-bold tracking-[0.16em] uppercase transition-all"
 			>
 				<ShoppingCart class="size-4" />
+
 				<span class="hidden md:inline">Cart</span>
+
 				<span
 					v-if="cart.summary.value.itemCount > 0"
-					class="absolute -right-1.5 -top-1.5 flex size-5 items-center justify-center rounded-full bg-primary text-[0.58rem] font-bold tabular-nums text-primary-foreground"
+					class="bg-primary text-primary-foreground absolute -top-1.5 -right-1.5 flex size-5 items-center justify-center rounded-full text-[0.58rem] font-bold tabular-nums"
 				>
 					{{ cart.summary.value.itemCount }}
 				</span>
 			</NuxtLink>
+
 			<ThemeToggle v-if="showThemeToggle" />
 		</div>
 	</header>
 </template>
-

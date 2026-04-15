@@ -92,7 +92,7 @@ function resetState() {
 </script>
 
 <template>
-	<div class="relative flex min-h-screen flex-col overflow-hidden bg-background">
+	<div class="bg-background relative flex min-h-screen flex-col overflow-hidden">
 		<div
 			aria-hidden="true"
 			class="pointer-events-none absolute inset-0 opacity-[0.12]"
@@ -107,45 +107,57 @@ function resetState() {
 						alt="Brand logo"
 						class="mx-auto mb-5 h-20 w-auto"
 					>
-					<p class="text-[0.6875rem] font-semibold tracking-[0.28em] text-muted-foreground uppercase">
+
+					<p class="text-muted-foreground text-[0.6875rem] font-semibold tracking-[0.28em] uppercase">
 						{{ orgTagline }}
 					</p>
 				</div>
 
-				<div class="relative rounded-[0.5rem] border border-border/40 bg-card p-10">
-					<div v-if="success" class="space-y-6">
-						<div class="rounded-[0.5rem] bg-muted p-5">
+				<div class="border-border/40 bg-card relative rounded-[0.5rem] border p-10">
+					<div
+						v-if="success"
+						class="space-y-6"
+					>
+						<div class="bg-muted rounded-[0.5rem] p-5">
 							<p
-								class="text-xs font-bold tracking-[0.18em] text-muted-foreground uppercase"
+								class="text-muted-foreground text-xs font-bold tracking-[0.18em] uppercase"
 								style="font-family: var(--font-display);"
 							>
 								Authentication dispatched
 							</p>
-							<p class="mt-3 text-sm text-foreground">
+
+							<p class="text-foreground mt-3 text-sm">
 								A sign-in link was generated for <span class="font-semibold">{{ email }}</span>.
 							</p>
-							<p class="mt-2 text-xs text-muted-foreground">
+
+							<p class="text-muted-foreground mt-2 text-xs">
 								Check the server console or Mailpit.
 							</p>
 						</div>
 
-						<div v-if="debugMagicLink" class="space-y-3 rounded-[0.5rem] border border-primary/20 bg-primary/5 p-5">
-							<p class="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
+						<div
+							v-if="debugMagicLink"
+							class="border-primary/20 bg-primary/5 space-y-3 rounded-[0.5rem] border p-5"
+						>
+							<p class="text-primary text-xs font-semibold tracking-[0.18em] uppercase">
 								Development shortcut
 							</p>
-							<p class="text-xs break-all text-foreground/80">
+
+							<p class="text-foreground/80 text-xs break-all">
 								{{ debugMagicLink }}
 							</p>
+
 							<div class="flex gap-3 pt-2">
 								<NuxtLink
 									:to="debugMagicLinkPath"
-									class="inline-flex items-center justify-center rounded-[0.375rem] bg-primary px-4 py-2 text-xs font-bold tracking-[0.15em] text-primary-foreground uppercase transition-all hover:brightness-110"
+									class="bg-primary text-primary-foreground inline-flex items-center justify-center rounded-[0.375rem] px-4 py-2 text-xs font-bold tracking-[0.15em] uppercase transition-all hover:brightness-110"
 								>
 									Open link
 								</NuxtLink>
+
 								<button
 									type="button"
-									class="inline-flex items-center justify-center rounded-[0.375rem] border border-border px-4 py-2 text-xs font-bold tracking-[0.15em] text-foreground uppercase transition-all hover:bg-muted"
+									class="border-border text-foreground hover:bg-muted inline-flex items-center justify-center rounded-[0.375rem] border px-4 py-2 text-xs font-bold tracking-[0.15em] uppercase transition-all"
 									@click="resetState"
 								>
 									Send another
@@ -161,12 +173,13 @@ function resetState() {
 					>
 						<div class="mb-2">
 							<h2
-								class="text-xl font-bold tracking-tight text-foreground"
+								class="text-foreground text-xl font-bold tracking-tight"
 								style="font-family: var(--font-display);"
 							>
 								Access Control
 							</h2>
-							<p class="mt-1 text-sm text-muted-foreground">
+
+							<p class="text-muted-foreground mt-1 text-sm">
 								Authenticated personnel only.
 							</p>
 						</div>
@@ -174,10 +187,11 @@ function resetState() {
 						<div class="space-y-2">
 							<label
 								for="email"
-								class="text-[0.6875rem] font-bold tracking-[0.16em] text-muted-foreground uppercase"
+								class="text-muted-foreground text-[0.6875rem] font-bold tracking-[0.16em] uppercase"
 							>
 								Corporate Email
 							</label>
+
 							<div class="relative">
 								<input
 									id="email"
@@ -186,7 +200,7 @@ function resetState() {
 									placeholder="name@supplykey.com"
 									autocomplete="email"
 									:disabled="isLoading"
-									class="w-full border-0 border-b-2 border-border/60 bg-muted px-3 py-3 text-sm text-foreground transition-all placeholder:font-light placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none disabled:opacity-60"
+									class="border-border/60 bg-muted text-foreground placeholder:text-muted-foreground/60 focus:border-primary w-full border-0 border-b-2 px-3 py-3 text-sm transition-all placeholder:font-light focus:outline-none disabled:opacity-60"
 								>
 							</div>
 						</div>
@@ -194,12 +208,20 @@ function resetState() {
 						<div>
 							<button
 								type="submit"
-								class="group flex w-full items-center justify-center rounded-[0.375rem] bg-primary px-4 py-4 text-sm font-extrabold tracking-[0.15em] text-primary-foreground uppercase transition-all hover:brightness-110 active:scale-[0.98] disabled:opacity-60"
+								class="group bg-primary text-primary-foreground flex w-full items-center justify-center rounded-[0.375rem] px-4 py-4 text-sm font-extrabold tracking-[0.15em] uppercase transition-all hover:brightness-110 active:scale-[0.98] disabled:opacity-60"
 								:disabled="isLoading"
 								style="font-family: var(--font-display);"
 							>
-								<LoaderCircle v-if="isLoading" class="mr-2 size-4 animate-spin" />
-								<LogIn v-else class="mr-2 size-4 transition-transform group-hover:translate-x-0.5" />
+								<LoaderCircle
+									v-if="isLoading"
+									class="mr-2 size-4 animate-spin"
+								/>
+
+								<LogIn
+									v-else
+									class="mr-2 size-4 transition-transform group-hover:translate-x-0.5"
+								/>
+
 								<span>{{ isLoading ? "Dispatching..." : "Initialize Authentication" }}</span>
 							</button>
 						</div>
@@ -207,54 +229,82 @@ function resetState() {
 
 					<div
 						v-if="demoMode && !success"
-						class="mt-8 border-t border-border/40 pt-8"
+						class="border-border/40 mt-8 border-t pt-8"
 					>
-						<p class="mb-4 text-center text-[0.6875rem] font-bold tracking-[0.16em] text-muted-foreground uppercase">
+						<p class="text-muted-foreground mb-4 text-center text-[0.6875rem] font-bold tracking-[0.16em] uppercase">
 							Conference Demo Mode
 						</p>
+
 						<button
 							type="button"
-							class="group flex w-full items-center justify-center rounded-[0.375rem] border-2 border-primary/30 bg-background px-4 py-3 text-sm font-extrabold tracking-[0.15em] text-primary uppercase transition-all hover:border-primary hover:bg-primary hover:text-primary-foreground disabled:opacity-60"
+							class="group border-primary/30 bg-background text-primary hover:border-primary hover:bg-primary hover:text-primary-foreground flex w-full items-center justify-center rounded-[0.375rem] border-2 px-4 py-3 text-sm font-extrabold tracking-[0.15em] uppercase transition-all disabled:opacity-60"
 							:disabled="isDemoLoading"
 							style="font-family: var(--font-display);"
 							@click="handleDemoLogin"
 						>
-							<LoaderCircle v-if="isDemoLoading" class="mr-2 size-4 animate-spin" />
-							<Zap v-else class="mr-2 size-4" />
+							<LoaderCircle
+								v-if="isDemoLoading"
+								class="mr-2 size-4 animate-spin"
+							/>
+
+							<Zap
+								v-else
+								class="mr-2 size-4"
+							/>
+
 							<span>{{ isDemoLoading ? "Connecting..." : "Demo Sign In" }}</span>
 						</button>
 					</div>
 
-					<div class="mt-10 border-t border-border/40 pt-8 text-center">
-						<p class="text-[0.6875rem] leading-relaxed tracking-[0.18em] text-muted-foreground uppercase">
-							Issues with login? <br> Contact <span class="font-bold text-foreground">Systems Security</span>
+					<div class="border-border/40 mt-10 border-t pt-8 text-center">
+						<p class="text-muted-foreground text-[0.6875rem] leading-relaxed tracking-[0.18em] uppercase">
+							Issues with login? <br>
+
+							Contact <span class="text-foreground font-bold">Systems Security</span>
 						</p>
 					</div>
 				</div>
 
-				<p class="mt-8 text-center text-[0.625rem] font-medium tracking-[0.25em] text-muted-foreground/60 uppercase">
+				<p class="text-muted-foreground/60 mt-8 text-center text-[0.625rem] font-medium tracking-[0.25em] uppercase">
 					Unauthorized access is strictly monitored and recorded.
 				</p>
 			</div>
 		</main>
 
-		<footer class="relative w-full border-t border-border/20 bg-muted/40 py-6">
+		<footer class="border-border/20 bg-muted/40 relative w-full border-t py-6">
 			<div class="flex flex-col items-center justify-between gap-3 px-6 md:flex-row md:px-12">
 				<div class="flex items-center gap-2 leading-none">
-					<span class="text-[0.625rem] font-semibold tracking-[0.2em] text-muted-foreground uppercase leading-none">
+					<span class="text-muted-foreground text-[0.625rem] leading-none font-semibold tracking-[0.2em] uppercase">
 						Powered by
 					</span>
+
 					<img
 						:src="defaultLogo"
 						alt="SupplyKey"
 						class="block h-3.5 w-auto"
 					>
 				</div>
+
 				<div class="flex flex-wrap justify-center gap-6">
-					<a href="#" class="text-[0.625rem] font-semibold tracking-[0.2em] text-muted-foreground uppercase transition-colors hover:text-primary">Privacy Policy</a>
-					<a href="#" class="text-[0.625rem] font-semibold tracking-[0.2em] text-muted-foreground uppercase transition-colors hover:text-primary">Terms of Service</a>
-					<a href="#" class="text-[0.625rem] font-semibold tracking-[0.2em] text-muted-foreground uppercase transition-colors hover:text-primary">Compliance</a>
-					<a href="#" class="text-[0.625rem] font-semibold tracking-[0.2em] text-muted-foreground uppercase transition-colors hover:text-primary">Mining Standards</a>
+					<a
+						href="#"
+						class="text-muted-foreground hover:text-primary text-[0.625rem] font-semibold tracking-[0.2em] uppercase transition-colors"
+					>Privacy Policy</a>
+
+					<a
+						href="#"
+						class="text-muted-foreground hover:text-primary text-[0.625rem] font-semibold tracking-[0.2em] uppercase transition-colors"
+					>Terms of Service</a>
+
+					<a
+						href="#"
+						class="text-muted-foreground hover:text-primary text-[0.625rem] font-semibold tracking-[0.2em] uppercase transition-colors"
+					>Compliance</a>
+
+					<a
+						href="#"
+						class="text-muted-foreground hover:text-primary text-[0.625rem] font-semibold tracking-[0.2em] uppercase transition-colors"
+					>Mining Standards</a>
 				</div>
 			</div>
 		</footer>
