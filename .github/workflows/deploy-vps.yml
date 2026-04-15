@@ -19,5 +19,5 @@ jobs:
                   key: ${{ secrets.VPS_SSH_KEY }}
                   port: ${{ secrets.VPS_PORT }}
                   script: |
-                      cd /opt/supplykey
+                      cd /opt/supplyKey
                       sudo bash .deploy/vps/scripts/deploy.sh

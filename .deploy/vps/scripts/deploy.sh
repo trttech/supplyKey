@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-APP_DIR="${APP_DIR:-/opt/supplykey}"
+APP_DIR="${APP_DIR:-/opt/supplyKey}"
 APP_USER="${APP_USER:-supplykey}"
 APP_NAME="${APP_NAME:-supplykey}"
 ENV_FILE="${ENV_FILE:-$APP_DIR/.env}"
