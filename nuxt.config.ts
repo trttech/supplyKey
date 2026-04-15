@@ -55,6 +55,12 @@ export default defineNuxtConfig({
 	},
 
 	runtimeConfig: {
+		session: {
+			cookie: {
+				secure: process.env.NUXT_SESSION_COOKIE_SECURE === "true",
+				sameSite: "lax",
+			},
+		},
 		public: {
 			appName: process.env.NUXT_PUBLIC_APP_NAME || "SupplyKey Industrial",
 			baseURL: process.env.NUXT_PUBLIC_BASE_URL || "http://localhost:3000",

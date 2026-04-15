@@ -100,6 +100,7 @@ NODE_ENV=production
 NUXT_PUBLIC_APP_NAME="SupplyKey Industrial"
 NUXT_PUBLIC_BASE_URL="https://app.supplykey.ca"
 NUXT_SESSION_PASSWORD="generate-a-random-string-with-at-least-32-characters"
+NUXT_SESSION_COOKIE_SECURE=false
 
 AUTH_MAGIC_LINK_TTL_MINUTES=20
 
@@ -134,6 +135,7 @@ PGBOSS_MAX_CONN=10
 Notes:
 
 - `NUXT_SESSION_PASSWORD` must be long and random. Treat it as a secret.
+- `NUXT_SESSION_COOKIE_SECURE=false` keeps the `nuxt-session` cookie usable on non-HTTPS origins. Flip it to `true` only when the browser is actually talking to the app over HTTPS.
 - `MAIL_MODE=console` is fine for smoke testing, but production should use real SMTP.
 - `PGBOSS_MIGRATE=true` lets `pg-boss` manage its own schema objects on startup.
 - Keep `NUXT_PUBLIC_BASE_URL` set to the real HTTPS origin used by the app.
