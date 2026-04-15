@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@400;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#edeef1",
+                    "surface-bright": "#f9f9fd",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#2f1500",
+                    "outline-variant": "#c1c7cf",
+                    "background": "#f9f9fd",
+                    "surface-container-highest": "#e2e2e6",
+                    "on-secondary-fixed-variant": "#384858",
+                    "tertiary-fixed-dim": "#feb77f",
+                    "on-primary-fixed": "#001d32",
+                    "secondary": "#506070",
+                    "on-secondary-fixed": "#0c1d2b",
+                    "surface-container-low": "#f3f3f7",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-primary": "#9dcbf6",
+                    "tertiary-container": "#5d3002",
+                    "primary-fixed-dim": "#9dcbf6",
+                    "surface-container-high": "#e8e8eb",
+                    "on-surface": "#1a1c1e",
+                    "on-tertiary-fixed-variant": "#6b3b0c",
+                    "surface-dim": "#d9dadd",
+                    "primary-container": "#003f63",
+                    "tertiary-fixed": "#ffdcc3",
+                    "inverse-on-surface": "#f0f0f4",
+                    "surface-variant": "#e2e2e6",
+                    "outline": "#72787f",
+                    "on-primary-fixed-variant": "#154a6f",
+                    "inverse-surface": "#2e3133",
+                    "surface-tint": "#336288",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#b7c8db",
+                    "secondary-container": "#d3e4f8",
+                    "primary": "#002842",
+                    "error-container": "#ffdad6",
+                    "surface": "#f9f9fd",
+                    "on-background": "#1a1c1e",
+                    "on-secondary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#d3e4f8",
+                    "on-primary-container": "#7dabd4",
+                    "tertiary": "#3e1d00",
+                    "on-tertiary-container": "#da9862",
+                    "on-surface-variant": "#42474e",
+                    "on-secondary-container": "#566676",
+                    "error": "#ba1a1a",
+                    "primary-fixed": "#cde5ff",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .headline { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-slate-100 dark:bg-slate-950 flex flex-col py-8 px-4 h-full border-r border-slate-200 dark:border-slate-800 z-50">
+<div class="mb-10 px-2 flex items-center gap-3">
+<img alt="SupplyKey Logo" class="h-8 w-auto" data-alt="Stylized typographic logo for SupplyKey with industrial precision and clean geometric lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDq8bMYXABaaoOWN9F5Vh2Wcpx45vQSP6n9hKo3Pv7hkQBfNxa3cptC4iNRylNej6KcFbOBS3GwYEFQpUFkhM7mVMWxUrZBTvHLV8x3-_6-167s2bQKupDTeJyGt8CBrUHuEavDpKOPOVeSAyR4OhXxd__CV4Hn1pm1f5zptjnK6JdXoggF7F4Qzis-yU5KwlpwyYb1BVEHVtyI-y09r8QApe-KNi06qHKTQ_UGef4q2Hwg1TEvwf5tpzs9X4IQtUTDXKPlFVgT9A"/>
+<div class="flex flex-col">
+<span class="font-['Manrope'] text-xl font-black text-slate-900 dark:text-slate-50">SupplyKey</span>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold opacity-70">Industrial Portal</span>
+</div>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 font-['Manrope'] text-base font-bold tracking-tight hover:bg-slate-200 dark:hover:bg-slate-900 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 font-['Manrope'] text-base font-bold tracking-tight hover:bg-slate-200 dark:hover:bg-slate-900 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span>Shop</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 font-['Manrope'] text-base font-bold tracking-tight hover:bg-slate-200 dark:hover:bg-slate-900 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span>Contact Pricing</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 font-['Manrope'] text-base font-bold tracking-tight hover:bg-slate-200 dark:hover:bg-slate-900 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="request_quote">request_quote</span>
+<span>Request Estimate</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-blue-700 dark:text-blue-300 border-r-4 border-blue-600 dark:border-blue-400 bg-slate-200 dark:bg-slate-900 font-['Manrope'] text-base font-bold tracking-tight transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="send" style="font-variation-settings: 'FILL' 1;">send</span>
+<span>Send Enquiry</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 font-['Manrope'] text-base font-bold tracking-tight hover:bg-slate-200 dark:hover:bg-slate-900 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 font-['Manrope'] text-base font-bold tracking-tight hover:bg-slate-200 dark:hover:bg-slate-900 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</aside>
+<!-- TopAppBar (Shared Component) -->
+<header class="fixed top-0 w-full z-40 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md flex justify-between items-center h-16 px-6 w-full ml-64 pl-72">
+<div class="flex items-center bg-surface-container-low px-4 py-2 rounded-lg w-96">
+<span class="material-symbols-outlined text-outline mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full font-body" placeholder="Search enquiries..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary-container overflow-hidden border border-outline-variant">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="Professional portrait of a supply chain manager in a modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVMc1nRW-_uSMjCcJ-Jl-ULFLsVXBZT8TxByQtergzn0quiMSgWU_RA3hL0-U06U8O-sraqDatvV0ECE85ySsQG9iedVWL5m3wKoPJ4w-xNB4yOHKpmtwcWHb6saDG8IULe-jgP6qLpWDVBCGRPJM3o0WknoNGeEvT5XUIzSytnkMhPhZ_rSOPEJVPlWSScWVltD4gxMe6Ub43Gkhk2-hasFej8We2cbmSHHN1SnaS1hpLJANN6tQC8qFr5kEX4pfOP2ouU1DzzQ"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 h-screen flex overflow-hidden">
+<!-- Sidebar: Enquiry History -->
+<section class="w-80 bg-surface-container-low flex flex-col border-r border-outline-variant/10">
+<div class="p-6">
+<h2 class="text-2xl font-extrabold font-headline tracking-tight text-on-surface">Enquiries</h2>
+<p class="text-xs font-medium text-on-surface-variant/70 uppercase tracking-widest mt-1">Active Communication</p>
+</div>
+<div class="flex-1 overflow-y-auto px-4 pb-6 space-y-3">
+<!-- Enquiry Card Active -->
+<div class="p-4 bg-surface-container-lowest rounded shadow-sm border-l-4 border-primary">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold text-primary uppercase tracking-tighter">REQ-8829</span>
+<span class="text-[10px] font-semibold text-on-surface-variant">2m ago</span>
+</div>
+<h3 class="font-headline font-bold text-sm text-on-surface mb-1">Steel Girders HP-400</h3>
+<p class="text-xs text-on-surface-variant line-clamp-1 mb-2">Confirming the tensile strength specs...</p>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-[10px] font-bold text-on-surface/60 uppercase">Responded</span>
+</div>
+</div>
+<!-- Enquiry Card -->
+<div class="p-4 bg-surface-container-low hover:bg-surface-container transition-colors rounded cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold text-outline uppercase tracking-tighter">REQ-7441</span>
+<span class="text-[10px] font-semibold text-on-surface-variant">1h ago</span>
+</div>
+<h3 class="font-headline font-bold text-sm text-on-surface mb-1">Hydraulic Seal Kit B-2</h3>
+<p class="text-xs text-on-surface-variant line-clamp-1 mb-2">Awaiting the revised quote for volume...</p>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-[10px] font-bold text-on-surface/60 uppercase">Reviewing</span>
+</div>
+</div>
+<!-- Enquiry Card -->
+<div class="p-4 bg-surface-container-low hover:bg-surface-container transition-colors rounded cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold text-outline uppercase tracking-tighter">REQ-6902</span>
+<span class="text-[10px] font-semibold text-on-surface-variant">Yesterday</span>
+</div>
+<h3 class="font-headline font-bold text-sm text-on-surface mb-1">Drill Bit Set - Carbide</h3>
+<p class="text-xs text-on-surface-variant line-clamp-1 mb-2">The last shipment was exceptional...</p>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="text-[10px] font-bold text-on-surface/60 uppercase">Received</span>
+</div>
+</div>
+<!-- Enquiry Card -->
+<div class="p-4 bg-surface-container-low hover:bg-surface-container transition-colors rounded cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold text-outline uppercase tracking-tighter">REQ-5510</span>
+<span class="text-[10px] font-semibold text-on-surface-variant">3d ago</span>
+</div>
+<h3 class="font-headline font-bold text-sm text-on-surface mb-1">Heavy Duty Pallet Racks</h3>
+<p class="text-xs text-on-surface-variant line-clamp-1 mb-2">Quote was sent for the main warehouse...</p>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="text-[10px] font-bold text-on-surface/60 uppercase">Sent</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Active Conversation View -->
+<section class="flex-1 bg-surface-container-lowest flex flex-col relative">
+<!-- Conversation Header -->
+<div class="px-8 py-6 border-b border-surface-container flex justify-between items-center bg-surface-container-lowest/80 backdrop-blur-sm z-10">
+<div class="flex items-center gap-6">
+<div>
+<h1 class="text-3xl font-headline font-extrabold text-on-surface tracking-tighter">Steel Girders HP-400</h1>
+<div class="flex items-center gap-4 mt-1">
+<span class="text-xs font-body font-semibold text-on-primary-fixed-variant bg-primary-fixed px-2 py-0.5 rounded">Active Enquiry</span>
+<span class="text-xs font-body text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="inventory">inventory</span>
+                                Global Metal Logistics Corp.
+                            </span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-end">
+<span class="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">Enquiry Status</span>
+<span class="text-primary font-headline font-black text-lg">RESPONDED</span>
+</div>
+<div class="w-1.5 h-12 bg-primary"></div>
+</div>
+</div>
+<!-- Message Thread -->
+<div class="flex-1 overflow-y-auto p-8 space-y-10">
+<!-- Status Milestone: Received -->
+<div class="flex justify-center">
+<div class="bg-surface-container px-4 py-1 rounded-full text-[10px] font-bold text-on-surface-variant uppercase tracking-widest border border-outline-variant/30">
+                        Enquiry Received • Oct 12, 14:30
+                    </div>
+</div>
+<!-- Message: User -->
+<div class="flex flex-col items-end max-w-2xl ml-auto">
+<div class="bg-primary text-on-primary p-5 rounded-lg rounded-tr-none shadow-md">
+<p class="text-sm font-body leading-relaxed">
+                            Looking for a formal quote for 500 units of the HP-400 Steel Girders for our North Basin project. Please include the lead time for shipping to the Fremantle terminal. 
+                        </p>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="text-[10px] font-bold text-on-surface-variant/60 uppercase">Sent • 14:32</span>
+<span class="material-symbols-outlined text-sm text-primary" data-icon="done_all">done_all</span>
+</div>
+</div>
+<!-- Status Milestone: Reviewing -->
+<div class="flex justify-center">
+<div class="bg-surface-container px-4 py-1 rounded-full text-[10px] font-bold text-on-surface-variant uppercase tracking-widest border border-outline-variant/30">
+                        In Review • Oct 12, 16:15
+                    </div>
+</div>
+<!-- Message: Provider -->
+<div class="flex flex-col items-start max-w-2xl">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-6 h-6 rounded bg-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-xs text-white" data-icon="factory">factory</span>
+</div>
+<span class="text-xs font-bold font-headline text-on-surface uppercase tracking-tight">Global Metal Logistics</span>
+</div>
+<div class="bg-surface-container-low text-on-surface p-5 rounded-lg rounded-tl-none border border-outline-variant/20">
+<p class="text-sm font-body leading-relaxed">
+                            Hello. We have received your request. Our engineering team is currently verifying the current stock of HP-400 at the Eastern yard. We anticipate providing the full quote within 24 hours.
+                        </p>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="text-[10px] font-bold text-on-surface-variant/60 uppercase">Received • 16:18</span>
+</div>
+</div>
+<!-- Message: Provider (Responded) -->
+<div class="flex flex-col items-start max-w-2xl">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-6 h-6 rounded bg-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-xs text-white" data-icon="factory">factory</span>
+</div>
+<span class="text-xs font-bold font-headline text-on-surface uppercase tracking-tight">Global Metal Logistics</span>
+</div>
+<div class="bg-surface-container-low text-on-surface p-5 rounded-lg rounded-tl-none border border-outline-variant/20">
+<p class="text-sm font-body leading-relaxed mb-4">
+                            The quote (QUO-9912-HP) is now attached. Lead time for Fremantle terminal is currently 14 business days.
+                        </p>
+<div class="bg-surface-container-lowest p-3 rounded flex items-center justify-between border border-primary/20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="description">description</span>
+<div>
+<p class="text-xs font-bold text-on-surface">Quote_HP400_NorthBasin.pdf</p>
+<p class="text-[10px] text-on-surface-variant">2.4 MB • PDF Document</p>
+</div>
+</div>
+<button class="text-primary hover:text-on-primary-fixed-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="text-[10px] font-bold text-on-surface-variant/60 uppercase">Responded • 10:45 Today</span>
+</div>
+</div>
+</div>
+<!-- Message Input Panel -->
+<div class="p-8 bg-surface-container-low border-t border-surface-container">
+<div class="relative flex flex-col bg-surface-container-lowest rounded overflow-hidden shadow-inner ring-1 ring-outline-variant/30">
+<div class="flex items-center gap-2 p-3 bg-surface-container-low/50 border-b border-surface-container">
+<button class="p-1.5 hover:bg-surface-container-highest rounded text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="format_bold">format_bold</span>
+</button>
+<button class="p-1.5 hover:bg-surface-container-highest rounded text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="format_italic">format_italic</span>
+</button>
+<button class="p-1.5 hover:bg-surface-container-highest rounded text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="attach_file">attach_file</span>
+</button>
+<div class="w-px h-4 bg-outline-variant mx-1"></div>
+<button class="p-1.5 hover:bg-surface-container-highest rounded text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="sentiment_satisfied">sentiment_satisfied</span>
+</button>
+</div>
+<textarea class="w-full bg-transparent border-none focus:ring-0 p-4 text-sm font-body resize-none h-32" placeholder="Type your message to Global Metal Logistics..."></textarea>
+<div class="flex justify-end p-3 bg-surface-container-low/20">
+<button class="bg-primary text-on-primary px-6 py-2 rounded text-xs font-headline font-black uppercase tracking-widest flex items-center gap-2 hover:bg-on-primary-fixed-variant transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="send">send</span>
+                            Send Message
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Side: Details Monolith -->
+<section class="w-72 bg-surface-container-low p-6 flex flex-col gap-6">
+<div>
+<h4 class="text-[10px] font-black text-on-surface-variant uppercase tracking-[0.2em] mb-4">Industrial Specs</h4>
+<div class="space-y-4">
+<div class="bg-surface-container-lowest p-4 rounded">
+<p class="text-[10px] text-on-surface-variant font-bold uppercase mb-1">Product Code</p>
+<p class="text-sm font-headline font-extrabold text-on-surface">HP-400-GIRDER-A1</p>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded">
+<p class="text-[10px] text-on-surface-variant font-bold uppercase mb-1">Standard Compliance</p>
+<p class="text-sm font-headline font-extrabold text-on-surface">ASTM A6 / A6M</p>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded">
+<p class="text-[10px] text-on-surface-variant font-bold uppercase mb-1">Yield Strength</p>
+<p class="text-sm font-headline font-extrabold text-on-surface">345 MPa (50 ksi)</p>
+</div>
+</div>
+</div>
+<div class="mt-auto">
+<h4 class="text-[10px] font-black text-on-surface-variant uppercase tracking-[0.2em] mb-4">Location Track</h4>
+<div class="h-40 rounded bg-surface-container-highest overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+<img alt="Warehouse Map Location" class="w-full h-full object-cover" data-location="Fremantle, Australia" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2Gq8-6ak2uNJngVK5y6WFi7VPAD27m2tqkBgqERM2guYq6QyacJkTQmgZP5m_0WfWP8NWkZfZFbDsjGZrCM7pDTN_8j6jnsr7KFQ3eORCvky6_nq-ExjGwZy3zL1yul-8sIeNNJdbYk-911fiet761taBTI0TRCPhbjjGMwOKT2dQP1nKM2DfZBaF7RfDoy0a7yEAHmudPWXZmishrQJ-UHeLJhbXj93wjWlKtsXDOZMmP3-xhJz9QJgh3U-JyxX5ps4tiGdYZw"/>
+<div class="absolute bottom-2 left-2 bg-primary text-on-primary text-[10px] font-bold px-2 py-1 rounded">
+                        FREMANTLE TERMINAL
+                    </div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

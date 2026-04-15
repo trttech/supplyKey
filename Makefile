@@ -38,7 +38,7 @@ up:
 down:
 	docker compose down
 
-## fresh: Rebuild and restart Docker containers (no cache)
+## init: Rebuild and restart Docker containers (no cache)
 init: 
 	$(MAKE) check-env
 	docker compose down --remove-orphans
@@ -70,33 +70,39 @@ log-db:
 # Database Management (Kysely)
 # ----------------------------------------------------------------------
 
-.PHONY: db-migrate db-migrate-up db-migrate-down db-status db-gen-types
+.PHONY: db-migrate db-migrate-up db-migrate-down db-status db-gen-types db-seed
 
-## db-migrate: Run all pending Kysely database migrations
+## db-migrate: Run all pending Kysely database migrations and seed demo data
 db-migrate:
 	@echo "Running all pending migrations..."
-	@npx tsx server/db/migrate.ts latest
+	@docker compose exec app npx tsx server/db/migrate.ts latest
 	@$(MAKE) db-gen-types
+	@$(MAKE) db-seed
+
+## db-seed: Seed demo data (products, demo user, enquiries)
+db-seed:
+	@echo "Seeding demo data..."
+	@docker compose exec app npx tsx server/db/seed.ts
 
 ## db-migrate-up: Run next pending migration
 db-migrate-up:
 	@echo "Running next migration..."
-	@npx tsx server/db/migrate.ts up
+	@docker compose exec app npx tsx server/db/migrate.ts up
 	@$(MAKE) db-gen-types
 
 ## db-migrate-down: Rollback last migration
 db-migrate-down:
 	@echo "Rolling back last migration..."
-	@npx tsx server/db/migrate.ts down
+	@docker compose exec app npx tsx server/db/migrate.ts down
 
 ## db-status: Show database migration status
 db-status:
 	@echo "Checking migration status..."
-	@npx tsx server/db/migrate.ts status
+	@docker compose exec app npx tsx server/db/migrate.ts status
 
 ## db-gen-types: Generate TypeScript types from database schema
 db-gen-types:
 	@echo "Generating database types..."
-	@yarn db:generate-types
+	@docker compose exec app yarn db:generate-types
 	@echo "Types generated successfully"
 

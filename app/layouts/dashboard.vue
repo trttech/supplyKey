@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { SidebarProvider } from "@/components/ui/sidebar"
 import { cn } from "@/utils"
+import supplykeyLogo from "~/assets/supplykey_logo.png"
 import type { AppBreadcrumbItem } from "~/components/app-shell"
 
 const {
@@ -47,6 +48,19 @@ const defaultOpen = useCookie<boolean>("sidebar_state", { default: () => true })
 			<div :class="cn('relative z-10 mx-auto flex w-full max-w-420 flex-1 flex-col px-4 pb-8 pt-4 md:px-8 md:pb-10 md:pt-6', contentClass)">
 				<slot />
 			</div>
+
+			<footer class="relative z-10 border-t border-border/40 bg-background/60 py-4 backdrop-blur-sm">
+				<div class="flex items-center justify-center gap-2 leading-none">
+					<span class="text-[0.6rem] font-semibold tracking-[0.2em] text-muted-foreground uppercase leading-none">
+						Powered by
+					</span>
+					<img
+						:src="supplykeyLogo"
+						alt="SupplyKey"
+						class="block h-3 w-auto"
+					>
+				</div>
+			</footer>
 		</main>
 	</SidebarProvider>
 </template>

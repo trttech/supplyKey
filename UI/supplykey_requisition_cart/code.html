@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SupplyKey | Order Finalization</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"on-secondary-fixed-variant": "#384858", "surface-container-low": "#f3f3f7", "surface-container": "#edeef1", "inverse-primary": "#9dcbf6", "inverse-surface": "#2e3133", "on-surface-variant": "#42474e", "primary-container": "#003f63", "on-tertiary": "#ffffff", "on-primary-fixed-variant": "#154a6f", "tertiary-fixed-dim": "#feb77f", "surface-container-lowest": "#ffffff", secondary: "#506070", "on-background": "#1a1c1e", "surface-dim": "#d9dadd", primary: "#002842", "on-primary-fixed": "#001d32", "on-surface": "#1a1c1e", "on-error": "#ffffff", "tertiary-container": "#5d3002", "inverse-on-surface": "#f0f0f4", "secondary-fixed-dim": "#b7c8db", "surface-tint": "#336288", "surface-container-highest": "#e2e2e6", "on-tertiary-fixed-variant": "#6b3b0c", "primary-fixed": "#cde5ff", tertiary: "#3e1d00", "error-container": "#ffdad6", "primary-fixed-dim": "#9dcbf6", "on-primary": "#ffffff", "on-secondary": "#ffffff", "secondary-fixed": "#d3e4f8", "on-tertiary-fixed": "#2f1500", "surface-variant": "#e2e2e6", "on-primary-container": "#7dabd4", "on-error-container": "#93000a", surface: "#f9f9fd", outline: "#72787f", "on-tertiary-container": "#da9862", "on-secondary-fixed": "#0c1d2b", "tertiary-fixed": "#ffdcc3", "surface-container-high": "#e8e8eb", "on-secondary-container": "#566676", "surface-bright": "#f9f9fd", error: "#ba1a1a", background: "#f9f9fd", "outline-variant": "#c1c7cf", "secondary-container": "#d3e4f8"}, fontFamily: {headline: ["Manrope"], body: ["Inter"], label: ["Inter"], display: "Manrope"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}}}};</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .brand-font { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<!-- Top Navigation (Shared Component Integration) -->
+<header class="bg-zinc-50/80 backdrop-blur-xl docked full-width top-0 z-50 flex justify-between items-center px-8 h-16 w-full sticky">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black tracking-tighter text-zinc-900 brand-font">MONOLITH INDUSTRIAL</span>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-zinc-500 font-medium hover:bg-zinc-200/50 transition-all px-3 py-1 rounded" href="#">Dashboard</a>
+<a class="text-orange-600 font-bold border-b-2 border-orange-600 px-3 py-1" href="#">Shop</a>
+<a class="text-zinc-500 font-medium hover:bg-zinc-200/50 transition-all px-3 py-1 rounded" href="#">RFP Pricing</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-zinc-500 hover:bg-zinc-200/50 transition-all rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-zinc-500 hover:bg-zinc-200/50 transition-all rounded-full">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="professional industrial procurement manager profile portrait in bright office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNtcsXkgMdUqYRlv9GFCHUf9c23GE6bgC7mRA9aJqmswjCXc4jwRoUMkwNNXr7NzmfiFs_2eolNpxgr0RcFcibw2TcRBo4kMvxF3qBeJqx80HC43ph_p8WbJfVHIOjarwGv3sJ8HogAF9T8rXNWa8ctC2AhAD1Z5T0_fnHt2DdIvSmQNo2J1CBFn_NnG-ialFGNAQRx_e4iP4ad1bUxakYVCD-I-gG0OusgVkw4QBTyaCwDnUtrmizdpLFI7f6OQz_gdhOJQDMpQ"/>
+</div>
+</div>
+</header>
+<main class="flex-grow max-w-7xl mx-auto w-full px-8 py-12">
+<!-- Order Progress Stepper -->
+<div class="mb-12">
+<div class="flex justify-between items-center max-w-3xl mx-auto relative">
+<!-- Connector Line -->
+<div class="absolute top-1/2 left-0 w-full h-0.5 bg-surface-container-highest -z-10 -translate-y-1/2"></div>
+<!-- Steps -->
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-sm">shopping_cart</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest text-primary">Cart</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">local_shipping</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Logistics</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">payments</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Billing</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">fact_check</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Review</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- Left Side: Main Form -->
+<div class="lg:col-span-8 space-y-12">
+<!-- Detailed List of Items -->
+<section>
+<h2 class="text-2xl font-black tracking-tight mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">inventory_2</span>
+                        REQUISITION MANIFEST
+                    </h2>
+<div class="bg-surface-container-low rounded-lg p-1 space-y-1">
+<!-- Item 1 -->
+<div class="bg-surface-container-lowest p-4 rounded flex items-center gap-6 group transition-all">
+<div class="w-24 h-24 bg-surface-container rounded overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="industrial heavy duty ball bearing component on a clean technical background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNfns6zDGDCVsAy6UHWTaPzr6exrodoUsZ3aIf8ggGg0wKrI8xl7zR_sLdZFtHFcIGYaIm5LgRp-YEpClmIychvt2EaP_9C_k0x7SElaC00p5JFDNnSnlWy1a98eCBWDVlfBRlCjvLJPKDJsnHv0cNl_yfwHHw8ctMhBCuWPYyGh_vb5W409teB9hnjGGiv1jIpDmknATDrj680Ogj6xDlbbGUL-69vpS_h4GzVsJ2-uL14V9LQ2Qcs01yjvowWtKq_PQBEZacCA"/>
+</div>
+<div class="flex-grow">
+<p class="text-xs font-mono text-outline uppercase tracking-wider mb-1">SKU: IND-9923-TR</p>
+<h3 class="font-bold text-lg text-on-surface leading-tight">Forged Alloy Steel Shaft Coupling</h3>
+<p class="text-sm text-on-surface-variant mt-1">Industrial Grade High-Torque</p>
+</div>
+<div class="text-right flex flex-col items-end gap-3">
+<p class="font-bold text-lg tracking-tight">$420.00 <span class="text-xs font-medium text-outline uppercase">/ UNIT</span></p>
+<div class="flex items-center bg-surface-container rounded border border-transparent focus-within:border-primary">
+<button class="px-2 py-1 hover:text-primary transition-colors"><span class="material-symbols-outlined">remove</span></button>
+<input class="w-12 bg-transparent border-none text-center font-bold focus:ring-0 p-1 text-sm" type="number" value="12"/>
+<button class="px-2 py-1 hover:text-primary transition-colors"><span class="material-symbols-outlined">add</span></button>
+</div>
+<button class="text-xs font-bold uppercase text-error tracking-tighter opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">delete</span> Remove
+                                </button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface-container-lowest p-4 rounded flex items-center gap-6 group transition-all">
+<div class="w-24 h-24 bg-surface-container rounded overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="set of high precision industrial hydraulic valves and fittings in soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyxYYz4OLrAebaLCavEYgJlbzE6BP-R3iT6hPnMAzaMo0LBzHs5RHZd9AshwE2iZmZybztbYUMXZDWQDQIDJzRbOkxAdSyq420T7zFExQZRO9SCFmJfmSKmMFNRIEySFpG4NgAL2OtAFSCbtuuU0Uz7hRgjNqsVpjDnxdrPvtXCcNfxylc2014WEPF_PfAbKi5z6BZUZulfC6cloZ3LC12Ygf_u7UPPWFpNUAwMrPtSXqhqfSO8Q7FD4FmSpKUtKoMBXWbaJgmzQ"/>
+</div>
+<div class="flex-grow">
+<p class="text-xs font-mono text-outline uppercase tracking-wider mb-1">SKU: HYD-4412-PX</p>
+<h3 class="font-bold text-lg text-on-surface leading-tight">Pressure Control Valve - Series 7</h3>
+<p class="text-sm text-on-surface-variant mt-1">Stainless Steel Housing / IP67</p>
+</div>
+<div class="text-right flex flex-col items-end gap-3">
+<p class="font-bold text-lg tracking-tight">$1,150.00 <span class="text-xs font-medium text-outline uppercase">/ UNIT</span></p>
+<div class="flex items-center bg-surface-container rounded border border-transparent focus-within:border-primary">
+<button class="px-2 py-1 hover:text-primary transition-colors"><span class="material-symbols-outlined">remove</span></button>
+<input class="w-12 bg-transparent border-none text-center font-bold focus:ring-0 p-1 text-sm" type="number" value="3"/>
+<button class="px-2 py-1 hover:text-primary transition-colors"><span class="material-symbols-outlined">add</span></button>
+</div>
+<button class="text-xs font-bold uppercase text-error tracking-tighter opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">delete</span> Remove
+                                </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Shipping & Logistics -->
+<section>
+<h2 class="text-2xl font-black tracking-tight mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+                        LOGISTICS &amp; DESTINATION
+                    </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Address Selection -->
+<div class="space-y-4">
+<label class="text-xs font-black uppercase tracking-widest text-on-surface-variant">Delivery Site</label>
+<div class="bg-surface-container-low p-4 rounded-lg border-2 border-primary relative cursor-pointer">
+<div class="absolute top-4 right-4 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h4 class="font-bold">Terminal Alpha-7 Central</h4>
+<p class="text-sm text-on-surface-variant mt-1 leading-relaxed">
+                                    1200 Mining Road, Industrial District<br/>
+                                    Northern Territory, AU 0800
+                                </p>
+</div>
+<button class="w-full py-3 border-2 border-dashed border-outline-variant text-sm font-bold uppercase tracking-wider text-outline hover:bg-surface-container transition-colors">
+                                Add New Site Location
+                            </button>
+</div>
+<!-- Shipping Method -->
+<div class="space-y-4">
+<label class="text-xs font-black uppercase tracking-widest text-on-surface-variant">Carrier Service</label>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest rounded border border-transparent hover:border-primary-fixed transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<input checked="" class="text-primary focus:ring-primary border-outline" name="shipping" type="radio"/>
+<span class="font-bold text-sm">Heavy Freight (LTL)</span>
+</div>
+<span class="text-xs font-mono">$185.00</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest rounded border border-transparent hover:border-primary-fixed transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<input class="text-primary focus:ring-primary border-outline" name="shipping" type="radio"/>
+<span class="font-bold text-sm">Express Courier</span>
+</div>
+<span class="text-xs font-mono">$450.00</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest rounded border border-transparent hover:border-primary-fixed transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<input class="text-primary focus:ring-primary border-outline" name="shipping" type="radio"/>
+<span class="font-bold text-sm">Standard Logistics</span>
+</div>
+<span class="text-xs font-mono">$95.00</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Payment/Billing -->
+<section>
+<h2 class="text-2xl font-black tracking-tight mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">account_balance</span>
+                        BILLING &amp; AUTHORIZATION
+                    </h2>
+<div class="bg-surface-container-low p-6 rounded-lg grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-4">
+<label class="text-xs font-black uppercase tracking-widest text-on-surface-variant">Payment Protocol</label>
+<select class="w-full bg-surface-container-lowest border-none rounded p-3 text-sm font-bold focus:ring-2 focus:ring-primary">
+<option>Invoice Net-30</option>
+<option>Purchase Order (PO)</option>
+<option>Corporate Account Credit</option>
+</select>
+</div>
+<div class="space-y-4">
+<label class="text-xs font-black uppercase tracking-widest text-on-surface-variant">Purchase Order Number</label>
+<input class="w-full bg-surface-container-lowest border-none rounded p-3 text-sm font-bold focus:ring-2 focus:ring-primary" placeholder="e.g. PO-2024-0001" type="text"/>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Side: Summary Sticky -->
+<aside class="lg:col-span-4 sticky top-24">
+<div class="bg-surface-container-highest p-8 rounded-lg space-y-8">
+<h2 class="text-xl font-black tracking-tighter">ORDER SUMMARY</h2>
+<div class="space-y-4">
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant font-medium">Subtotal (5 Items)</span>
+<span class="font-bold">$8,490.00</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant font-medium">Logistics &amp; Heavy Freight</span>
+<span class="font-bold">$185.00</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant font-medium">Environmental Compliance Tax</span>
+<span class="font-bold">$112.45</span>
+</div>
+<div class="pt-4 border-t border-outline-variant flex justify-between items-end">
+<div>
+<span class="text-xs font-black uppercase tracking-widest text-primary">Grand Total</span>
+<p class="text-xs text-on-surface-variant font-medium mt-1">Estimated Lead Time: 4-6 Days</p>
+</div>
+<span class="text-3xl font-black tracking-tighter">$8,787.45</span>
+</div>
+</div>
+<div class="space-y-4">
+<button class="w-full bg-primary text-on-primary py-5 rounded font-black text-lg tracking-widest uppercase hover:opacity-90 active:scale-95 transition-all shadow-xl shadow-primary/20">
+                            Submit Requisition
+                        </button>
+<p class="text-[10px] text-center text-on-surface-variant uppercase tracking-tight leading-normal">
+                            By submitting this requisition, you confirm that you have the delegated procurement authority for <span class="font-bold">TERMINAL ALPHA-7</span> and agree to the SupplyKey Terms of Supply.
+                        </p>
+</div>
+<div class="pt-6 border-t border-outline-variant grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1">
+<span class="material-symbols-outlined text-primary text-xl">verified_user</span>
+<span class="text-[10px] font-bold uppercase">ISO 9001 Certified</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="material-symbols-outlined text-primary text-xl">support_agent</span>
+<span class="text-[10px] font-bold uppercase">Priority Support</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer (Shared Component Integration) -->
+<footer class="bg-zinc-200 dark:bg-zinc-950 w-full py-12 px-8 mt-auto">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
+<div class="space-y-4">
+<span class="font-['Manrope'] font-bold text-zinc-400 uppercase tracking-tighter">Compliance</span>
+<nav class="flex flex-col gap-2">
+<a class="text-zinc-500 font-['Inter'] text-xs uppercase tracking-tighter hover:text-orange-600 transition-colors" href="#">Terms of Supply</a>
+<a class="text-zinc-500 font-['Inter'] text-xs uppercase tracking-tighter hover:text-orange-600 transition-colors" href="#">Safety Data</a>
+</nav>
+</div>
+<div class="space-y-4">
+<span class="font-['Manrope'] font-bold text-zinc-400 uppercase tracking-tighter">Reporting</span>
+<nav class="flex flex-col gap-2">
+<a class="text-zinc-500 font-['Inter'] text-xs uppercase tracking-tighter hover:text-orange-600 transition-colors" href="#">ESG Report</a>
+<a class="text-zinc-500 font-['Inter'] text-xs uppercase tracking-tighter hover:text-orange-600 transition-colors" href="#">Compliance</a>
+</nav>
+</div>
+<div class="md:col-span-2 flex flex-col items-end justify-between">
+<div class="text-right">
+<p class="font-['Inter'] text-xs uppercase tracking-tighter text-zinc-500 leading-relaxed">
+                        © 2024 Kinetic Monolith Industrial Supply.<br/>
+                        ISO 9001:2015 Certified.
+                    </p>
+</div>
+<div class="mt-8">
+<span class="font-['Manrope'] font-black text-2xl text-zinc-300 tracking-tighter">MONOLITH</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

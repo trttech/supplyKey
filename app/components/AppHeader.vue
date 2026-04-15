@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ShoppingCart } from "@lucide/vue"
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -8,6 +9,7 @@ import {
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import { SidebarTrigger } from "@/components/ui/sidebar"
+import { useCart } from "~/composables/useCart"
 import type { AppBreadcrumbItem } from "~/components/app-shell"
 
 const {
@@ -23,12 +25,16 @@ const {
 }>()
 
 const route = useRoute()
+const cart = useCart()
+onMounted(() => {
+	cart.refresh()
+})
 
 const generatedBreadcrumbItems = computed<AppBreadcrumbItem[]>(() => {
 	const segments = route.path.split("/").filter(Boolean)
 	const items: AppBreadcrumbItem[] = [
 		{
-			label: "Starter",
+			label: "Dashboard",
 			href: route.path === "/dashboard" ? undefined : "/dashboard",
 		},
 	]
@@ -92,13 +98,26 @@ const breadcrumbItems = computed(() => breadcrumbs ?? generatedBreadcrumbItems.v
 
 			<div class="bg-border/70 hidden h-5 w-px lg:block" />
 
-			<div class="border-border/70 bg-card/78 text-muted-foreground hidden items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium lg:flex">
+			<div class="border-border/70 bg-card/78 text-muted-foreground hidden items-center gap-2 rounded-md border px-3 py-1 text-[0.62rem] font-bold tracking-[0.16em] uppercase lg:flex">
 				<span class="status-dot text-primary" />
-				Starter Console
+				SupplyKey Console
 			</div>
 		</div>
 
 		<div class="ml-auto flex items-center gap-2">
+			<NuxtLink
+				to="/cart"
+				class="relative inline-flex items-center gap-2 rounded-md border border-border/70 bg-card px-3 py-2 text-[0.62rem] font-bold tracking-[0.16em] text-foreground uppercase transition-all hover:border-primary hover:text-primary"
+			>
+				<ShoppingCart class="size-4" />
+				<span class="hidden md:inline">Cart</span>
+				<span
+					v-if="cart.summary.value.itemCount > 0"
+					class="absolute -right-1.5 -top-1.5 flex size-5 items-center justify-center rounded-full bg-primary text-[0.58rem] font-bold tabular-nums text-primary-foreground"
+				>
+					{{ cart.summary.value.itemCount }}
+				</span>
+			</NuxtLink>
 			<ThemeToggle v-if="showThemeToggle" />
 		</div>
 	</header>

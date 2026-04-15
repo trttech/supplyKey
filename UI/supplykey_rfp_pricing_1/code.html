@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact Pricing | SupplyKey Industrial</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"inverse-on-surface": "#f0f0f4", "outline-variant": "#c1c7cf", "surface-container-high": "#e8e8eb", "tertiary-container": "#5d3002", "inverse-surface": "#2e3133", "surface-container-low": "#f3f3f7", "on-secondary-container": "#566676", secondary: "#506070", "surface-container-highest": "#e2e2e6", "surface-bright": "#f9f9fd", "surface-variant": "#e2e2e6", "on-secondary-fixed": "#0c1d2b", "tertiary-fixed": "#ffdcc3", "error-container": "#ffdad6", "secondary-container": "#d3e4f8", "on-tertiary-fixed": "#2f1500", "on-secondary-fixed-variant": "#384858", "primary-fixed": "#cde5ff", "on-background": "#1a1c1e", "primary-fixed-dim": "#9dcbf6", "on-tertiary-container": "#da9862", tertiary: "#3e1d00", "on-primary-fixed-variant": "#154a6f", "on-error": "#ffffff", "on-surface-variant": "#42474e", "tertiary-fixed-dim": "#feb77f", surface: "#f9f9fd", "inverse-primary": "#9dcbf6", background: "#f9f9fd", "primary-container": "#003f63", "secondary-fixed": "#d3e4f8", "on-secondary": "#ffffff", primary: "#002842", outline: "#72787f", "surface-tint": "#336288", "surface-container": "#edeef1", "surface-dim": "#d9dadd", "on-error-container": "#93000a", "secondary-fixed-dim": "#b7c8db", "on-surface": "#1a1c1e", "on-tertiary-fixed-variant": "#6b3b0c", "on-primary-fixed": "#001d32", "on-primary": "#ffffff", "surface-container-lowest": "#ffffff", "on-primary-container": "#7dabd4", "on-tertiary": "#ffffff", error: "#ba1a1a"}, fontFamily: {headline: ["Manrope"], body: ["Inter"], label: ["Inter"], display: "Manrope"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}}}};</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-zinc-100 dark:bg-zinc-900 flex flex-col border-r border-zinc-200 dark:border-zinc-800 z-50">
+<div class="px-6 py-8">
+<div class="flex items-center gap-3 mb-10">
+<div class="w-10 h-10 bg-primary-container flex items-center justify-center rounded-lg shadow-inner">
+<span class="material-symbols-outlined text-white" data-icon="precision_manufacturing">precision_manufacturing</span>
+</div>
+<div>
+<h1 class="text-lg font-extrabold text-orange-600 dark:text-orange-500 leading-tight">SupplyKey</h1>
+<p class="text-[10px] uppercase tracking-[0.2em] font-bold text-on-surface-variant">Mining Operations</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-all font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-all font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span>Create Order</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-zinc-50 dark:bg-zinc-950 text-orange-600 dark:text-orange-500 border-l-4 border-orange-600 transition-all font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="request_quote">request_quote</span>
+<span>Contact Pricing</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-all font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="engineering">engineering</span>
+<span>Request Estimate</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-all font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+<span>Send Enquiry</span>
+</a>
+</nav>
+<button class="mt-10 w-full bg-primary-container text-white py-3 font-bold text-xs uppercase tracking-widest rounded-md shadow-lg shadow-orange-600/20 active:translate-x-1 duration-200">
+                New Requisition
+            </button>
+</div>
+<div class="mt-auto border-t border-zinc-200 dark:border-zinc-800 p-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span>Help Center</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Log Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 ml-64 min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-40 bg-zinc-50/80 dark:bg-zinc-950/80 backdrop-blur-md flex justify-between items-center px-12 py-4 w-full border-b border-zinc-200 dark:border-zinc-800">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none focus:ring-2 focus:ring-primary rounded-md text-sm" placeholder="Search approved products, RFP numbers, or vendors..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<button class="p-2 text-zinc-600 hover:bg-zinc-200 rounded-full transition-colors relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="p-2 text-zinc-600 hover:bg-zinc-200 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<span class="h-6 w-px bg-zinc-200 mx-2"></span>
+<button class="text-xs font-bold uppercase tracking-widest text-zinc-600 hover:text-primary transition-colors">Support</button>
+</div>
+<div class="flex items-center gap-3 pl-4 border-l border-zinc-200">
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface leading-none">Marcus Thorne</p>
+<p class="text-[10px] text-on-surface-variant font-medium">Procurement Manager</p>
+</div>
+<img alt="User profile avatar" class="w-10 h-10 rounded-full object-cover grayscale" data-alt="portrait of a professional procurement manager in a white shirt with a clean corporate background, neutral lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtg760lw8fAgTXUBgmQZXb2YbvTGojtvw4lrfarDacvrD7EtvEi2I4OCDkMc9y2KIFZjp5gCYHRaDZP4QUjo3dgnsj6wDH304kbtTdeBUOSSrMNg0xz_N5twrn1MFfjBZvF9xy039SnTqeGG88M0_zEc5nUP_KtMaV-hdFH594P1wRaLYqd7ss7-DNg2K3D7j0EDptiURrGYydxSRAKUdvMV4EMBqTVwcPJ12ACgnbV0_PxgNxhY9WLcKWZN1CS7E84Q-NgmvOrg"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-12 space-y-8 max-w-7xl">
+<!-- Header Section -->
+<div class="flex justify-between items-end">
+<div>
+<h2 class="text-4xl font-black text-on-surface tracking-tighter uppercase mb-2">Contact Pricing</h2>
+<p class="text-on-surface-variant max-w-md">Access pre-negotiated rates and contractual pricing for active mining operations and equipment supply chains.</p>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container-high px-6 py-4 rounded-lg flex items-center gap-4">
+<span class="material-symbols-outlined text-primary scale-125" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<div>
+<p class="text-[10px] uppercase font-bold text-on-surface-variant tracking-wider">Active Contact Agreements</p>
+<p class="text-2xl font-black tracking-tight">142</p>
+</div>
+</div>
+<div class="bg-surface-container-high px-6 py-4 rounded-lg flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary scale-125" data-icon="event_available" style="font-variation-settings: 'FILL' 1;">event_available</span>
+<div>
+<p class="text-[10px] uppercase font-bold text-on-surface-variant tracking-wider">Renewals Due (30d)</p>
+<p class="text-2xl font-black tracking-tight text-primary">08</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Table Section -->
+<section class="bg-surface-container-lowest overflow-hidden shadow-sm">
+<!-- Filter Bar -->
+<div class="p-4 bg-surface-container-low flex flex-wrap items-center justify-between gap-4">
+<div class="flex gap-2">
+<button class="bg-surface-container-highest px-4 py-2 text-xs font-bold uppercase tracking-wider rounded border border-transparent hover:border-primary transition-all">All Products</button>
+<button class="bg-surface-container-low px-4 py-2 text-xs font-bold uppercase tracking-wider rounded text-on-surface-variant hover:bg-surface-container-highest transition-all">Heavy Machinery</button>
+<button class="bg-surface-container-low px-4 py-2 text-xs font-bold uppercase tracking-wider rounded text-on-surface-variant hover:bg-surface-container-highest transition-all">Consumables</button>
+<button class="bg-surface-container-low px-4 py-2 text-xs font-bold uppercase tracking-wider rounded text-on-surface-variant hover:bg-surface-container-highest transition-all">Safety Gear</button>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Sort by:</span>
+<select class="bg-transparent border-none text-xs font-bold focus:ring-0 cursor-pointer">
+<option>Expiry Date (Soonest)</option>
+<option>Price (Low to High)</option>
+<option>Vendor Name</option>
+</select>
+</div>
+</div>
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-4 px-8 py-5 border-b border-zinc-100 bg-zinc-50/50">
+<div class="col-span-4 text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant">Product &amp; Specification</div>
+<div class="col-span-2 text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant text-right">Approved Price</div>
+<div class="col-span-2 text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant text-center">Vendor / RFP #</div>
+<div class="col-span-2 text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant text-center">Expiry Date</div>
+<div class="col-span-2 text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant text-right">Actions</div>
+</div>
+<!-- Product Rows -->
+<div class="divide-y divide-zinc-100">
+<!-- Row 1 -->
+<div class="grid grid-cols-12 gap-4 px-8 py-6 items-center hover:bg-zinc-50 transition-colors group">
+<div class="col-span-4 flex items-center gap-4">
+<div class="w-12 h-12 bg-zinc-100 rounded flex-shrink-0 flex items-center justify-center overflow-hidden">
+<img alt="Excavator Part" class="w-full h-full object-cover grayscale" data-alt="heavy industrial hydraulic piston for excavator, metallic silver and grey tones, sharp industrial lighting, bokeh warehouse background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB0PulnrKqQns2d9j6rCjSjA8Pr1Eg5v-8R0-PbONQgGF-7xNiqY_ryx6PGJZY432v01kiII1uA2Suuc04Np6uQRa6d1sTDkQycwAE9egDQQTqhhIiS0Q7M6dKRCT27xPfj4zPQHiXC-R0dIXVuF22voTIsNAlD6SOdSBLrGhQl9YtLl7GaLoD_hZrvnMui71ZTH7KuFbS6NciI9fEHciwS6o-5m4dXaeJ3NA7c6sG0xvVXcLZxWTU0OIV3Kb-N3E3kfCYMlvEUw"/>
+</div>
+<div>
+<h3 class="text-sm font-bold text-on-surface group-hover:text-primary transition-colors">Hydraulic Excavator Cylinder HP-900</h3>
+<p class="text-[10px] font-medium text-on-surface-variant uppercase tracking-tighter">SKU: SK-HYD-900-XP | 4500 PSI Grade</p>
+</div>
+</div>
+<div class="col-span-2 text-right">
+<p class="text-lg font-black tracking-tight text-on-surface">$12,450.00</p>
+<p class="text-[10px] font-bold text-green-600 uppercase">Fixed (24 Mo.)</p>
+</div>
+<div class="col-span-2 text-center">
+<p class="text-xs font-bold text-on-surface">Atlas Copco GMBH</p>
+<p class="text-[10px] font-medium text-primary py-0.5 px-2 bg-orange-50 rounded-full inline-block mt-1">#RFP-2024-MIN-012</p>
+</div>
+<div class="col-span-2 text-center">
+<div class="inline-flex flex-col items-center">
+<span class="text-xs font-bold text-on-surface">Dec 14, 2025</span>
+<span class="text-[10px] font-medium text-on-surface-variant">422 days remaining</span>
+</div>
+</div>
+<div class="col-span-2 flex justify-end gap-3">
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-zinc-100 rounded transition-all">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+</button>
+<button class="bg-primary text-white px-4 py-2 text-xs font-black uppercase tracking-widest rounded flex items-center gap-2 hover:bg-orange-700 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[16px]" data-icon="add_shopping_cart">add_shopping_cart</span>
+                                Buy Now
+                            </button>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="grid grid-cols-12 gap-4 px-8 py-6 items-center hover:bg-zinc-50 transition-colors group">
+<div class="col-span-4 flex items-center gap-4">
+<div class="w-12 h-12 bg-zinc-100 rounded flex-shrink-0 flex items-center justify-center overflow-hidden">
+<img alt="Conveyor Belt" class="w-full h-full object-cover grayscale" data-alt="industrial rubber conveyor belt roll, heavy duty texture, dark charcoal color, side view in industrial setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_ZYksVugHwjjLSeF69tUyhbFeyOOIXw5DK-GlDOfWAH5rUChpvDLlC0JY6V-FsLsOiAHnRt59meU0V5znqNJLIo8UOzWTjXKKBReatzDUuSxLVaYre0RKt7RqD-ITFtAavhLuXqOafu4Y263-LktK3ky0SjDnCUrDHWA0yxorj_u1ngKWEBASeGojBhMM1Vj79DCXINuedIxxvNI7-dPa_euZsTAr2RC-Sz7d5VuUaMQRGf4DsMYUaPRKrP6tVF_ZKb8Eq6QAgw"/>
+</div>
+<div>
+<h3 class="text-sm font-bold text-on-surface group-hover:text-primary transition-colors">Reinforced Steel-Core Conveyor 1200mm</h3>
+<p class="text-[10px] font-medium text-on-surface-variant uppercase tracking-tighter">SKU: CONV-RST-1200 | Per Meter Pricing</p>
+</div>
+</div>
+<div class="col-span-2 text-right">
+<p class="text-lg font-black tracking-tight text-on-surface">$284.50</p>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase">Bulk Multiplier: 0.92x</p>
+</div>
+<div class="col-span-2 text-center">
+<p class="text-xs font-bold text-on-surface">Metso Outotec</p>
+<p class="text-[10px] font-medium text-primary py-0.5 px-2 bg-orange-50 rounded-full inline-block mt-1">#RFP-2023-SUP-889</p>
+</div>
+<div class="col-span-2 text-center">
+<div class="inline-flex flex-col items-center">
+<span class="text-xs font-bold text-error">Nov 02, 2024</span>
+<span class="text-[10px] font-black text-error uppercase tracking-tighter bg-error-container px-2 rounded mt-1">Expiring Soon</span>
+</div>
+</div>
+<div class="col-span-2 flex justify-end gap-3">
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-zinc-100 rounded transition-all">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+</button>
+<button class="bg-primary text-white px-4 py-2 text-xs font-black uppercase tracking-widest rounded flex items-center gap-2 hover:bg-orange-700 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[16px]" data-icon="add_shopping_cart">add_shopping_cart</span>
+                                Buy Now
+                            </button>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="grid grid-cols-12 gap-4 px-8 py-6 items-center hover:bg-zinc-50 transition-colors group">
+<div class="col-span-4 flex items-center gap-4">
+<div class="w-12 h-12 bg-zinc-100 rounded flex-shrink-0 flex items-center justify-center overflow-hidden">
+<img alt="Mining Helmet" class="w-full h-full object-cover grayscale" data-alt="industrial yellow mining helmet with attached headlamp, clean product shot against dark grey background, professional industrial style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArPdAKcB_I1l7MYFITtE-Q8tfJ-VzuzboApclC9alPGy3oYAqE0C6VVnypnrDeT0gfD4Jd6PLTtr3K4FU01i_PgbeYTrZ0HnXPnPxzXgQqm-dj1AXKNSdIzhNYXfuPFpJa7PHqHonwIUbT2JsxQ8JB2CNPvavWuyrE-bRpEzE2_r5TLqrdiDifSp7FGMtnQImTkE9hvd4Lo3Qt86iOuZIwJvMlSV5scO72n4dkbN2BU9LNY_bKMYzZ_5BWWE8VBDltZMsAd7TK3g"/>
+</div>
+<div>
+<h3 class="text-sm font-bold text-on-surface group-hover:text-primary transition-colors">Advanced Comm-Headset Pro III</h3>
+<p class="text-[10px] font-medium text-on-surface-variant uppercase tracking-tighter">SKU: SAF-COM-33 | ATEX Zone 1 Certified</p>
+</div>
+</div>
+<div class="col-span-2 text-right">
+<p class="text-lg font-black tracking-tight text-on-surface">$1,120.00</p>
+<p class="text-[10px] font-bold text-green-600 uppercase">Fixed (12 Mo.)</p>
+</div>
+<div class="col-span-2 text-center">
+<p class="text-xs font-bold text-on-surface">3M Global Safety</p>
+<p class="text-[10px] font-medium text-primary py-0.5 px-2 bg-orange-50 rounded-full inline-block mt-1">#RFP-2024-SAF-001</p>
+</div>
+<div class="col-span-2 text-center">
+<div class="inline-flex flex-col items-center">
+<span class="text-xs font-bold text-on-surface">Aug 19, 2025</span>
+<span class="text-[10px] font-medium text-on-surface-variant">305 days remaining</span>
+</div>
+</div>
+<div class="col-span-2 flex justify-end gap-3">
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-zinc-100 rounded transition-all">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+</button>
+<button class="bg-primary text-white px-4 py-2 text-xs font-black uppercase tracking-widest rounded flex items-center gap-2 hover:bg-orange-700 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[16px]" data-icon="add_shopping_cart">add_shopping_cart</span>
+                                Buy Now
+                            </button>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="grid grid-cols-12 gap-4 px-8 py-6 items-center hover:bg-zinc-50 transition-colors group">
+<div class="col-span-4 flex items-center gap-4">
+<div class="w-12 h-12 bg-zinc-100 rounded flex-shrink-0 flex items-center justify-center overflow-hidden">
+<img alt="Drilling Equipment" class="w-full h-full object-cover grayscale" data-alt="close up of massive industrial drill bit with tungsten carbide tips, dramatic metal texture, workshop setting with sparks in far background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV5vyNRDeUO_vRAwZAXeTtLDAqwXQfFtrhT2CcWwa5Lv37722KPfV0eY6tHprpkYD7lKqdi8YgcDfQ8cW2MRII4gXsM0txprC7l4QEkT9eF2SJrYIGvnUQfEGxF-CmpsRX__-tyiiNHcbC_tH2Qv9VYD0hZZbEO9GYp20b8xSH344RZS7YVOugJEa_yLIVQCQP8t70ILPZIjnanjUuk34m-tihDspONJVImKacrBGoJPzZoizYal7ruFdb_QI4M5BEv8tBVHd9Ew"/>
+</div>
+<div>
+<h3 class="text-sm font-bold text-on-surface group-hover:text-primary transition-colors">Tungsten-Tipped Rotary Drill Bit 15"</h3>
+<p class="text-[10px] font-medium text-on-surface-variant uppercase tracking-tighter">SKU: DRILL-TNG-15B | High Abrasion Formations</p>
+</div>
+</div>
+<div class="col-span-2 text-right">
+<p class="text-lg font-black tracking-tight text-on-surface">$3,890.00</p>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase">Index-Linked (Quarterly)</p>
+</div>
+<div class="col-span-2 text-center">
+<p class="text-xs font-bold text-on-surface">Sandvik Mining</p>
+<p class="text-[10px] font-medium text-primary py-0.5 px-2 bg-orange-50 rounded-full inline-block mt-1">#RFP-2023-MIN-442</p>
+</div>
+<div class="col-span-2 text-center">
+<div class="inline-flex flex-col items-center">
+<span class="text-xs font-bold text-on-surface">Feb 28, 2025</span>
+<span class="text-[10px] font-medium text-on-surface-variant">133 days remaining</span>
+</div>
+</div>
+<div class="col-span-2 flex justify-end gap-3">
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-zinc-100 rounded transition-all">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+</button>
+<button class="bg-primary text-white px-4 py-2 text-xs font-black uppercase tracking-widest rounded flex items-center gap-2 hover:bg-orange-700 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[16px]" data-icon="add_shopping_cart">add_shopping_cart</span>
+                                Buy Now
+                            </button>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="p-6 bg-zinc-50 flex items-center justify-between">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Showing 1-15 of 142 Approved Products</p>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded border border-zinc-200 text-zinc-400 hover:bg-zinc-200 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-primary text-white text-[10px] font-bold">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-zinc-200 text-on-surface text-[10px] font-bold hover:bg-zinc-200 transition-all">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-zinc-200 text-on-surface text-[10px] font-bold hover:bg-zinc-200 transition-all">3</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-zinc-200 text-zinc-600 hover:bg-zinc-200 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Secondary CTA Section / Info -->
+<div class="grid grid-cols-3 gap-8 pb-12">
+<div class="bg-zinc-100 p-6 rounded-lg border border-zinc-200/50">
+<span class="material-symbols-outlined text-primary mb-3" data-icon="verified_user">verified_user</span>
+<h4 class="text-xs font-black uppercase tracking-widest mb-2">Compliance Check</h4>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">All products in this list have passed the 2024 Industrial Compliance &amp; Safety Audit #QA-900. Pricing is locked as per the Master Service Agreement.</p>
+</div>
+<div class="bg-zinc-100 p-6 rounded-lg border border-zinc-200/50">
+<span class="material-symbols-outlined text-primary mb-3" data-icon="contract_edit">contract_edit</span>
+<h4 class="text-xs font-black uppercase tracking-widest mb-2">RFP Negotiations</h4>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">Missing a required SKU? Initiate a new Request for Proposal to invite vendors to submit competitive bids for site-specific requirements.</p>
+</div>
+<div class="bg-zinc-100 p-6 rounded-lg border border-zinc-200/50">
+<span class="material-symbols-outlined text-primary mb-3" data-icon="local_shipping">local_shipping</span>
+<h4 class="text-xs font-black uppercase tracking-widest mb-2">Logistics Routing</h4>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">Consolidated shipping rates apply for all approved RFP items when ordered through the SupplyKey central portal for the Northern Territories.</p>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full py-8 mt-auto bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 gap-4">
+<p class="font-['Inter'] text-xs uppercase tracking-widest text-zinc-500 dark:text-zinc-400">© 2024 SupplyKey Industrial. Kinetic Monolith Precision.</p>
+<div class="flex gap-8">
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-zinc-500 dark:text-zinc-400 hover:text-orange-600 transition-colors" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-zinc-500 dark:text-zinc-400 hover:text-orange-600 transition-colors" href="#">Terms of Service</a>
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-zinc-500 dark:text-zinc-400 hover:text-orange-600 transition-colors" href="#">Compliance</a>
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-zinc-500 dark:text-zinc-400 hover:text-orange-600 transition-colors" href="#">Mining Standards</a>
+</div>
+</div>
+</footer>
+</main>
+</body></html>

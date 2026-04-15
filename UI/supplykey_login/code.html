@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login | SupplyKey Industrial</title>
+<!-- Tailwind CSS with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Manrope & Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"inverse-on-surface": "#f0f0f4", "outline-variant": "#c1c7cf", "surface-container-high": "#e8e8eb", "tertiary-container": "#5d3002", "inverse-surface": "#2e3133", "surface-container-low": "#f3f3f7", "on-secondary-container": "#566676", secondary: "#506070", "surface-container-highest": "#e2e2e6", "surface-bright": "#f9f9fd", "surface-variant": "#e2e2e6", "on-secondary-fixed": "#0c1d2b", "tertiary-fixed": "#ffdcc3", "error-container": "#ffdad6", "secondary-container": "#d3e4f8", "on-tertiary-fixed": "#2f1500", "on-secondary-fixed-variant": "#384858", "primary-fixed": "#cde5ff", "on-background": "#1a1c1e", "primary-fixed-dim": "#9dcbf6", "on-tertiary-container": "#da9862", tertiary: "#3e1d00", "on-primary-fixed-variant": "#154a6f", "on-error": "#ffffff", "on-surface-variant": "#42474e", "tertiary-fixed-dim": "#feb77f", surface: "#f9f9fd", "inverse-primary": "#9dcbf6", background: "#f9f9fd", "primary-container": "#003f63", "secondary-fixed": "#d3e4f8", "on-secondary": "#ffffff", primary: "#002842", outline: "#72787f", "surface-tint": "#336288", "surface-container": "#edeef1", "surface-dim": "#d9dadd", "on-error-container": "#93000a", "secondary-fixed-dim": "#b7c8db", "on-surface": "#1a1c1e", "on-tertiary-fixed-variant": "#6b3b0c", "on-primary-fixed": "#001d32", "on-primary": "#ffffff", "surface-container-lowest": "#ffffff", "on-primary-container": "#7dabd4", "on-tertiary": "#ffffff", error: "#ba1a1a"}, fontFamily: {headline: ["Manrope"], body: ["Inter"], label: ["Inter"], display: "Manrope"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}}}};</script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.bg-industrial-texture {
+    background-image: linear-gradient(rgba(249, 249, 249, 0.94), rgba(249, 249, 249, 0.94)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuBBEq0QUMCHRLEPzRgx_jpdPayNmsaAgHhcSFBqPRSjcMBOtQstzFazt4kcJMcpUrFQ7AZ6gOSZPd0cCrXzYSvzFcd71Y7Ujn94jWpsJ7WXgDbstkoNLep2RXnwMa9OU6-SMmEy2JEiu4kZSCeX7Oh54CflN34rjMSG-Fs_NH9f_3SbytvyPB6y7Bb60Jd_Z6PYYfZoAkcsOJyQFxqk9YsjtFt0zp1gkjinpxkQ2GIH94apmCDA5zu67ZgJgTTwmwcDml-diVpfZA);
+    background-size: cover;
+    background-position: center
+    }</style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased min-h-screen flex flex-col">
+<!-- Standalone Login Canvas -->
+<main class="flex-grow flex items-center justify-center p-6 bg-industrial-texture" data-alt="faded industrial interior with high ceilings and heavy machinery in soft focus, overlaid with a clean white semi-transparent wash">
+<div class="w-full max-w-md">
+<!-- Branding Section -->
+<div class="text-center mb-10">
+<div class="inline-flex items-center justify-center w-16 h-16 bg-primary-container rounded-lg mb-6 shadow-sm">
+<span class="material-symbols-outlined text-on-primary text-4xl" data-icon="factory">factory</span>
+</div>
+<h1 class="font-headline font-extrabold text-4xl tracking-tighter text-on-surface uppercase mb-2">
+                    SupplyKey
+                </h1>
+<p class="font-label text-xs uppercase tracking-[0.2em] text-on-surface-variant font-medium">
+                    Industrial Operations Portal
+                </p>
+</div>
+<!-- Login Card (Tonal Layering instead of shadows) -->
+<div class="bg-surface-container-lowest p-10 border border-outline-variant/20 rounded-lg">
+<form action="#" class="space-y-8" method="POST">
+<!-- Form Header -->
+<div class="mb-4">
+<h2 class="font-headline font-bold text-xl text-on-surface tracking-tight">Access Control</h2>
+<p class="text-sm text-on-surface-variant">Authenticated personnel only.</p>
+</div>
+<!-- Email Field -->
+<div class="space-y-1.5">
+<label class="font-label text-xs font-bold uppercase tracking-widest text-on-surface-variant" for="email">
+                            Corporate Email
+                        </label>
+<div class="relative group">
+<input class="w-full bg-surface-container-high border-none border-b-2 border-transparent focus:border-primary focus:ring-0 text-on-surface py-3 px-0 transition-all placeholder:text-on-secondary-container placeholder:font-light" id="email" name="email" placeholder="name@supplykey.com" required="" type="email"/>
+<div class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-focus-within:w-full"></div>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-1.5">
+<div class="flex justify-between items-end">
+<label class="font-label text-xs font-bold uppercase tracking-widest text-on-surface-variant" for="password">
+                                Key Phrase
+                            </label>
+<a class="text-[10px] uppercase font-bold text-primary tracking-wider hover:underline" href="#">
+                                Forgot Access?
+                            </a>
+</div>
+<div class="relative group">
+<input class="w-full bg-surface-container-high border-none border-b-2 border-transparent focus:border-primary focus:ring-0 text-on-surface py-3 px-0 transition-all placeholder:text-on-secondary-container" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<div class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-focus-within:w-full"></div>
+</div>
+</div>
+<!-- Options -->
+<div class="flex items-center">
+<input class="h-4 w-4 rounded-none border-outline-variant text-primary focus:ring-primary-container" id="remember-me" name="remember-me" type="checkbox"/>
+<label class="ml-3 block text-sm font-medium text-on-surface-variant" for="remember-me">
+                            Persistent Session
+                        </label>
+</div>
+<!-- CTA Button -->
+<div>
+<button class="w-full flex justify-center items-center py-4 px-4 bg-primary-container hover:bg-primary text-on-primary font-headline font-extrabold uppercase tracking-[0.15em] text-sm rounded-lg transition-all active:scale-[0.98] shadow-sm group" type="submit">
+<span>Initialize Authentication</span>
+<span class="material-symbols-outlined ml-2 text-lg group-hover:translate-x-1 transition-transform" data-icon="login">login</span>
+</button>
+</div>
+</form>
+<!-- Help Link -->
+<div class="mt-10 pt-8 border-t border-surface-container text-center">
+<p class="text-xs text-on-surface-variant uppercase tracking-widest leading-relaxed">
+                        Issues with login? <br/> Contact <span class="text-on-surface font-bold">Systems Security</span>
+</p>
+</div>
+</div>
+<!-- Bottom Disclaimer -->
+<p class="mt-8 text-center text-[10px] text-on-surface-variant uppercase tracking-[0.25em] font-medium opacity-60">
+                Unauthorized access is strictly monitored and recorded.
+            </p>
+</div>
+</main>
+<!-- Footer Component (Minimal Implementation for Login) -->
+<footer class="w-full py-8 bg-surface-container-low mt-auto border-t border-outline-variant/10">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 gap-4">
+<p class="font-label text-xs uppercase tracking-widest text-on-secondary-container">
+                © 2024 SupplyKey Industrial. Kinetic Monolith Precision.
+            </p>
+<div class="flex gap-6">
+<a class="font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">Compliance</a>
+<a class="font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">Mining Standards</a>
+</div>
+</div>
+</footer>
+</body></html>

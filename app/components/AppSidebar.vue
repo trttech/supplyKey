@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BookOpenText, LayoutDashboard, Users } from "@lucide/vue"
+import { FileStack, Inbox, LayoutDashboard, MessagesSquare, Palette, ShoppingBasket, ShoppingCart, Store } from "@lucide/vue"
 import {
 	Sidebar,
 	SidebarContent,
@@ -12,63 +12,129 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import { useBrand } from "~/composables/useBrand"
 import type { AppNavItem } from "~/components/app-shell"
 
 const route = useRoute()
+const { brand } = useBrand()
+const orgName = computed(() => brand.value?.orgName ?? "SupplyKey")
+const tagline = computed(() => brand.value?.tagline ?? "Mine Supply Company")
+const logoDataUrl = computed(() => brand.value?.logoDataUrl ?? null)
+const initials = computed(() => orgName.value.slice(0, 2).toUpperCase())
 
 const menuGroups = computed(() => [
 	{
-		title: "Workspace",
+		title: "Operations",
 		items: [
 			{
-				label: "Overview",
-				description: "Starter dashboard",
+				label: "Dashboard",
+				description: "Command overview",
 				href: "/dashboard",
 				icon: LayoutDashboard,
 			},
 			{
-				label: "Users",
-				description: "Protected datatable example",
-				href: "/users",
-				icon: Users,
+				label: "Shop Products",
+				description: "Industrial catalog",
+				href: "/shop",
+				icon: Store,
+			},
+			{
+				label: "Cart",
+				description: "Active order in build",
+				href: "/cart",
+				icon: ShoppingCart,
 			},
 		] satisfies AppNavItem[],
 	},
 	{
-		title: "References",
+		title: "Procurement",
 		items: [
 			{
-				label: "Setup guide",
-				description: "Backend and database notes",
-				href: "/",
-				icon: BookOpenText,
+				label: "Request Estimate",
+				description: "Custom quote workflow",
+				href: "/estimate",
+				icon: ShoppingBasket,
+			},
+			{
+				label: "Contract Pricing",
+				description: "Contract catalog",
+				href: "/rfp",
+				icon: FileStack,
+			},
+		] satisfies AppNavItem[],
+	},
+	{
+		title: "Communications",
+		items: [
+			{
+				label: "Enquiries",
+				description: "Supplier follow-ups",
+				href: "/enquiries",
+				icon: Inbox,
+			},
+			{
+				label: "Communication Hub",
+				description: "Threaded messaging",
+				href: "/enquiries",
+				icon: MessagesSquare,
+			},
+		] satisfies AppNavItem[],
+	},
+	{
+		title: "Settings",
+		items: [
+			{
+				label: "Branding",
+				description: "Logo and color scheme",
+				href: "/settings/branding",
+				icon: Palette,
 			},
 		] satisfies AppNavItem[],
 	},
 ])
 
-const isActive = (path: string) => route.path === path
+function isActive(path: string) {
+	if (path === "/dashboard")
+		return route.path === "/dashboard"
+	return route.path === path || route.path.startsWith(`${path}/`)
+}
 </script>
 
 <template>
 	<Sidebar collapsible="icon">
 		<SidebarHeader class="p-2.5 group-data-[collapsible=icon]:px-1.5 group-data-[collapsible=icon]:py-2">
-			<SidebarMenu class="border-sidebar-border/70 border-b pb-3 group-data-[collapsible=icon]:pb-2">
+			<SidebarMenu class="border-sidebar-border/60 border-b pb-3 group-data-[collapsible=icon]:pb-2">
 				<SidebarMenuItem>
 					<SidebarMenuButton
 						as-child
 						size="lg"
-						class="h-auto rounded-xl px-2.5 py-2.5 group-data-[collapsible=icon]:size-8 group-data-[collapsible=icon]:rounded-lg group-data-[collapsible=icon]:px-0 group-data-[collapsible=icon]:py-0"
+						class="h-auto rounded-md px-2.5 py-2.5 group-data-[collapsible=icon]:size-8 group-data-[collapsible=icon]:rounded-md group-data-[collapsible=icon]:px-0 group-data-[collapsible=icon]:py-0"
 					>
 						<NuxtLink to="/dashboard">
-							<div class="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-10 items-center justify-center rounded-xl text-sm font-semibold tracking-[-0.04em] group-data-[collapsible=icon]:size-8 group-data-[collapsible=icon]:rounded-lg">
-								FS
+							<div
+								class="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-10 items-center justify-center overflow-hidden rounded-md text-sm font-extrabold tracking-[-0.04em] group-data-[collapsible=icon]:size-8"
+								style="font-family: var(--font-display);"
+							>
+								<img
+									v-if="logoDataUrl"
+									:src="logoDataUrl"
+									alt=""
+									class="size-7 object-contain"
+								>
+								<span v-else>{{ initials }}</span>
 							</div>
 
 							<div class="grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
-								<span class="truncate text-[0.95rem] font-semibold tracking-[-0.03em]">Fullstack Starter</span>
+								<span
+									class="truncate text-[0.8rem] font-extrabold tracking-[0.08em] uppercase"
+									style="font-family: var(--font-display);"
+								>
+									{{ orgName }}
+								</span>
 
-								<span class="text-sidebar-foreground/58 truncate text-[0.72rem]">Nuxt, Kysely, queue, auth</span>
+								<span class="text-sidebar-foreground/60 truncate text-[0.65rem] font-semibold tracking-[0.18em] uppercase">
+									{{ tagline }}
+								</span>
 							</div>
 						</NuxtLink>
 					</SidebarMenuButton>
@@ -81,7 +147,7 @@ const isActive = (path: string) => route.path === path
 				v-for="group in menuGroups"
 				:key="group.title"
 			>
-				<SidebarGroupLabel class="text-sidebar-foreground/45 px-3 text-[0.68rem] font-semibold tracking-[0.2em] uppercase">
+				<SidebarGroupLabel class="text-sidebar-foreground/45 px-3 text-[0.62rem] font-bold tracking-[0.22em] uppercase">
 					{{ group.title }}
 				</SidebarGroupLabel>
 
@@ -89,7 +155,7 @@ const isActive = (path: string) => route.path === path
 					<SidebarMenu>
 						<SidebarMenuItem
 							v-for="item in group.items"
-							:key="item.href"
+							:key="`${group.title}-${item.label}`"
 						>
 							<SidebarMenuButton
 								as-child

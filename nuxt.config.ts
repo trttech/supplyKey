@@ -32,8 +32,19 @@ export default defineNuxtConfig({
 			},
 			charset: "utf-8",
 			viewport: "width=device-width, initial-scale=1",
-			title: "Fullstack Starter",
-			titleTemplate: "%s · Fullstack Starter",
+			title: "SupplyKey Industrial",
+			titleTemplate: "%s · SupplyKey",
+			link: [
+				{ rel: "icon", type: "image/png", href: "/favicon.png" },
+				{ rel: "shortcut icon", type: "image/png", href: "/favicon.png" },
+				{ rel: "apple-touch-icon", href: "/favicon.png" },
+				{ rel: "preconnect", href: "https://fonts.googleapis.com" },
+				{ rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
+				{
+					rel: "stylesheet",
+					href: "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap",
+				},
+			],
 		},
 	},
 
@@ -45,8 +56,9 @@ export default defineNuxtConfig({
 
 	runtimeConfig: {
 		public: {
-			appName: process.env.NUXT_PUBLIC_APP_NAME || "Fullstack Starter",
+			appName: process.env.NUXT_PUBLIC_APP_NAME || "SupplyKey Industrial",
 			baseURL: process.env.NUXT_PUBLIC_BASE_URL || "http://localhost:3000",
+			demoMode: process.env.DEMO_MODE === "true",
 		},
 		auth: {
 			magicLinkTtlMinutes: process.env.AUTH_MAGIC_LINK_TTL_MINUTES

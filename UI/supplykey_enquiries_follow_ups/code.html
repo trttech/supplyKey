@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SupplyKey | Send Enquiry</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"inverse-on-surface": "#f0f0f4", "outline-variant": "#c1c7cf", "surface-container-high": "#e8e8eb", "tertiary-container": "#5d3002", "inverse-surface": "#2e3133", "surface-container-low": "#f3f3f7", "on-secondary-container": "#566676", secondary: "#506070", "surface-container-highest": "#e2e2e6", "surface-bright": "#f9f9fd", "surface-variant": "#e2e2e6", "on-secondary-fixed": "#0c1d2b", "tertiary-fixed": "#ffdcc3", "error-container": "#ffdad6", "secondary-container": "#d3e4f8", "on-tertiary-fixed": "#2f1500", "on-secondary-fixed-variant": "#384858", "primary-fixed": "#cde5ff", "on-background": "#1a1c1e", "primary-fixed-dim": "#9dcbf6", "on-tertiary-container": "#da9862", tertiary: "#3e1d00", "on-primary-fixed-variant": "#154a6f", "on-error": "#ffffff", "on-surface-variant": "#42474e", "tertiary-fixed-dim": "#feb77f", surface: "#f9f9fd", "inverse-primary": "#9dcbf6", background: "#f9f9fd", "primary-container": "#003f63", "secondary-fixed": "#d3e4f8", "on-secondary": "#ffffff", primary: "#002842", outline: "#72787f", "surface-tint": "#336288", "surface-container": "#edeef1", "surface-dim": "#d9dadd", "on-error-container": "#93000a", "secondary-fixed-dim": "#b7c8db", "on-surface": "#1a1c1e", "on-tertiary-fixed-variant": "#6b3b0c", "on-primary-fixed": "#001d32", "on-primary": "#ffffff", "surface-container-lowest": "#ffffff", "on-primary-container": "#7dabd4", "on-tertiary": "#ffffff", error: "#ba1a1a"}, fontFamily: {headline: ["Manrope"], body: ["Inter"], label: ["Inter"], display: "Manrope"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}}}};</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-zinc-100 dark:bg-zinc-900 flex flex-col border-r border-zinc-200 dark:border-zinc-800 z-40">
+<div class="px-6 py-8 flex flex-col gap-1">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-white" data-icon="factory">factory</span>
+</div>
+<div>
+<h1 class="text-lg font-extrabold text-orange-600 dark:text-orange-500 uppercase tracking-tighter">SupplyKey</h1>
+<p class="text-[10px] text-zinc-500 font-bold uppercase tracking-widest">Mining Operations</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 hover:bg-zinc-200 transition-all active:translate-x-1 duration-200 rounded font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 hover:bg-zinc-200 transition-all active:translate-x-1 duration-200 rounded font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span>Create Order</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 hover:bg-zinc-200 transition-all active:translate-x-1 duration-200 rounded font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="request_quote">request_quote</span>
+<span>RFP Pricing</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 hover:bg-zinc-200 transition-all active:translate-x-1 duration-200 rounded font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="engineering">engineering</span>
+<span>Request Estimate</span>
+</a>
+<!-- Active Tab -->
+<a class="flex items-center gap-3 px-4 py-3 bg-zinc-50 dark:bg-zinc-950 text-orange-600 dark:text-orange-500 border-l-4 border-orange-600 transition-all active:translate-x-1 duration-200 font-bold text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+<span>Send Enquiry</span>
+</a>
+</nav>
+<div class="px-4 mt-6">
+<button class="w-full bg-primary text-white py-3 font-bold text-xs uppercase tracking-widest hover:bg-primary-container transition-colors flex items-center justify-center gap-2 rounded">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                New Requisition
+            </button>
+</div>
+<div class="mt-auto border-t border-zinc-200 dark:border-zinc-800 p-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-zinc-500 hover:text-zinc-900 transition-colors text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span>Help Center</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-zinc-500 hover:text-zinc-900 transition-colors text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Log Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 ml-64 flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-zinc-50/80 backdrop-blur-md sticky top-0 z-50 flex justify-between items-center px-8 py-4 w-full border-b border-zinc-200">
+<div class="flex items-center gap-8">
+<h2 class="font-['Manrope'] font-bold tracking-tight text-xl text-on-surface">Communication Hub</h2>
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400 text-sm" data-icon="search">search</span>
+<input class="bg-surface-container-low border-none focus:ring-2 focus:ring-primary-container text-sm pl-10 pr-4 py-2 w-64 rounded" placeholder="Search enquiries..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-zinc-600 hover:bg-zinc-200 transition-colors rounded">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-zinc-600 hover:bg-zinc-200 transition-colors rounded">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="h-8 w-[1px] bg-zinc-200 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface">Mark Weyland</p>
+<p class="text-[10px] text-zinc-500 uppercase tracking-tighter">Operations Lead</p>
+</div>
+<img class="w-10 h-10 rounded-full object-cover border-2 border-primary-container" data-alt="professional male portrait in industrial office setting, neutral lighting, corporate executive style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3_WPCgkWR6CgvWl7clESbQgn6gZzxgQsldoUnsrPrg8rP4FfpWuFjv9HUw9BNuGYua4rA_j7uPJXngNoa6a7q28W9qyInCVkfS0yzrAtrt4bUfxYu8ZufUJG2aqZLYe07Yso0BI8pn0GGVDn-YVfJ5e5rTPA8WW3bMlSYLfBRV9xi-XBYgTChXiN6EAHN52dARikkR3SoaCDm0GrxiBrKoZEaHrAtyTTPnlWmxLyItPWS0-Ua4Pf9qhBiYkktNwgmh4JwU_8ryQ"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-8 flex flex-col lg:flex-row gap-6 flex-1 min-h-0">
+<!-- Left Panel: History -->
+<section class="lg:w-1/3 flex flex-col gap-4 overflow-hidden">
+<div class="flex items-center justify-between mb-2">
+<h3 class="text-lg font-extrabold tracking-tight uppercase text-zinc-900">Enquiry History</h3>
+<span class="text-[10px] font-bold bg-zinc-200 text-zinc-700 px-2 py-0.5 rounded">14 TOTAL</span>
+</div>
+<div class="flex-1 overflow-y-auto pr-2 space-y-3 custom-scrollbar">
+<!-- Enquiry Card Active -->
+<div class="bg-surface-container-lowest p-4 rounded-lg shadow-sm border-l-4 border-primary ring-1 ring-zinc-200/50 cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold text-primary tracking-widest uppercase">#ENQ-8821</span>
+<span class="px-2 py-0.5 bg-orange-100 text-orange-700 text-[10px] font-bold rounded uppercase">Active</span>
+</div>
+<h4 class="font-bold text-sm text-on-surface mb-1">Hydraulic Valve Specs - Pit C</h4>
+<p class="text-xs text-zinc-500 line-clamp-1">Revised pressure tolerances for the SK-200 units...</p>
+<div class="mt-4 flex justify-between items-center text-[10px] text-zinc-400 font-medium">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]" data-icon="schedule">schedule</span> 2 hours ago</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]" data-icon="forum">forum</span> 3 replies</span>
+</div>
+</div>
+<!-- Enquiry Card -->
+<div class="bg-zinc-50 p-4 rounded-lg hover:bg-zinc-100 transition-colors cursor-pointer border border-transparent">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold text-zinc-400 tracking-widest uppercase">#ENQ-8790</span>
+<span class="px-2 py-0.5 bg-blue-100 text-blue-700 text-[10px] font-bold rounded uppercase">Waiting on Follow-up</span>
+</div>
+<h4 class="font-bold text-sm text-on-surface mb-1">Q4 Conveyor Maintenance Quote</h4>
+<p class="text-xs text-zinc-500 line-clamp-1">Requested breakdown of labor vs materials for conveyor belt B...</p>
+<div class="mt-4 flex justify-between items-center text-[10px] text-zinc-400 font-medium">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]" data-icon="calendar_today">calendar_today</span> Oct 12, 2024</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]" data-icon="forum">forum</span> 1 reply</span>
+</div>
+</div>
+<!-- Enquiry Card Resolved -->
+<div class="bg-zinc-50 p-4 rounded-lg hover:bg-zinc-100 transition-colors cursor-pointer border border-transparent">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold text-zinc-400 tracking-widest uppercase">#ENQ-8542</span>
+<span class="px-2 py-0.5 bg-zinc-200 text-zinc-600 text-[10px] font-bold rounded uppercase">Resolved</span>
+</div>
+<h4 class="font-bold text-sm text-zinc-500 mb-1">Safety Gear Compliance Docs</h4>
+<p class="text-xs text-zinc-400 line-clamp-1">Compliance certificates for new hard hat batch...</p>
+<div class="mt-4 flex justify-between items-center text-[10px] text-zinc-300 font-medium">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]" data-icon="check_circle">check_circle</span> Closed Sep 28</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Panel: Enquiry Thread / Form -->
+<section class="flex-1 flex flex-col bg-surface-container-low rounded-xl overflow-hidden shadow-sm">
+<!-- Enquiry Header / Status Bar -->
+<div class="bg-white p-6 border-b border-zinc-200">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-primary-container text-on-primary-container px-2 py-0.5 text-[10px] font-black uppercase rounded">Priority: High</span>
+<h3 class="text-2xl font-extrabold tracking-tight text-zinc-900">Hydraulic Valve Specs - Pit C</h3>
+</div>
+<p class="text-sm text-zinc-500 font-medium">Product Ref: <span class="text-on-surface">SK-VALVE-XP900</span> | Sent by Mark Weyland</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-white border border-zinc-200 text-zinc-700 px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-zinc-50 transition-all rounded">Close Ticket</button>
+<button class="bg-primary text-white px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-primary-container transition-all shadow-md shadow-primary/20 rounded">Forward</button>
+</div>
+</div>
+<!-- Tracking Status Bar -->
+<div class="relative">
+<div class="absolute top-1/2 left-0 w-full h-1 bg-zinc-200 -translate-y-1/2"></div>
+<div class="absolute top-1/2 left-0 w-2/3 h-1 bg-primary -translate-y-1/2"></div>
+<div class="relative flex justify-between items-center">
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center relative z-10">
+<span class="material-symbols-outlined text-sm" data-icon="check" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="text-[10px] font-black uppercase text-primary">Sent</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center relative z-10">
+<span class="material-symbols-outlined text-sm" data-icon="check" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="text-[10px] font-black uppercase text-primary">Received</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center relative z-10 ring-4 ring-white">
+<span class="material-symbols-outlined text-sm" data-icon="insights" style="font-variation-settings: 'FILL' 1;">insights</span>
+</div>
+<span class="text-[10px] font-black uppercase text-primary">Reviewing</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-zinc-200 text-zinc-400 flex items-center justify-center relative z-10">
+<span class="material-symbols-outlined text-sm" data-icon="reply">reply</span>
+</div>
+<span class="text-[10px] font-black uppercase text-zinc-400">Responded</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Thread View -->
+<div class="flex-1 overflow-y-auto p-6 space-y-6 bg-zinc-50/50">
+<!-- Message From User -->
+<div class="flex flex-col items-end gap-2 max-w-[85%] ml-auto">
+<div class="bg-white border border-zinc-200 p-4 rounded-xl rounded-tr-none shadow-sm">
+<p class="text-sm text-on-surface leading-relaxed">
+                                We've encountered some drift on the SK-200 units at Pit C. Could you provide the exact hydraulic pressure thresholds for the XP900 series valves? I need to ensure our auto-cutoff triggers are calibrated to your factory specs. 
+                            </p>
+<div class="mt-3 pt-3 border-t border-zinc-100 flex gap-2 overflow-x-auto pb-2">
+<div class="flex items-center gap-2 bg-zinc-100 px-3 py-1.5 rounded border border-zinc-200 cursor-pointer hover:bg-zinc-200 transition-colors">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="description">description</span>
+<span class="text-[10px] font-bold text-zinc-700">Pit_C_Log.pdf</span>
+</div>
+</div>
+</div>
+<span class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Oct 14, 09:12 AM • Read by Vendor</span>
+</div>
+<!-- Message From System/Vendor -->
+<div class="flex flex-col items-start gap-2 max-w-[85%]">
+<div class="bg-orange-600 text-white p-4 rounded-xl rounded-tl-none shadow-md">
+<p class="text-sm leading-relaxed">
+                                Hello Mark, our technical team is currently reviewing the specifications for the XP900 series specifically for high-dust environments like Pit C. We will have the updated tolerance charts to you by end of day today.
+                            </p>
+</div>
+<span class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Oct 14, 11:30 AM • Vendor Support</span>
+</div>
+</div>
+<!-- Reply / New Enquiry Form Input -->
+<div class="p-6 bg-white border-t border-zinc-200">
+<div class="bg-surface-container-low rounded-lg p-2 ring-1 ring-zinc-200 focus-within:ring-primary transition-all">
+<textarea class="w-full bg-transparent border-none focus:ring-0 text-sm p-2 min-h-[80px]" placeholder="Type your follow-up message or enquiry details here..."></textarea>
+<div class="flex justify-between items-center mt-2 px-2 pb-1">
+<div class="flex gap-2">
+<button class="p-2 text-zinc-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="attach_file">attach_file</span>
+</button>
+<button class="p-2 text-zinc-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="image">image</span>
+</button>
+</div>
+<button class="bg-primary text-white px-6 py-2 text-xs font-bold uppercase tracking-widest hover:bg-primary-container transition-all flex items-center gap-2 rounded">
+                                Send Message
+                                <span class="material-symbols-outlined text-sm" data-icon="send" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="flex flex-col">
+<label class="text-[9px] font-bold text-zinc-400 uppercase tracking-tighter">Set Priority</label>
+<select class="bg-transparent border-none text-[11px] font-bold text-zinc-700 focus:ring-0 p-0 h-6">
+<option>Low</option>
+<option selected="">Medium</option>
+<option>High</option>
+<option>Urgent</option>
+</select>
+</div>
+<div class="w-[1px] h-6 bg-zinc-200"></div>
+<div class="flex flex-col">
+<label class="text-[9px] font-bold text-zinc-400 uppercase tracking-tighter">Product Ref</label>
+<input class="bg-transparent border-none text-[11px] font-bold text-zinc-700 focus:ring-0 p-0 h-6 w-32" type="text" value="SK-VALVE-XP900"/>
+</div>
+</div>
+<p class="text-[10px] text-zinc-400">Response time: ~4 hours</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<footer class="bg-zinc-50 border-t border-zinc-200 py-8 px-12 mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-['Inter'] text-xs uppercase tracking-widest text-zinc-500">
+                    © 2024 SupplyKey Industrial. Kinetic Monolith Precision.
+                </p>
+<div class="flex gap-8">
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-zinc-500 hover:text-orange-600 transition-colors" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-zinc-500 hover:text-orange-600 transition-colors" href="#">Terms of Service</a>
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-zinc-500 hover:text-orange-600 transition-colors" href="#">Compliance</a>
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-zinc-500 hover:text-orange-600 transition-colors" href="#">Mining Standards</a>
+</div>
+</div>
+</footer>
+</main>
+<!-- FAB (Suppressed on Details/Transaction screen per protocol, but here for context if needed for quick creation) -->
+</body></html>
