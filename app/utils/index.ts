@@ -42,4 +42,3 @@ export function formatDateTime(date: Date | string | null | undefined) {
 
 	return humanizeDateTime.format(new Date(date))
 }
-

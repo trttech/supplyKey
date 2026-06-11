@@ -7,4 +7,3 @@ export const TIME = Object.freeze({
 	HOUR,
 	DAY,
 })
-

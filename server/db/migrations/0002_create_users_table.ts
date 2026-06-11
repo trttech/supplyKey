@@ -29,4 +29,3 @@ export async function down(db: Kysely<unknown>) {
 	await db.schema.dropTable("users").ifExists().execute()
 	await sql`DROP TYPE IF EXISTS role_type`.execute(db)
 }
-

@@ -6,7 +6,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
 	await refreshSession()
 
 	if (loggedIn.value && (to.path === "/" || to.path === "/auth/login")) {
-		return navigateTo("/dashboard")
+		return await navigateTo("/dashboard")
 	}
 
 	if (isPublicRoute) {
@@ -14,10 +14,9 @@ export default defineNuxtRouteMiddleware(async (to) => {
 	}
 
 	if (!loggedIn.value) {
-		return navigateTo({
+		return await navigateTo({
 			path: "/auth/login",
 			query: { redirect: to.fullPath },
 		})
 	}
 })
-

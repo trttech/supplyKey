@@ -9,4 +9,3 @@ export type AppNavItem = {
 	href: string
 	icon: unknown
 }
-

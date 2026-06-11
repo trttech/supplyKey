@@ -17,4 +17,3 @@ declare module "#auth-utils" {
 }
 
 export {}
-

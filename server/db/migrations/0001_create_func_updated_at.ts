@@ -15,4 +15,3 @@ export async function up(db: Kysely<unknown>) {
 export async function down(db: Kysely<unknown>) {
 	await sql`DROP FUNCTION IF EXISTS set_updated_at`.execute(db)
 }
-

@@ -3,10 +3,6 @@ definePageMeta({
 	layout: "empty",
 	middleware: ["authenticated"],
 })
-
-onMounted(() => {
-	navigateTo("/auth/login", { replace: true })
-})
 </script>
 
 <template>

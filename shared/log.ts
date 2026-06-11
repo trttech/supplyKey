@@ -27,4 +27,3 @@ const production: LoggerOptions = {
 export const log: Logger = pino(
 	process.env.NODE_ENV === "production" ? production : development,
 )
-

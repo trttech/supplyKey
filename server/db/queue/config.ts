@@ -12,4 +12,3 @@ export const queueConfigs: Record<JobName, Queue> = {
 		deleteAfterSeconds: 3 * TIME.DAY,
 	},
 }
-

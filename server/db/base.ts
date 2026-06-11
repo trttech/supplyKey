@@ -104,4 +104,3 @@ export class Database {
 		Database.instance = null
 	}
 }
-

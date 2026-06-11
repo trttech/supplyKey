@@ -57,4 +57,3 @@ class UserRepository extends Database {
 }
 
 export const userRepo = UserRepository.getInstance()
-

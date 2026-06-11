@@ -47,7 +47,7 @@ watch(brand, (next) => {
 	form.accentColor = next.accentColor
 })
 
-const fileInput = ref<HTMLInputElement | null>(null)
+const fileInput = useTemplateRef<HTMLInputElement>("fileInput")
 const isSaving = ref(false)
 
 function triggerFilePick() {

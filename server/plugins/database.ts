@@ -25,4 +25,3 @@ export default defineNitroPlugin((nitroApp) => {
 
 	nitroApp.db = db
 })
-

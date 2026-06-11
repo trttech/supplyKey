@@ -12,4 +12,3 @@ export type JobName = (typeof JOB_NAMES)[keyof typeof JOB_NAMES]
 export interface JobTypeMap {
 	[JOB_NAMES.SEND_AUTH_LINK_EMAIL]: SendAuthLinkEmailJobData
 }
-

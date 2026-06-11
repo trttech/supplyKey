@@ -21,4 +21,3 @@ export default (error: unknown, event: H3Event) => {
 		}),
 	)
 }
-

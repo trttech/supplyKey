@@ -25,4 +25,3 @@ export async function up(db: Kysely<unknown>) {
 export async function down(db: Kysely<unknown>) {
 	await db.schema.dropTable("email_auth_tokens").ifExists().execute()
 }
-

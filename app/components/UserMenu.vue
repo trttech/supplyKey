@@ -29,7 +29,7 @@ const displayName = computed(() => {
 
 async function handleLogout() {
 	isLoading.value = true
-	await $fetch("/api/auth/logout", { method: "POST" }).catch(() => undefined)
+	await $fetch("/api/auth/logout", { method: "POST" })
 	await clear()
 	await navigateTo("/auth/login")
 	isLoading.value = false

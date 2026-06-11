@@ -57,4 +57,3 @@ export class Queue {
 		return queue.queuedCount + queue.activeCount + queue.deferredCount
 	}
 }
-
