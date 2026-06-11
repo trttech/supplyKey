@@ -144,7 +144,7 @@ function formatRelative(ts: string) {
 			<div
 				v-for="card in kpiCards"
 				:key="card.label"
-				class="relative flex min-h-[9.5rem] flex-col justify-between rounded-md p-6"
+				class="relative flex min-h-38 flex-col justify-between rounded-md p-6"
 				:class="card.tone === 'primary'
 					? 'bg-primary text-primary-foreground'
 					: 'bg-card text-foreground border border-border/60'"
@@ -181,7 +181,7 @@ function formatRelative(ts: string) {
 				</p>
 
 				<p
-					class="text-foreground mt-3 text-6xl font-extrabold tracking-[-0.05em]"
+					class="text-foreground mt-3 text-6xl font-extrabold tracking-tighter"
 					style="font-family: var(--font-display);"
 				>
 					{{ pending ? "—" : projectedLabel }}
@@ -198,7 +198,7 @@ function formatRelative(ts: string) {
 				</p>
 
 				<p
-					class="text-foreground mt-3 text-6xl font-extrabold tracking-[-0.05em]"
+					class="text-foreground mt-3 text-6xl font-extrabold tracking-tighter"
 					style="font-family: var(--font-display);"
 				>
 					{{ pending ? "—" : supplyHealthLabel }}

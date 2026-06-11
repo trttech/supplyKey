@@ -18,7 +18,7 @@ labels: "[bug]"
 
 ### Describe the bug
 
-Class `w-[--sidebar-width]` should be `w-(--sidebar-width)` and a similar approach should be followed everywhere. This is according to the tailwind v4.1 documentation
+Class `w-(--sidebar-width)` should be `w-(--sidebar-width)` and a similar approach should be followed everywhere. This is according to the tailwind v4.1 documentation
 
 ### System Info
 

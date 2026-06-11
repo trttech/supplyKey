@@ -143,7 +143,7 @@ function isActive(path: string) {
 			</SidebarMenu>
 		</SidebarHeader>
 
-		<SidebarContent class="overflow-x-hidden px-2.5 pb-2.5 [scrollbar-width:none] group-data-[collapsible=icon]:px-1.5 [&::-webkit-scrollbar]:hidden">
+		<SidebarContent class="overflow-x-hidden px-2.5 pb-2.5 scrollbar-none group-data-[collapsible=icon]:px-1.5 [&::-webkit-scrollbar]:hidden">
 			<SidebarGroup
 				v-for="group in menuGroups"
 				:key="group.title"

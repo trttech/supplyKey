@@ -11,7 +11,7 @@ links:
 ---
 name: NavigationMenuDemo
 description: A navigation menu component.
-class: '[&_.preview]:!items-start [&_.preview]:p-4 [&_.preview]:pt-8 md:[&_.preview]:pt-16'
+class: '[&_.preview]:items-start! [&_.preview]:p-4 [&_.preview]:pt-8 md:[&_.preview]:pt-16'
 ---
 ::
 

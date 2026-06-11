@@ -33,14 +33,14 @@ const { data, pending, refresh } = await useFetch<ProductListResponse>("/api/pro
 	query: apiQuery,
 })
 
-function updateQuery(next: Record<string, string | undefined>) {
+async function updateQuery(next: Record<string, string | undefined>) {
 	const merged = { ...route.query, ...next }
-	for (const key of Object.keys(merged)) {
+	Object.keys(merged).forEach(key => {
 		if (merged[key] === undefined || merged[key] === "") {
 			delete merged[key]
 		}
-	}
-	navigateTo({ path: route.path, query: merged })
+	})
+	await navigateTo({ path: route.path, query: merged })
 }
 
 function setCategory(value: string) {
@@ -55,9 +55,9 @@ function submitSearch() {
 	updateQuery({ q: q.value || undefined })
 }
 
-function clearFilters() {
+async function clearFilters() {
 	q.value = ""
-	navigateTo({ path: route.path, query: {} })
+	await navigateTo({ path: route.path, query: {} })
 }
 
 const addingId = ref<number | null>(null)
@@ -263,7 +263,7 @@ const hasFilters = computed(() => category.value || manufacturer.value || q.valu
 						:key="product.id"
 						class="group border-border/60 bg-card hover:border-primary/40 flex flex-col overflow-hidden rounded-md border transition-all"
 					>
-						<div class="bg-muted aspect-[4/3] overflow-hidden">
+						<div class="bg-muted aspect-4/3 overflow-hidden">
 							<img
 								v-if="product.imageUrl"
 								:src="product.imageUrl"

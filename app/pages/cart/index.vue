@@ -216,7 +216,7 @@ async function placeOrder() {
 									<Minus class="size-3.5" />
 								</button>
 
-								<span class="min-w-[2rem] text-center text-sm font-bold tabular-nums">
+								<span class="min-w-8 text-center text-sm font-bold tabular-nums">
 									{{ updatingId === line.id ? "…" : line.quantity }}
 								</span>
 

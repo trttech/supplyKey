@@ -70,7 +70,7 @@ onMounted(() => {
 
 <template>
 	<div class="mx-auto flex min-h-screen max-w-xl items-center px-6 py-10">
-		<Card class="surface-panel surface-outline w-full rounded-[2rem] border">
+		<Card class="surface-panel surface-outline w-full rounded-4xl border">
 			<CardHeader class="text-center">
 				<CardTitle class="text-3xl tracking-[-0.04em]">
 					{{

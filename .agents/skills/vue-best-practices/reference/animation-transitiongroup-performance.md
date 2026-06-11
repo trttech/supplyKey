@@ -31,7 +31,7 @@ Without TransitionGroup, DOM updates occur instantly. With it, there can be noti
     <li
       v-for="item in items"
       :key="item.id"
-      class="p-4 m-2 rounded-lg shadow-md bg-gradient-to-r from-blue-500 to-purple-600
+      class="p-4 m-2 rounded-lg shadow-md bg-linear-to-r from-blue-500 to-purple-600
              hover:shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105
              border border-gray-200 flex items-center justify-between"
     >
@@ -176,7 +176,7 @@ import { RecycleScroller } from 'vue-virtual-scroller'
 <style>
 /* Move complex styles to a stable wrapper */
 .list-item-wrapper {
-  @apply p-4 m-2 rounded-lg shadow-md bg-gradient-to-r from-blue-500 to-purple-600;
+  @apply p-4 m-2 rounded-lg shadow-md bg-linear-to-r from-blue-500 to-purple-600;
 }
 
 /* Keep animated element styles minimal */

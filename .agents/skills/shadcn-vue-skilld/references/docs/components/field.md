@@ -94,7 +94,7 @@ The `Field` family is designed for composing accessible forms. A typical field i
 ::component-preview
 ---
 name: FieldInputDemo
-class: '!mb-4 [&_.preview]:p-6'
+class: 'mb-4! [&_.preview]:p-6'
 ---
 ::
 
@@ -103,7 +103,7 @@ class: '!mb-4 [&_.preview]:p-6'
 ::component-preview
 ---
 name: FieldTextareaDemo
-class: '!mb-4 [&_.preview]:p-6'
+class: 'mb-4! [&_.preview]:p-6'
 ---
 ::
 
@@ -112,7 +112,7 @@ class: '!mb-4 [&_.preview]:p-6'
 ::component-preview
 ---
 name: FieldSelectDemo
-class: '!mb-4 [&_.preview]:p-6'
+class: 'mb-4! [&_.preview]:p-6'
 ---
 ::
 
@@ -121,7 +121,7 @@ class: '!mb-4 [&_.preview]:p-6'
 ::component-preview
 ---
 name: FieldSliderDemo
-class: '!mb-4 [&_.preview]:p-6'
+class: 'mb-4! [&_.preview]:p-6'
 ---
 ::
 
@@ -130,7 +130,7 @@ class: '!mb-4 [&_.preview]:p-6'
 ::component-preview
 ---
 name: FieldFieldsetDemo
-class: '!mb-4 [&_.preview]:p-6'
+class: 'mb-4! [&_.preview]:p-6'
 ---
 ::
 
@@ -139,7 +139,7 @@ class: '!mb-4 [&_.preview]:p-6'
 ::component-preview
 ---
 name: FieldCheckboxDemo
-class: '!mb-4 [&_.preview]:p-6'
+class: 'mb-4! [&_.preview]:p-6'
 ---
 ::
 
@@ -148,7 +148,7 @@ class: '!mb-4 [&_.preview]:p-6'
 ::component-preview
 ---
 name: FieldRadioDemo
-class: '!mb-4 [&_.preview]:p-6'
+class: 'mb-4! [&_.preview]:p-6'
 ---
 ::
 
@@ -157,7 +157,7 @@ class: '!mb-4 [&_.preview]:p-6'
 ::component-preview
 ---
 name: FieldSwitchDemo
-class: '!mb-4 [&_.preview]:p-6'
+class: 'mb-4! [&_.preview]:p-6'
 ---
 ::
 
@@ -168,7 +168,7 @@ Wrap `Field` components inside `FieldLabel` to create selectable field groups. T
 ::component-preview
 ---
 name: FieldChoiceCardDemo
-class: '!mb-4 [&_.preview]:p-6'
+class: 'mb-4! [&_.preview]:p-6'
 ---
 ::
 
@@ -179,7 +179,7 @@ Stack `Field` components with `FieldGroup`. Add `FieldSeparator` to divide them.
 ::component-preview
 ---
 name: FieldGroupDemo
-class: '!mb-4 [&_.preview]:p-6'
+class: 'mb-4! [&_.preview]:p-6'
 ---
 ::
 
@@ -194,7 +194,7 @@ If you are in tailwindcss v3 you need to install `@tailwindcss/container-queries
 ::component-preview
 ---
 name: FieldResponsiveDemo
-class: '!mb-4 [&_.preview]:h-[650px] [&_.preview]:p-6 [&_.preview]:md:h-[500px] [&_.preview]:md:p-10'
+class: 'mb-4! [&_.preview]:h-[650px] [&_.preview]:p-6 [&_.preview]:md:h-[500px] [&_.preview]:md:p-10'
 ---
 ::
 

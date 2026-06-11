@@ -10,7 +10,7 @@ We do not ship any typography styles by default. This page is an example of how 
 ---
 name: TypographyDemo
 description: A collection of typographic elements.
-class: "[&_.preview]:!h-auto"
+class: "[&_.preview]:h-auto!"
 hideCode: true
 ---
 ::

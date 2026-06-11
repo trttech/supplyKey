@@ -2,5 +2,5 @@ pre-commit:
   commands:
     lint:
       glob: "*.{ts,vue,json,css,md}"
-      run: npx eslint {staged_files} --fix
+      run: npx eslint {staged_files} --fix --quiet
       stage_fixed: true

@@ -140,7 +140,7 @@ const columns: ColumnDef<UserRow>[] = [
 					Datatable example
 				</p>
 
-				<h1 class="text-4xl font-semibold tracking-[-0.05em]">
+				<h1 class="text-4xl font-semibold tracking-tighter">
 					Users
 				</h1>
 

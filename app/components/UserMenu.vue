@@ -73,13 +73,13 @@ async function handleLogout() {
 		</DropdownMenuTrigger>
 
 		<DropdownMenuContent
-			class="w-[--radix-dropdown-menu-trigger-width] min-w-56"
+			class="w-(--radix-dropdown-menu-trigger-width) min-w-56"
 			side="bottom"
 			align="end"
 			:side-offset="10"
 		>
 			<DropdownMenuLabel class="p-1 font-normal">
-				<div class="surface-panel-subtle surface-outline flex items-center gap-3 rounded-[1rem] border px-3 py-3 text-left text-sm">
+				<div class="surface-panel-subtle surface-outline flex items-center gap-3 rounded-2xl border px-3 py-3 text-left text-sm">
 					<Avatar class="h-10 w-10 rounded-2xl">
 						<AvatarFallback class="rounded-lg text-sm font-medium uppercase">
 							{{ displayName.charAt(0) }}

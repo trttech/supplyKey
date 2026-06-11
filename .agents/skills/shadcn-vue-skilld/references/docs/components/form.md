@@ -368,7 +368,7 @@ import {
   ::component-preview
   ---
   name: InputForm
-  class: '[&_[role=tablist]]:hidden [&>div>div:first-child]:hidden'
+  class: '**:[[role=tablist]]:hidden [&>div>div:first-child]:hidden'
   ---
   ::
 

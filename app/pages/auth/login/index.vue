@@ -99,7 +99,7 @@ function resetState() {
 			style="background-image: radial-gradient(circle at 20% 20%, rgba(0, 63, 99, 0.35), transparent 50%), radial-gradient(circle at 80% 10%, rgba(80, 96, 112, 0.25), transparent 50%), linear-gradient(180deg, rgba(0, 20, 35, 0.08), transparent 60%);"
 		/>
 
-		<main class="relative flex flex-grow items-center justify-center p-6">
+		<main class="relative flex grow items-center justify-center p-6">
 			<div class="w-full max-w-md">
 				<div class="mb-10 flex flex-col items-center justify-center text-center">
 					<img

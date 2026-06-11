@@ -172,7 +172,7 @@ async function updateStatus(value: EnquiryStatus) {
 					</p>
 				</header>
 
-				<ul class="max-h-[32rem] space-y-0.5 overflow-y-auto p-2">
+				<ul class="max-h-128 space-y-0.5 overflow-y-auto p-2">
 					<li
 						v-for="row in enquiries ?? []"
 						:key="row.id"

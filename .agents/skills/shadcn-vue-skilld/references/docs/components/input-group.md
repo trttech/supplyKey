@@ -193,7 +193,7 @@ No style is applied to the custom input. Apply your own styles using the `class`
 ::component-preview
 ---
 name: InputGroupWithCustomInput
-class: '!mb-4 [&_.preview]:p-4'
+class: 'mb-4! [&_.preview]:p-4'
 ---
 ::
 

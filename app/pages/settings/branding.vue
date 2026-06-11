@@ -371,7 +371,7 @@ const accentPreview = computed(() => form.accentColor)
 
 						<div class="min-w-0 flex-1">
 							<p
-								class="truncate text-[0.72rem] font-extrabold tracking-[0.1em] uppercase"
+								class="truncate text-[0.72rem] font-extrabold tracking-widest uppercase"
 								style="font-family: var(--font-display);"
 							>
 								{{ form.orgName }}
