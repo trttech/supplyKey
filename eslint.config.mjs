@@ -1,13 +1,11 @@
 // @ts-check
 import harlanzw from "eslint-plugin-harlanzw"
-import tailwind from "eslint-plugin-tailwindcss"
 import withNuxt from "./.nuxt/eslint.config.mjs"
 
 export default withNuxt([
 	{
 		ignores: ["node_modules", ".nuxt", "dist", ".github", ".agents", "**/*.md"],
 	},
-	...tailwind.configs["flat/recommended"],
 	{
 		settings: {
 			tailwindcss: {

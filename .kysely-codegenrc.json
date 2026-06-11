@@ -1,6 +1,6 @@
 {
     "dialect": "postgres",
-    "outFile": "server/db/types.d.ts",
+    "outFile": "server/db/types.ts",
     "envfile": ".env",
     "url": "env(DATABASE_URL)",
     "camelCase": false,
