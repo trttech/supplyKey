@@ -2,22 +2,9 @@
 import harlanzw from "eslint-plugin-harlanzw"
 import withNuxt from "./.nuxt/eslint.config.mjs"
 
-export default withNuxt([
+export default withNuxt(
 	{
 		ignores: ["node_modules", ".nuxt", "dist", ".github", ".agents", "**/*.md"],
-	},
-	{
-		settings: {
-			tailwindcss: {
-				config: false, // Disable config file lookup for Tailwind CSS v4
-				cssFiles: ["app/assets/css/**/*.css"],
-				cssFilesRefreshRate: 5_000,
-			},
-		},
-		rules: {
-			// Disable no-custom-classname for Tailwind v4 CSS-based theme tokens
-			"tailwindcss/no-custom-classname": "off",
-		},
 	},
 	...harlanzw({ link: false, nuxt: true, vue: true }),
 	{
@@ -185,4 +172,4 @@ export default withNuxt([
 			],
 		},
 	},
-])
+)
