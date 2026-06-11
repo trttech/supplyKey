@@ -112,7 +112,7 @@ function handleValidate() {
 					</h2>
 
 					<div class="grid gap-3 md:grid-cols-3">
-						<button
+						<Button
 							v-for="asset in assets"
 							:key="asset.id"
 							type="button"
@@ -148,7 +148,7 @@ function handleValidate() {
 							<p class="text-primary text-[0.68rem] font-bold tracking-[0.12em] uppercase">
 								{{ asset.priceLabel }}
 							</p>
-						</button>
+						</Button>
 					</div>
 				</div>
 
@@ -162,23 +162,23 @@ function handleValidate() {
 
 					<div class="grid gap-5 md:grid-cols-2">
 						<div>
-							<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
+							<Label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 								Project Identifier
-							</label>
+							</Label>
 
-							<input
+							<Input
 								v-model="projectId"
 								type="text"
 								class="bg-muted text-foreground focus:ring-primary/40 mt-2 w-full rounded-md px-3 py-2.5 text-sm focus:ring-2 focus:outline-none"
-							>
+							/>
 						</div>
 
 						<div>
-							<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
+							<Label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 								Target Timeline
-							</label>
+							</Label>
 
-							<select
+							<NativeSelect
 								v-model="timeline"
 								class="bg-muted text-foreground focus:ring-primary/40 mt-2 w-full rounded-md px-3 py-2.5 text-sm focus:ring-2 focus:outline-none"
 							>
@@ -193,56 +193,55 @@ function handleValidate() {
 								<option value="quarterly">
 									Quarterly planning horizon
 								</option>
-							</select>
+							</NativeSelect>
 						</div>
 
 						<div>
-							<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
+							<Label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 								Budget Range (Min)
-							</label>
+							</Label>
 
-							<input
+							<Input
 								v-model="budgetMin"
 								type="text"
 								placeholder="USD"
 								class="bg-muted text-foreground focus:ring-primary/40 mt-2 w-full rounded-md px-3 py-2.5 text-sm focus:ring-2 focus:outline-none"
-							>
+							/>
 						</div>
 
 						<div>
-							<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
+							<Label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 								Budget Range (Max)
-							</label>
+							</Label>
 
-							<input
+							<Input
 								v-model="budgetMax"
 								type="text"
 								placeholder="USD"
 								class="bg-muted text-foreground focus:ring-primary/40 mt-2 w-full rounded-md px-3 py-2.5 text-sm focus:ring-2 focus:outline-none"
-							>
+							/>
 						</div>
 
 						<div class="md:col-span-2">
-							<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
+							<Label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 								Technical Specifications
-							</label>
+							</Label>
 
-							<textarea
+							<Textarea
 								v-model="technicalSpecs"
 								rows="4"
 								class="bg-muted text-foreground focus:ring-primary/40 mt-2 w-full resize-none rounded-md px-3 py-2.5 text-sm leading-6 focus:ring-2 focus:outline-none"
 							/>
 						</div>
 
-						<label class="text-muted-foreground flex items-start gap-3 text-sm md:col-span-2">
-							<input
-								v-model="acceptCompliance"
-								type="checkbox"
+						<Label class="text-muted-foreground flex items-start gap-3 text-sm md:col-span-2">
+							<Checkbox
+								v-model:checked="acceptCompliance"
 								class="border-border text-primary mt-1 size-4 rounded"
-							>
+							/>
 
 							<span>I confirm the project meets SupplyKey compliance baselines and vendor-side safety disclosures are attached.</span>
-						</label>
+						</Label>
 					</div>
 				</div>
 
@@ -307,7 +306,7 @@ function handleValidate() {
 						</div>
 					</div>
 
-					<button
+					<Button
 						type="button"
 						class="bg-primary-foreground text-primary mt-5 flex w-full items-center justify-center gap-2 rounded-md px-4 py-3 text-[0.68rem] font-extrabold tracking-[0.16em] uppercase transition-all hover:brightness-95"
 						style="font-family: var(--font-display);"
@@ -315,7 +314,7 @@ function handleValidate() {
 					>
 						<CheckCircle2 class="size-4" />
 						Validate Parameters
-					</button>
+					</Button>
 				</div>
 
 				<div class="border-border/60 bg-card rounded-md border p-5">

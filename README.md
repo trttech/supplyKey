@@ -7,7 +7,7 @@ Starter template
 - Magic-link auth with `nuxt-auth-utils`
 - PostgreSQL + Kysely
 - `pg-boss` background queue
-- Console or SMTP mail delivery
+- SMTP mail delivery through Mailpit locally or provider credentials in production
 - Dashboard layout with reusable datatable components
 - Protected example pages backed by real server routes
 
@@ -23,13 +23,13 @@ yarn dev
 
 Open `http://localhost:3000`.
 
-With `MAIL_MODE=console`, auth links are printed to the server logs. If you want real local email delivery, set `MAIL_MODE=smtp` and keep Mailpit running on `http://localhost:8025`.
+Email is always sent through SMTP. In development, Docker Compose runs Mailpit and exposes its inbox at `http://localhost:3031`; local `yarn dev` sends to `localhost:1025`, while the app container overrides `SMTP_HOST=mailpit`. In production, set `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, and `SMTP_TLS_REJECT_UNAUTHORIZED=true`.
 
 ## Example flow
 
 1. Visit `/auth/login`
 2. Request a magic link
-3. Open the link from the server log or Mailpit
+3. Open the link from Mailpit
 4. Land in the protected dashboard
 5. Review the `/users` page for the starter datatable pattern
 

@@ -209,23 +209,23 @@ function formatPrice(cents: number) {
 							</p>
 
 							<p class="text-muted-foreground mt-0.5 text-[0.62rem] font-semibold tracking-wide uppercase">
-								{{ row.meta.terms }}
+								{{ row.meta?.terms }}
 							</p>
 						</td>
 
 						<td class="px-4 py-5">
 							<p class="text-primary text-sm font-semibold">
-								{{ row.meta.vendor }}
+								{{ row.meta?.vendor }}
 							</p>
 
 							<p class="text-muted-foreground text-[0.62rem] font-semibold tracking-wide uppercase">
-								{{ row.meta.rfp }}
+								{{ row.meta?.rfp }}
 							</p>
 						</td>
 
 						<td class="px-4 py-5">
 							<p class="text-foreground text-sm font-semibold tabular-nums">
-								{{ row.meta.expiryDays }} days
+								{{ row.meta?.expiryDays }} days
 							</p>
 
 							<p class="text-muted-foreground text-[0.62rem] font-semibold tracking-wide uppercase">
@@ -235,16 +235,16 @@ function formatPrice(cents: number) {
 
 						<td class="px-4 py-5">
 							<div class="flex items-center justify-center gap-2">
-								<button
+								<Button
 									type="button"
 									class="border-border/70 text-muted-foreground hover:border-primary hover:text-primary flex size-8 items-center justify-center rounded-md border transition-all disabled:opacity-50"
 									:disabled="qtyFor(row.product.id) <= 1"
 									@click="decrement(row.product.id)"
 								>
 									<Minus class="size-3.5" />
-								</button>
+								</Button>
 
-								<input
+								<Input
 									type="number"
 									min="1"
 									:value="qtyFor(row.product.id)"
@@ -252,28 +252,28 @@ function formatPrice(cents: number) {
 									style="font-family: var(--font-display);"
 									@input="setQtyFromEvent(row.product.id, $event)"
 									@blur="setQtyFromEvent(row.product.id, $event)"
-								>
+								/>
 
-								<button
+								<Button
 									type="button"
 									class="border-border/70 text-muted-foreground hover:border-primary hover:text-primary flex size-8 items-center justify-center rounded-md border transition-all"
 									@click="increment(row.product.id)"
 								>
 									<Plus class="size-3.5" />
-								</button>
+								</Button>
 							</div>
 						</td>
 
 						<td class="px-6 py-5">
 							<div class="flex items-center justify-end gap-2">
-								<button
+								<Button
 									type="button"
 									class="border-border/70 text-muted-foreground hover:border-primary hover:text-primary flex size-9 items-center justify-center rounded-md border transition-all"
 								>
 									<Info class="size-4" />
-								</button>
+								</Button>
 
-								<button
+								<Button
 									type="button"
 									class="bg-primary text-primary-foreground inline-flex items-center gap-1.5 rounded-md px-4 py-2 text-[0.62rem] font-bold tracking-[0.14em] uppercase transition-all hover:brightness-110 disabled:opacity-60"
 									:disabled="addingId === row.product.id"
@@ -291,7 +291,7 @@ function formatPrice(cents: number) {
 
 									<span v-else>$</span>
 									Buy Now
-								</button>
+								</Button>
 							</div>
 						</td>
 					</tr>

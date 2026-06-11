@@ -81,6 +81,15 @@ async function sendMessage(asSupplier: boolean) {
 	}
 }
 
+function handleReplyKeydown(event: KeyboardEvent) {
+	if (event.key !== "Enter" || (!event.metaKey && !event.ctrlKey)) {
+		return
+	}
+
+	event.preventDefault()
+	sendMessage(false)
+}
+
 async function updatePriority(value: EnquiryPriority) {
 	if (!thread.value || thread.value.priority === value) {
 		editingField.value = null
@@ -309,53 +318,52 @@ async function updateStatus(value: EnquiryStatus) {
 
 				<footer class="border-border/40 border-t p-4">
 					<div class="bg-muted rounded-md p-3">
-						<textarea
+						<Textarea
 							v-model="replyBody"
 							rows="2"
 							placeholder="Type your reply…"
 							class="text-foreground placeholder:text-muted-foreground/60 w-full resize-none bg-transparent text-sm leading-6 focus:outline-none"
 							:disabled="sendingRole !== null"
-							@keydown.enter.meta.prevent="sendMessage(false)"
-							@keydown.enter.ctrl.prevent="sendMessage(false)"
+							@keydown="handleReplyKeydown"
 						/>
 
 						<div class="mt-2 flex items-center justify-between">
 							<div class="text-muted-foreground flex gap-1">
-								<button
+								<Button
 									type="button"
 									class="hover:bg-background flex size-8 items-center justify-center rounded-md"
 									disabled
 								>
 									<Bold class="size-4" />
-								</button>
+								</Button>
 
-								<button
+								<Button
 									type="button"
 									class="hover:bg-background flex size-8 items-center justify-center rounded-md"
 									disabled
 								>
 									<Italic class="size-4" />
-								</button>
+								</Button>
 
-								<button
+								<Button
 									type="button"
 									class="hover:bg-background flex size-8 items-center justify-center rounded-md"
 									disabled
 								>
 									<Paperclip class="size-4" />
-								</button>
+								</Button>
 
-								<button
+								<Button
 									type="button"
 									class="hover:bg-background flex size-8 items-center justify-center rounded-md"
 									disabled
 								>
 									<Smile class="size-4" />
-								</button>
+								</Button>
 							</div>
 
 							<div class="flex items-center gap-2">
-								<button
+								<Button
 									type="button"
 									class="border-border/70 bg-background text-muted-foreground hover:border-primary hover:text-primary inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-[0.6rem] font-bold tracking-[0.14em] uppercase transition-all disabled:opacity-60"
 									:disabled="sendingRole !== null || !replyBody.trim()"
@@ -372,9 +380,9 @@ async function updateStatus(value: EnquiryStatus) {
 										class="size-3.5"
 									/>
 									As Supplier
-								</button>
+								</Button>
 
-								<button
+								<Button
 									type="button"
 									class="bg-primary text-primary-foreground inline-flex items-center gap-1.5 rounded-md px-4 py-1.5 text-[0.62rem] font-bold tracking-[0.14em] uppercase transition-all hover:brightness-110 disabled:opacity-60"
 									:disabled="sendingRole !== null || !replyBody.trim()"
@@ -390,7 +398,7 @@ async function updateStatus(value: EnquiryStatus) {
 										class="size-3.5"
 									/>
 									Send
-								</button>
+								</Button>
 							</div>
 						</div>
 					</div>
@@ -428,7 +436,7 @@ async function updateStatus(value: EnquiryStatus) {
 						v-if="editingField === 'priority'"
 						class="mt-3 space-y-1"
 					>
-						<button
+						<Button
 							v-for="option in priorityOptions"
 							:key="option"
 							type="button"
@@ -439,18 +447,18 @@ async function updateStatus(value: EnquiryStatus) {
 							<span>{{ option }}</span>
 
 							<span v-if="thread.priority === option">●</span>
-						</button>
+						</Button>
 
-						<button
+						<Button
 							type="button"
 							class="text-muted-foreground hover:text-foreground w-full rounded-md px-2.5 py-1 text-[0.58rem] font-semibold tracking-[0.14em] uppercase"
 							@click="editingField = null"
 						>
 							Cancel
-						</button>
+						</Button>
 					</div>
 
-					<button
+					<Button
 						v-else
 						type="button"
 						class="mt-3 w-full rounded-md px-3 py-2 text-[0.68rem] font-bold tracking-[0.14em] uppercase transition-all hover:brightness-110"
@@ -458,7 +466,7 @@ async function updateStatus(value: EnquiryStatus) {
 						@click="editingField = 'priority'"
 					>
 						{{ thread.priority }}
-					</button>
+					</Button>
 				</div>
 
 				<div class="border-border/60 bg-card rounded-md border p-5">
@@ -470,7 +478,7 @@ async function updateStatus(value: EnquiryStatus) {
 						v-if="editingField === 'status'"
 						class="mt-3 space-y-1"
 					>
-						<button
+						<Button
 							v-for="option in statusOptions"
 							:key="option"
 							type="button"
@@ -481,18 +489,18 @@ async function updateStatus(value: EnquiryStatus) {
 							<span>{{ option }}</span>
 
 							<span v-if="thread.status === option">●</span>
-						</button>
+						</Button>
 
-						<button
+						<Button
 							type="button"
 							class="text-muted-foreground hover:text-foreground w-full rounded-md px-2.5 py-1 text-[0.58rem] font-semibold tracking-[0.14em] uppercase"
 							@click="editingField = null"
 						>
 							Cancel
-						</button>
+						</Button>
 					</div>
 
-					<button
+					<Button
 						v-else
 						type="button"
 						class="mt-3 w-full rounded-md px-3 py-2 text-[0.68rem] font-bold tracking-[0.14em] uppercase transition-all hover:brightness-110"
@@ -500,7 +508,7 @@ async function updateStatus(value: EnquiryStatus) {
 						@click="editingField = 'status'"
 					>
 						{{ thread.status }}
-					</button>
+					</Button>
 				</div>
 
 				<div class="border-border/60 bg-card rounded-md border p-5">

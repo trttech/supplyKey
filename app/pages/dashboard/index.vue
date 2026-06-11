@@ -127,7 +127,7 @@ function formatRelative(ts: string) {
 				</p>
 			</div>
 
-			<button
+			<Button
 				type="button"
 				class="border-border/70 bg-card text-foreground hover:border-primary hover:text-primary inline-flex items-center gap-2 rounded-md border px-4 py-2.5 text-[0.72rem] font-bold tracking-[0.15em] uppercase transition-all"
 				@click="refresh()"
@@ -137,7 +137,7 @@ function formatRelative(ts: string) {
 					:class="{ 'animate-spin': pending }"
 				/>
 				Refresh
-			</button>
+			</Button>
 		</section>
 
 		<section class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">

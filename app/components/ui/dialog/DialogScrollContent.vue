@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { cn } from "@/utils"
+import type { DialogContentEmits, DialogContentProps } from "reka-ui"
+import type { HTMLAttributes } from "vue"
 import { X } from "@lucide/vue"
 import { reactiveOmit } from "@vueuse/core"
-import type { DialogContentEmits, DialogContentProps } from "reka-ui"
 import {
 	DialogClose,
 	DialogContent,
@@ -10,7 +10,7 @@ import {
 	DialogPortal,
 	useForwardPropsEmits,
 } from "reka-ui"
-import type { HTMLAttributes } from "vue"
+import { cn } from "@/utils"
 
 const props = defineProps<DialogContentProps & { class?: HTMLAttributes["class"] }>()
 
@@ -27,7 +27,8 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 
 <template>
 	<DialogPortal>
-		<DialogOverlay class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50  grid place-items-center overflow-y-auto bg-black/80">
+		<DialogOverlay class="fixed inset-0 z-50 grid place-items-center overflow-y-auto bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
+		>
 			<DialogContent
 				:class="
 					cn(
@@ -46,8 +47,9 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 			>
 				<slot />
 
-				<DialogClose class="hover:bg-secondary absolute top-4 right-4 rounded-md p-0.5 transition-colors">
-					<X class="h-4 w-4" />
+				<DialogClose class="absolute top-4 right-4 p-0.5 transition-colors rounded-md hover:bg-secondary"
+				>
+					<X class="w-4 h-4" />
 
 					<span class="sr-only">Close</span>
 				</DialogClose>

@@ -166,12 +166,14 @@ async function placeOrder() {
 							Cart is empty.
 						</p>
 
-						<NuxtLink
-							to="/shop"
+						<Button
+							as-child
 							class="bg-primary text-primary-foreground mt-4 inline-flex rounded-md px-4 py-2 text-[0.68rem] font-bold tracking-[0.15em] uppercase transition-all hover:brightness-110"
 						>
-							Browse Catalog
-						</NuxtLink>
+							<NuxtLink to="/shop">
+								Browse Catalog
+							</NuxtLink>
+						</Button>
 					</div>
 
 					<ul
@@ -207,27 +209,27 @@ async function placeOrder() {
 							</div>
 
 							<div class="flex items-center gap-2">
-								<button
+								<Button
 									type="button"
 									class="border-border/70 text-muted-foreground hover:border-primary hover:text-primary flex size-8 items-center justify-center rounded-md border transition-all disabled:opacity-60"
 									:disabled="updatingId === line.id"
 									@click="adjustQuantity(line.id, -1)"
 								>
 									<Minus class="size-3.5" />
-								</button>
+								</Button>
 
 								<span class="min-w-8 text-center text-sm font-bold tabular-nums">
 									{{ updatingId === line.id ? "…" : line.quantity }}
 								</span>
 
-								<button
+								<Button
 									type="button"
 									class="border-border/70 text-muted-foreground hover:border-primary hover:text-primary flex size-8 items-center justify-center rounded-md border transition-all disabled:opacity-60"
 									:disabled="updatingId === line.id"
 									@click="adjustQuantity(line.id, 1)"
 								>
 									<Plus class="size-3.5" />
-								</button>
+								</Button>
 							</div>
 
 							<div class="w-24 text-right">
@@ -239,14 +241,14 @@ async function placeOrder() {
 								</p>
 							</div>
 
-							<button
+							<Button
 								type="button"
 								class="text-muted-foreground hover:bg-destructive/10 hover:text-destructive flex size-8 items-center justify-center rounded-md transition-all disabled:opacity-60"
 								:disabled="updatingId === line.id"
 								@click="removeLine(line.id)"
 							>
 								<Trash2 class="size-4" />
-							</button>
+							</Button>
 						</li>
 					</ul>
 				</div>
@@ -261,11 +263,11 @@ async function placeOrder() {
 
 					<div class="space-y-5">
 						<div>
-							<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
+							<Label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 								Delivery Site
-							</label>
+							</Label>
 
-							<select
+							<NativeSelect
 								v-model="deliverySite"
 								class="bg-muted text-foreground focus:ring-primary/50 mt-2 w-full rounded-md px-3 py-2.5 text-sm focus:ring-2 focus:outline-none"
 							>
@@ -276,7 +278,7 @@ async function placeOrder() {
 								>
 									{{ site }}
 								</option>
-							</select>
+							</NativeSelect>
 						</div>
 
 						<div>
@@ -285,19 +287,14 @@ async function placeOrder() {
 							</p>
 
 							<div class="mt-3 space-y-2">
-								<label
+								<Button
 									v-for="option in carriers"
 									:key="option.value"
-									class="bg-muted flex cursor-pointer items-center gap-4 rounded-md p-4 transition-all"
+									type="button"
+									class="bg-muted flex h-auto w-full cursor-pointer items-center gap-4 rounded-md p-4 text-left transition-all"
 									:class="{ 'ring-primary ring-2': carrier === option.value }"
+									@click="carrier = option.value"
 								>
-									<input
-										v-model="carrier"
-										type="radio"
-										:value="option.value"
-										class="text-primary size-4"
-									>
-
 									<Truck class="text-muted-foreground size-5" />
 
 									<div class="flex-1">
@@ -316,7 +313,7 @@ async function placeOrder() {
 									>
 										{{ formatPrice(option.priceCents) }}
 									</span>
-								</label>
+								</Button>
 							</div>
 						</div>
 					</div>
@@ -331,19 +328,14 @@ async function placeOrder() {
 					</h2>
 
 					<div class="space-y-3">
-						<label
+						<Button
 							v-for="option in paymentOptions"
 							:key="option.value"
-							class="bg-muted flex cursor-pointer items-center gap-4 rounded-md p-4 transition-all"
+							type="button"
+							class="bg-muted flex h-auto w-full cursor-pointer items-center gap-4 rounded-md p-4 text-left transition-all"
 							:class="{ 'ring-primary ring-2': paymentMethod === option.value }"
+							@click="paymentMethod = option.value"
 						>
-							<input
-								v-model="paymentMethod"
-								type="radio"
-								:value="option.value"
-								class="text-primary size-4"
-							>
-
 							<div class="flex-1">
 								<p class="text-foreground text-sm font-semibold">
 									{{ option.label }}
@@ -353,23 +345,23 @@ async function placeOrder() {
 									{{ option.detail }}
 								</p>
 							</div>
-						</label>
+						</Button>
 					</div>
 
 					<div
 						v-if="paymentMethod === 'purchase_order'"
 						class="mt-5"
 					>
-						<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
+						<Label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 							PO Number
-						</label>
+						</Label>
 
-						<input
+						<Input
 							v-model="poNumber"
 							type="text"
 							placeholder="PO-2026-00042"
 							class="bg-muted text-foreground placeholder:text-muted-foreground/60 focus:ring-primary/50 mt-2 w-full rounded-md px-3 py-2.5 text-sm focus:ring-2 focus:outline-none"
-						>
+						/>
 					</div>
 				</div>
 			</div>
@@ -428,7 +420,7 @@ async function placeOrder() {
 						</p>
 					</div>
 
-					<button
+					<Button
 						type="button"
 						class="bg-primary-foreground text-primary mt-6 flex w-full items-center justify-center gap-2 rounded-md px-4 py-3.5 text-[0.72rem] font-extrabold tracking-[0.18em] uppercase transition-all hover:brightness-95 disabled:opacity-60"
 						:disabled="isSubmitting || !cart.summary.value.lines.length"
@@ -445,7 +437,7 @@ async function placeOrder() {
 							class="size-4"
 						/>
 						{{ isSubmitting ? "Submitting…" : "Place Order" }}
-					</button>
+					</Button>
 				</div>
 
 				<div class="border-border/60 bg-card rounded-md border p-5">

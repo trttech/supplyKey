@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { cn } from "@/utils"
+import type { DialogContentEmits, DialogContentProps } from "reka-ui"
+import type { HTMLAttributes } from "vue"
 import { X } from "@lucide/vue"
 import { reactiveOmit } from "@vueuse/core"
-import type { DialogContentEmits, DialogContentProps } from "reka-ui"
 import {
 	DialogClose,
 	DialogContent,
 	DialogPortal,
 	useForwardPropsEmits,
 } from "reka-ui"
-import type { HTMLAttributes } from "vue"
+import { cn } from "@/utils"
 import DialogOverlay from "./DialogOverlay.vue"
 
 const props = withDefaults(defineProps<DialogContentProps & { class?: HTMLAttributes["class"], showCloseButton?: boolean }>(), {
@@ -36,7 +36,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 			v-bind="{ ...$attrs, ...forwarded }"
 			:class="
 				cn(
-					'bg-background/96 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-[1.6rem] border border-border/70 p-6 shadow-(--panel-shadow) backdrop-blur-xl duration-200 sm:max-w-lg',
+					'bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg duration-200 sm:max-w-lg',
 					props.class,
 				)"
 		>

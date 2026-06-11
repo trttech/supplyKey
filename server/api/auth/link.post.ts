@@ -49,12 +49,9 @@ export default defineEventHandler(async (event) => {
 		})
 	}
 
-	const isConsoleMode = runtimeConfig.mail.mode === "console"
-
 	return {
 		success: true,
 		message: "If an account exists for this email, a magic link will arrive shortly.",
 		expires_in: ttlMinutes * 60,
-		debug_magic_link: isConsoleMode ? magicLink : undefined,
 	}
 })

@@ -136,15 +136,15 @@ async function submitEnquiry() {
 				<div class="relative">
 					<Search class="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
 
-					<input
+					<Input
 						v-model="searchQuery"
 						type="text"
 						placeholder="Search enquiries…"
 						class="border-border/60 bg-card text-foreground placeholder:text-muted-foreground/60 focus:ring-primary/40 w-64 rounded-md border py-2.5 pr-3 pl-9 text-sm focus:ring-2 focus:outline-none"
-					>
+					/>
 				</div>
 
-				<button
+				<Button
 					type="button"
 					class="bg-primary text-primary-foreground inline-flex items-center gap-2 rounded-md px-4 py-2.5 text-[0.68rem] font-bold tracking-[0.14em] uppercase transition-all hover:brightness-110"
 					style="font-family: var(--font-display);"
@@ -152,7 +152,7 @@ async function submitEnquiry() {
 				>
 					<Plus class="size-4" />
 					New Enquiry
-				</button>
+				</Button>
 			</div>
 		</section>
 
@@ -176,14 +176,14 @@ async function submitEnquiry() {
 					No enquiries match this search.
 				</p>
 
-				<button
+				<Button
 					type="button"
 					class="bg-primary text-primary-foreground mt-4 inline-flex items-center gap-2 rounded-md px-4 py-2 text-[0.62rem] font-bold tracking-[0.14em] uppercase transition-all hover:brightness-110"
 					@click="openModal"
 				>
 					<Plus class="size-3.5" />
 					New Enquiry
-				</button>
+				</Button>
 			</div>
 
 			<ul
@@ -277,13 +277,13 @@ async function submitEnquiry() {
 							</h2>
 						</div>
 
-						<button
+						<Button
 							type="button"
 							class="text-muted-foreground hover:bg-muted hover:text-foreground flex size-9 items-center justify-center rounded-md transition-all"
 							@click="closeModal"
 						>
 							<X class="size-4" />
-						</button>
+						</Button>
 					</header>
 
 					<form
@@ -291,33 +291,33 @@ async function submitEnquiry() {
 						@submit.prevent="submitEnquiry"
 					>
 						<div>
-							<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
+							<Label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 								Subject
-							</label>
+							</Label>
 
-							<input
+							<Input
 								v-model="form.subject"
 								type="text"
 								placeholder="e.g. Hydraulic valve specs — Pit C"
 								class="bg-muted text-foreground placeholder:text-muted-foreground/60 focus:ring-primary/40 mt-2 w-full rounded-md px-3 py-2.5 text-sm focus:ring-2 focus:outline-none"
 								:disabled="isSubmitting"
-							>
+							/>
 						</div>
 
 						<div class="grid gap-5 sm:grid-cols-2">
 							<div>
-								<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
+								<Label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 									Supplier
-								</label>
+								</Label>
 
-								<input
+								<Input
 									v-model="form.supplierName"
 									type="text"
 									placeholder="Supplier name"
 									list="supplier-options"
 									class="bg-muted text-foreground placeholder:text-muted-foreground/60 focus:ring-primary/40 mt-2 w-full rounded-md px-3 py-2.5 text-sm focus:ring-2 focus:outline-none"
 									:disabled="isSubmitting"
-								>
+								/>
 
 								<datalist id="supplier-options">
 									<option
@@ -329,27 +329,27 @@ async function submitEnquiry() {
 							</div>
 
 							<div>
-								<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
+								<Label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 									Product SKU (optional)
-								</label>
+								</Label>
 
-								<input
+								<Input
 									v-model="form.productSku"
 									type="text"
 									placeholder="SKI-VLV-XP900"
 									class="bg-muted text-foreground placeholder:text-muted-foreground/60 focus:ring-primary/40 mt-2 w-full rounded-md px-3 py-2.5 font-mono text-sm focus:ring-2 focus:outline-none"
 									:disabled="isSubmitting"
-								>
+								/>
 							</div>
 						</div>
 
 						<div>
-							<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
+							<Label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 								Priority
-							</label>
+							</Label>
 
 							<div class="mt-2 grid grid-cols-4 gap-2">
-								<button
+								<Button
 									v-for="option in priorityOptions"
 									:key="option"
 									type="button"
@@ -359,16 +359,16 @@ async function submitEnquiry() {
 									@click="form.priority = option"
 								>
 									{{ option }}
-								</button>
+								</Button>
 							</div>
 						</div>
 
 						<div>
-							<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
+							<Label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 								Initial Message
-							</label>
+							</Label>
 
-							<textarea
+							<Textarea
 								v-model="form.initialMessage"
 								rows="4"
 								placeholder="Describe your requirement, quantity, and timeline…"
@@ -378,16 +378,16 @@ async function submitEnquiry() {
 						</div>
 
 						<div class="flex items-center justify-end gap-3 pt-2">
-							<button
+							<Button
 								type="button"
 								class="border-border/70 text-muted-foreground hover:border-foreground hover:text-foreground rounded-md border px-4 py-2 text-[0.62rem] font-bold tracking-[0.14em] uppercase transition-all"
 								:disabled="isSubmitting"
 								@click="closeModal"
 							>
 								Cancel
-							</button>
+							</Button>
 
-							<button
+							<Button
 								type="submit"
 								class="bg-primary text-primary-foreground inline-flex items-center gap-2 rounded-md px-5 py-2 text-[0.62rem] font-bold tracking-[0.14em] uppercase transition-all hover:brightness-110 disabled:opacity-60"
 								:disabled="isSubmitting"
@@ -397,7 +397,7 @@ async function submitEnquiry() {
 									class="size-3.5 animate-spin"
 								/>
 								{{ isSubmitting ? "Dispatching…" : "Dispatch Enquiry" }}
-							</button>
+							</Button>
 						</div>
 					</form>
 				</div>

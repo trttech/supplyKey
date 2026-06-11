@@ -8,8 +8,7 @@ const props = defineProps<{ class?: HTMLAttributes["class"] }>()
 <template>
 	<optgroup
 		data-slot="native-select-optgroup"
-		:class="cn('bg-popover text-popover-foreground', props.class)"
-	>
+		:class="cn('bg-popover text-popover-foreground', props.class)">
 		<slot />
 	</optgroup>
 </template>

@@ -47,7 +47,7 @@ watch(brand, (next) => {
 	form.accentColor = next.accentColor
 })
 
-const fileInput = useTemplateRef<HTMLInputElement>("fileInput")
+const fileInput = useTemplateRef<{ click: () => void }>("fileInput")
 const isSaving = ref(false)
 
 function triggerFilePick() {
@@ -151,33 +151,33 @@ const accentPreview = computed(() => form.accentColor)
 
 					<div class="space-y-5">
 						<div>
-							<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
+							<Label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 								Organization Name
-							</label>
+							</Label>
 
-							<input
+							<Input
 								v-model="form.orgName"
 								type="text"
 								class="bg-muted text-foreground focus:ring-primary/40 mt-2 w-full rounded-md px-3 py-2.5 text-sm focus:ring-2 focus:outline-none"
-							>
+							/>
 						</div>
 
 						<div>
-							<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
+							<Label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 								Tagline
-							</label>
+							</Label>
 
-							<input
+							<Input
 								v-model="form.tagline"
 								type="text"
 								class="bg-muted text-foreground focus:ring-primary/40 mt-2 w-full rounded-md px-3 py-2.5 text-sm focus:ring-2 focus:outline-none"
-							>
+							/>
 						</div>
 
 						<div>
-							<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
+							<Label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
 								Logo
-							</label>
+							</Label>
 
 							<div class="bg-muted mt-2 flex items-center gap-4 rounded-md p-4">
 								<div class="bg-card flex size-24 shrink-0 items-center justify-center rounded-md">
@@ -198,23 +198,23 @@ const accentPreview = computed(() => form.accentColor)
 
 								<div class="flex-1 space-y-2">
 									<div class="flex gap-2">
-										<button
+										<Button
 											type="button"
 											class="border-border/70 bg-card text-foreground hover:border-primary hover:text-primary inline-flex items-center gap-1.5 rounded-md border px-3 py-2 text-[0.62rem] font-bold tracking-[0.14em] uppercase transition-all"
 											@click="triggerFilePick"
 										>
 											<Upload class="size-3.5" />
 											Upload
-										</button>
+										</Button>
 
-										<button
+										<Button
 											v-if="form.logoDataUrl"
 											type="button"
 											class="border-border/70 text-muted-foreground hover:border-destructive hover:text-destructive inline-flex items-center gap-1.5 rounded-md border px-3 py-2 text-[0.62rem] font-bold tracking-[0.14em] uppercase transition-all"
 											@click="clearLogo"
 										>
 											Remove
-										</button>
+										</Button>
 									</div>
 
 									<p class="text-muted-foreground text-[0.62rem]">
@@ -222,13 +222,13 @@ const accentPreview = computed(() => form.accentColor)
 									</p>
 								</div>
 
-								<input
+								<Input
 									ref="fileInput"
 									type="file"
 									accept="image/svg+xml,image/png,image/jpeg,image/webp"
 									class="hidden"
 									@change="onFileSelected"
-								>
+								/>
 							</div>
 						</div>
 					</div>
@@ -244,11 +244,11 @@ const accentPreview = computed(() => form.accentColor)
 
 					<div class="space-y-4">
 						<div class="bg-muted flex items-center gap-4 rounded-md p-4">
-							<input
+							<Input
 								v-model="form.primaryColor"
 								type="color"
 								class="border-border/50 size-14 cursor-pointer rounded-md border bg-transparent"
-							>
+							/>
 
 							<div class="flex-1">
 								<p class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
@@ -269,11 +269,11 @@ const accentPreview = computed(() => form.accentColor)
 						</div>
 
 						<div class="bg-muted flex items-center gap-4 rounded-md p-4">
-							<input
+							<Input
 								v-model="form.sidebarColor"
 								type="color"
 								class="border-border/50 size-14 cursor-pointer rounded-md border bg-transparent"
-							>
+							/>
 
 							<div class="flex-1">
 								<p class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
@@ -291,11 +291,11 @@ const accentPreview = computed(() => form.accentColor)
 						</div>
 
 						<div class="bg-muted flex items-center gap-4 rounded-md p-4">
-							<input
+							<Input
 								v-model="form.accentColor"
 								type="color"
 								class="border-border/50 size-14 cursor-pointer rounded-md border bg-transparent"
-							>
+							/>
 
 							<div class="flex-1">
 								<p class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.18em] uppercase">
@@ -315,7 +315,7 @@ const accentPreview = computed(() => form.accentColor)
 				</div>
 
 				<div class="flex items-center justify-end gap-3">
-					<button
+					<Button
 						type="button"
 						class="border-border/70 text-muted-foreground hover:border-foreground hover:text-foreground inline-flex items-center gap-1.5 rounded-md border px-4 py-2.5 text-[0.62rem] font-bold tracking-[0.14em] uppercase transition-all"
 						:disabled="isSaving"
@@ -323,9 +323,9 @@ const accentPreview = computed(() => form.accentColor)
 					>
 						<RotateCcw class="size-3.5" />
 						Reset to defaults
-					</button>
+					</Button>
 
-					<button
+					<Button
 						type="button"
 						class="bg-primary text-primary-foreground inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-[0.62rem] font-bold tracking-[0.14em] uppercase transition-all hover:brightness-110 disabled:opacity-60"
 						:disabled="isSaving"
@@ -341,7 +341,7 @@ const accentPreview = computed(() => form.accentColor)
 							class="size-3.5"
 						/>
 						{{ isSaving ? "Saving…" : "Save Branding" }}
-					</button>
+					</Button>
 				</div>
 			</div>
 
@@ -404,13 +404,13 @@ const accentPreview = computed(() => form.accentColor)
 							</p>
 						</div>
 
-						<button
+						<Button
 							type="button"
 							class="w-full rounded-md px-4 py-2.5 text-[0.62rem] font-bold tracking-[0.14em] text-white uppercase"
 							:style="{ backgroundColor: primaryPreview }"
 						>
 							Primary CTA
-						</button>
+						</Button>
 
 						<div class="flex gap-2">
 							<span

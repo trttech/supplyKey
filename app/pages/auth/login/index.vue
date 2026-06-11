@@ -28,8 +28,6 @@ const email = ref("")
 const isLoading = ref(false)
 const isDemoLoading = ref(false)
 const success = ref(false)
-const debugMagicLink = ref("")
-const debugMagicLinkPath = computed(() => debugMagicLink.value.replace(/^https?:\/\/[^/]+/, ""))
 const redirectTarget = computed(() => {
 	const value = route.query.redirect
 	return typeof value === "string" && value.startsWith("/") ? value : undefined
@@ -42,12 +40,10 @@ async function handleMagicLink() {
 	}
 
 	isLoading.value = true
-	debugMagicLink.value = ""
 
 	try {
 		const response = await $fetch<{
 			success: boolean
-			debug_magic_link?: string
 		}>("/api/auth/link", {
 			method: "POST",
 			body: {
@@ -57,7 +53,6 @@ async function handleMagicLink() {
 		})
 
 		success.value = response.success
-		debugMagicLink.value = response.debug_magic_link || ""
 		toast.success("Authentication link dispatched.")
 	}
 	catch (error) {
@@ -87,7 +82,6 @@ async function handleDemoLogin() {
 
 function resetState() {
 	success.value = false
-	debugMagicLink.value = ""
 }
 </script>
 
@@ -131,38 +125,16 @@ function resetState() {
 							</p>
 
 							<p class="text-muted-foreground mt-2 text-xs">
-								Check the server console or Mailpit.
-							</p>
-						</div>
-
-						<div
-							v-if="debugMagicLink"
-							class="border-primary/20 bg-primary/5 space-y-3 rounded-[0.5rem] border p-5"
-						>
-							<p class="text-primary text-xs font-semibold tracking-[0.18em] uppercase">
-								Development shortcut
+								Check Mailpit for the sign-in email.
 							</p>
 
-							<p class="text-foreground/80 text-xs break-all">
-								{{ debugMagicLink }}
-							</p>
-
-							<div class="flex gap-3 pt-2">
-								<NuxtLink
-									:to="debugMagicLinkPath"
-									class="bg-primary text-primary-foreground inline-flex items-center justify-center rounded-[0.375rem] px-4 py-2 text-xs font-bold tracking-[0.15em] uppercase transition-all hover:brightness-110"
-								>
-									Open link
-								</NuxtLink>
-
-								<button
-									type="button"
-									class="border-border text-foreground hover:bg-muted inline-flex items-center justify-center rounded-[0.375rem] border px-4 py-2 text-xs font-bold tracking-[0.15em] uppercase transition-all"
-									@click="resetState"
-								>
-									Send another
-								</button>
-							</div>
+							<Button
+								type="button"
+								class="border-border text-foreground hover:bg-background mt-5 inline-flex items-center justify-center rounded-[0.375rem] border px-4 py-2 text-xs font-bold tracking-[0.15em] uppercase transition-all"
+								@click="resetState"
+							>
+								Send another
+							</Button>
 						</div>
 					</div>
 
@@ -185,15 +157,15 @@ function resetState() {
 						</div>
 
 						<div class="space-y-2">
-							<label
+							<Label
 								for="email"
 								class="text-muted-foreground text-[0.6875rem] font-bold tracking-[0.16em] uppercase"
 							>
 								Corporate Email
-							</label>
+							</Label>
 
 							<div class="relative">
-								<input
+								<Input
 									id="email"
 									v-model="email"
 									type="email"
@@ -201,12 +173,12 @@ function resetState() {
 									autocomplete="email"
 									:disabled="isLoading"
 									class="border-border/60 bg-muted text-foreground placeholder:text-muted-foreground/60 focus:border-primary w-full border-0 border-b-2 px-3 py-3 text-sm transition-all placeholder:font-light focus:outline-none disabled:opacity-60"
-								>
+								/>
 							</div>
 						</div>
 
 						<div>
-							<button
+							<Button
 								type="submit"
 								class="group bg-primary text-primary-foreground flex w-full items-center justify-center rounded-[0.375rem] px-4 py-4 text-sm font-extrabold tracking-[0.15em] uppercase transition-all hover:brightness-110 active:scale-[0.98] disabled:opacity-60"
 								:disabled="isLoading"
@@ -223,7 +195,7 @@ function resetState() {
 								/>
 
 								<span>{{ isLoading ? "Dispatching..." : "Initialize Authentication" }}</span>
-							</button>
+							</Button>
 						</div>
 					</form>
 
@@ -235,7 +207,7 @@ function resetState() {
 							Conference Demo Mode
 						</p>
 
-						<button
+						<Button
 							type="button"
 							class="group border-primary/30 bg-background text-primary hover:border-primary hover:bg-primary hover:text-primary-foreground flex w-full items-center justify-center rounded-[0.375rem] border-2 px-4 py-3 text-sm font-extrabold tracking-[0.15em] uppercase transition-all disabled:opacity-60"
 							:disabled="isDemoLoading"
@@ -253,7 +225,7 @@ function resetState() {
 							/>
 
 							<span>{{ isDemoLoading ? "Connecting..." : "Demo Sign In" }}</span>
-						</button>
+						</Button>
 					</div>
 
 					<div class="border-border/40 mt-10 border-t pt-8 text-center">

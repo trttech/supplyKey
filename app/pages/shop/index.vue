@@ -117,30 +117,30 @@ const hasFilters = computed(() => category.value || manufacturer.value || q.valu
 		<section class="grid gap-6 lg:grid-cols-[18rem_1fr]">
 			<aside class="space-y-6">
 				<div class="border-border/60 bg-card rounded-md border p-5">
-					<label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
+					<Label class="text-muted-foreground text-[0.62rem] font-bold tracking-[0.2em] uppercase">
 						Search
-					</label>
+					</Label>
 
 					<div class="mt-3 flex gap-2">
 						<div class="relative flex-1">
 							<Search class="text-muted-foreground absolute top-1/2 left-2.5 size-4 -translate-y-1/2" />
 
-							<input
+							<Input
 								v-model="q"
 								type="text"
 								placeholder="SKU, name, description"
 								class="bg-muted text-foreground placeholder:text-muted-foreground/60 focus:ring-primary/50 w-full rounded-md px-3 py-2 pl-8 text-sm focus:ring-2 focus:outline-none"
 								@keyup.enter="submitSearch"
-							>
+							/>
 						</div>
 
-						<button
+						<Button
 							type="button"
 							class="bg-primary text-primary-foreground rounded-md px-3 text-[0.68rem] font-bold tracking-[0.14em] uppercase transition-all hover:brightness-110"
 							@click="submitSearch"
 						>
 							Go
-						</button>
+						</Button>
 					</div>
 				</div>
 
@@ -154,7 +154,7 @@ const hasFilters = computed(() => category.value || manufacturer.value || q.valu
 							v-for="facet in data?.facets.categories ?? []"
 							:key="facet.value"
 						>
-							<button
+							<Button
 								type="button"
 								class="group flex w-full items-center justify-between rounded-md px-2 py-1.5 text-left text-sm transition-all"
 								:class="category === facet.value ? 'bg-primary text-primary-foreground font-semibold' : 'hover:bg-muted text-foreground'"
@@ -168,7 +168,7 @@ const hasFilters = computed(() => category.value || manufacturer.value || q.valu
 								>
 									{{ facet.count }}
 								</span>
-							</button>
+							</Button>
 						</li>
 					</ul>
 				</div>
@@ -183,7 +183,7 @@ const hasFilters = computed(() => category.value || manufacturer.value || q.valu
 							v-for="facet in data?.facets.manufacturers ?? []"
 							:key="facet.value"
 						>
-							<button
+							<Button
 								type="button"
 								class="flex w-full items-center justify-between rounded-md px-2 py-1.5 text-left text-sm transition-all"
 								:class="manufacturer === facet.value ? 'bg-primary text-primary-foreground font-semibold' : 'hover:bg-muted text-foreground'"
@@ -197,19 +197,19 @@ const hasFilters = computed(() => category.value || manufacturer.value || q.valu
 								>
 									{{ facet.count }}
 								</span>
-							</button>
+							</Button>
 						</li>
 					</ul>
 				</div>
 
-				<button
+				<Button
 					v-if="hasFilters"
 					type="button"
 					class="border-border/70 bg-card text-muted-foreground hover:border-primary hover:text-primary w-full rounded-md border px-4 py-2 text-[0.68rem] font-bold tracking-[0.15em] uppercase transition-all"
 					@click="clearFilters"
 				>
 					Clear Filters
-				</button>
+				</Button>
 			</aside>
 
 			<div class="space-y-4">
@@ -218,13 +218,13 @@ const hasFilters = computed(() => category.value || manufacturer.value || q.valu
 						{{ pending ? "Loading…" : `${data?.total ?? 0} products` }}
 					</p>
 
-					<button
+					<Button
 						type="button"
 						class="text-muted-foreground hover:text-primary text-[0.68rem] font-bold tracking-[0.15em] uppercase transition-colors"
 						@click="refresh()"
 					>
 						Refresh
-					</button>
+					</Button>
 				</div>
 
 				<div
@@ -246,13 +246,13 @@ const hasFilters = computed(() => category.value || manufacturer.value || q.valu
 						No products match these filters.
 					</p>
 
-					<button
+					<Button
 						type="button"
 						class="bg-primary text-primary-foreground mt-4 rounded-md px-4 py-2 text-[0.68rem] font-bold tracking-[0.15em] uppercase transition-all hover:brightness-110"
 						@click="clearFilters"
 					>
 						Clear filters
-					</button>
+					</Button>
 				</div>
 
 				<div
@@ -312,7 +312,7 @@ const hasFilters = computed(() => category.value || manufacturer.value || q.valu
 									</p>
 								</div>
 
-								<button
+								<Button
 									type="button"
 									class="bg-primary text-primary-foreground flex items-center gap-1.5 rounded-md px-3 py-2 text-[0.68rem] font-bold tracking-[0.14em] uppercase transition-all hover:brightness-110 disabled:opacity-60"
 									:disabled="addingId === product.id"
@@ -333,7 +333,7 @@ const hasFilters = computed(() => category.value || manufacturer.value || q.valu
 										class="size-4"
 									/>
 									Add
-								</button>
+								</Button>
 							</div>
 						</div>
 					</article>

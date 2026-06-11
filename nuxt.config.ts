@@ -80,13 +80,13 @@ export default defineNuxtConfig({
 			ssl: process.env.DB_SSL === "true",
 		},
 		mail: {
-			mode: process.env.MAIL_MODE || "console",
-			host: process.env.SMTP_HOST || "localhost",
+			isProduction: process.env.NODE_ENV === "production",
+			host: process.env.SMTP_HOST || (process.env.NODE_ENV === "production" ? "" : "localhost"),
 			port: process.env.SMTP_PORT ? Number.parseInt(process.env.SMTP_PORT, 10) : 1025,
 			secure: process.env.SMTP_SECURE === "true",
 			user: process.env.SMTP_USER,
 			password: process.env.SMTP_PASS,
-			from: process.env.MAILER_DEFAULT_FROM || "Starter <noreply@example.com>",
+			from: process.env.MAILER_DEFAULT_FROM || "SupplyKey <noreply@supplykey.local>",
 			replyTo: process.env.MAILER_DEFAULT_REPLY_TO || "",
 			priority: process.env.MAILER_DEFAULT_PRIORITY || "normal",
 			pool: process.env.SMTP_POOL === "true",
@@ -96,7 +96,15 @@ export default defineNuxtConfig({
 			maxMessages: process.env.SMTP_MAX_MESSAGES
 				? Number.parseInt(process.env.SMTP_MAX_MESSAGES, 10)
 				: 100,
-			tlsRejectUnauthorized: process.env.SMTP_TLS_REJECT_UNAUTHORIZED === "true",
+			tlsRejectUnauthorized: process.env.SMTP_TLS_REJECT_UNAUTHORIZED
+				? process.env.SMTP_TLS_REJECT_UNAUTHORIZED === "true"
+				: process.env.NODE_ENV === "production",
+			connectionTimeout: process.env.SMTP_CONNECTION_TIMEOUT
+				? Number.parseInt(process.env.SMTP_CONNECTION_TIMEOUT, 10)
+				: 120_000,
+			socketTimeout: process.env.SMTP_SOCKET_TIMEOUT
+				? Number.parseInt(process.env.SMTP_SOCKET_TIMEOUT, 10)
+				: 600_000,
 		},
 		pgboss: {
 			host: process.env.DB_HOST,
