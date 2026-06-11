@@ -35,8 +35,9 @@ const { data, pending, refresh } = await useFetch<ProductListResponse>("/api/pro
 
 async function updateQuery(next: Record<string, string | undefined>) {
 	const merged = { ...route.query, ...next }
-	Object.keys(merged).forEach(key => {
+	Object.keys(merged).forEach((key) => {
 		if (merged[key] === undefined || merged[key] === "") {
+			// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
 			delete merged[key]
 		}
 	})
