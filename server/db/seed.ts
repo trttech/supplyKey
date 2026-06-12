@@ -1,6 +1,6 @@
 import { Kysely, PostgresDialect } from "kysely"
 import { Pool } from "pg"
-import type { DB } from "./types"
+import { RoleType, type DB } from "./types"
 
 function getDb() {
 	const host = process.env.DB_HOST
@@ -364,7 +364,7 @@ async function seed() {
 				.values({
 					email: DEMO_EMAIL,
 					name: DEMO_NAME,
-					role: "admin",
+					role: RoleType.ADMIN,
 					email_verified: true,
 					deactivated: false,
 				})
