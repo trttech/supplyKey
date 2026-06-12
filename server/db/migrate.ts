@@ -1,7 +1,9 @@
+/* eslint-disable import/no-nodejs-modules, no-console, no-restricted-syntax */
 import "dotenv/config"
 import { promises as fs } from "node:fs"
 import path from "node:path"
 import { fileURLToPath, pathToFileURL } from "node:url"
+import { execSync } from "node:child_process"
 import { Kysely, PostgresDialect } from "kysely"
 import {
 	type Migration,
@@ -165,7 +167,6 @@ async function migrateReset() {
 	await db.destroy()
 
 	console.log("\nSeeding...")
-	const { execSync } = await import("node:child_process")
 	try {
 		execSync("tsx database/seed-owner.ts", {
 			stdio: "inherit",
